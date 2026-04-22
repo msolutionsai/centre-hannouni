@@ -35,7 +35,12 @@ export function SplitHeading({ text, className, as = "h2", delay = 0 }: Props) {
         <span
           key={i}
           className="inline-block overflow-hidden align-baseline"
-          style={{ marginRight: i < words.length - 1 ? "0.28em" : 0 }}
+          style={{
+            marginRight: i < words.length - 1 ? "0.28em" : 0,
+            paddingBottom: "0.28em",
+            marginBottom: "-0.28em",
+            paddingRight: "0.12em",
+          }}
         >
           <motion.span
             className="inline-block"
