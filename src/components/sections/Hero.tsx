@@ -25,19 +25,15 @@ export function Hero() {
       {/* Ambient generative canvas */}
       <HeroCanvas className="absolute inset-0 h-full w-full" />
 
-      {/* Portrait — right column, extends to meta rail with bottom fade */}
+      {/* Portrait — right column, bottom aligned to meta rail line */}
       <div
-        className="pointer-events-none absolute right-0 hidden md:flex items-end justify-end w-[52%]"
+        className="pointer-events-none absolute right-0 hidden md:flex items-end justify-end w-[56%]"
         style={{
           top: "96px",
-          bottom: "170px",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, black 0%, black 78%, transparent 100%)",
-          maskImage:
-            "linear-gradient(to bottom, black 0%, black 78%, transparent 100%)",
+          bottom: "152px",
         }}
       >
-        <HeroPortrait className="relative mr-[-4%] h-full w-auto aspect-[7/8] max-w-[840px]" />
+        <HeroPortrait className="relative mr-[-2%] h-full w-full max-w-[900px]" />
       </div>
 
       {/* Soft left vignette to keep text crisp */}
@@ -96,7 +92,7 @@ export function Hero() {
             <KineticText
               as="h1"
               text="La chirurgie"
-              className="display-xl text-[clamp(2.2rem,5.6vw,5.4rem)] text-[var(--color-ink)]"
+              className="display-xl text-[clamp(2.4rem,6.2vw,6rem)] text-[var(--color-ink)]"
             />
           </div>
           <div className="mt-1">
@@ -104,7 +100,7 @@ export function Hero() {
               as="h1"
               text="esthétique,"
               delay={0.06}
-              className="display-xl text-[clamp(2.2rem,5.6vw,5.4rem)] text-[var(--color-ink)]"
+              className="display-xl text-[clamp(2.4rem,6.2vw,6rem)] text-[var(--color-ink)]"
             />
           </div>
           <div className="mt-2">
@@ -113,7 +109,7 @@ export function Hero() {
               italic
               text="quand la précision médicale"
               delay={0.18}
-              className="display-xl italic text-[clamp(1.9rem,4.6vw,4.4rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              className="display-xl italic text-[clamp(2.1rem,5vw,4.8rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
             />
             <div className="mt-1">
               <KineticText
@@ -121,7 +117,7 @@ export function Hero() {
                 italic
                 text="rencontre l’art."
                 delay={0.24}
-                className="display-xl italic text-[clamp(1.9rem,4.6vw,4.4rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+                className="display-xl italic text-[clamp(2.1rem,5vw,4.8rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
               />
             </div>
           </div>
