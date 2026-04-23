@@ -156,23 +156,6 @@ export function HeroPortrait({ className }: Props) {
         ))}
       </motion.svg>
 
-      {/* Outer soft ring */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute -z-[6]"
-        style={{
-          top: "4%",
-          left: "6%",
-          right: "6%",
-          bottom: "4%",
-          border: "1px solid rgba(165,122,78,0.22)",
-          borderRadius: "50%",
-        }}
-        initial={{ opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      />
-
       {/* Main portrait — floating + parallax + slow breath */}
       <motion.div
         className="relative h-full w-full"
