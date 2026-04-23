@@ -43,7 +43,7 @@ export function Nav() {
                 </span>
               </span>
               <span className="text-[9.5px] uppercase tracking-[0.28em] text-[var(--color-ink-muted)]">
-                Chirurgie esthétique · Marrakech
+                Chirurgie esthétique · Maxillo-faciale
               </span>
             </div>
           </a>
