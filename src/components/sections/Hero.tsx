@@ -50,20 +50,21 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, delay: 2, ease: [0.22, 1, 0.36, 1] }}
-          className="pointer-events-none absolute right-[10%] top-[18%] hidden md:block"
+          className="pointer-events-none absolute right-[8%] top-[16%] hidden md:block"
         >
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
-            className="relative h-[64px] w-[64px]"
+            transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
+            className="relative h-[150px] w-[150px] lg:h-[170px] lg:w-[170px]"
           >
             <svg viewBox="0 0 100 100" className="h-full w-full">
               <defs>
                 <path id="ring-path" d="M50,50 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none" />
               </defs>
-              <text fontSize="8" fill="#14171A" letterSpacing="3" style={{ fontFamily: "var(--font-sans)" }}>
+              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(165,122,78,0.18)" strokeWidth="0.3" />
+              <text fontSize="6.2" fill="#14171A" letterSpacing="3" style={{ fontFamily: "var(--font-sans)" }}>
                 <textPath href="#ring-path">
-                  MARRAKECH · GUÉLIZ · DR HANNOUNI · CHIRURGIE ·
+                  DR HANNOUNI · CHIRURGIEN ESTHÉTIQUE ·
                 </textPath>
               </text>
             </svg>
@@ -85,11 +86,7 @@ export function Hero() {
           className="flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-[var(--color-ink-muted)]"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-cognac)]" />
-          <span className="font-display italic text-[var(--color-cognac-deep)] tracking-[0.16em]">
-            Centre du Docteur Hannouni
-          </span>
-          <span className="hidden sm:inline-block h-px w-8 bg-[var(--color-line)]" />
-          <span className="hidden sm:inline">Chirurgie esthétique & maxillo-faciale</span>
+          <span>Chirurgie esthétique & maxillo-faciale</span>
         </motion.div>
 
         {/* Headline block */}
@@ -150,12 +147,6 @@ export function Hero() {
                 <Arrow size={14} />
               </motion.span>
             </a>
-            <a
-              href={`tel:${clinic.phoneE164}`}
-              className="link-lux text-[13px] font-medium tracking-[0.08em] uppercase text-[var(--color-ink)]"
-            >
-              {clinic.phoneDisplay}
-            </a>
           </motion.div>
         </div>
 
@@ -164,38 +155,38 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14 md:mt-20 grid grid-cols-12 gap-6 border-t border-[var(--color-line)] pt-7"
+          className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 border-t border-[var(--color-line)] pt-7 items-end"
         >
-          <div className="col-span-6 md:col-span-3">
-            <div className="flex items-baseline gap-2">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-baseline gap-2 leading-none">
               <Counter
                 to={20}
-                className="font-display text-[clamp(2.4rem,4.2vw,3.4rem)] font-light tracking-[-0.02em] text-[var(--color-ink)] leading-none"
+                className="font-display text-[clamp(2rem,3.2vw,2.6rem)] font-light tracking-[-0.02em] text-[var(--color-ink)] leading-none"
                 suffix=""
               />
-              <span className="font-display text-[20px] text-[var(--color-cognac-deep)] italic">ans</span>
+              <span className="font-display text-[18px] text-[var(--color-cognac-deep)] italic leading-none">ans</span>
             </div>
-            <div className="mt-2 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
               au service de la face
             </div>
           </div>
-          <div className="col-span-6 md:col-span-3">
-            <div className="font-display text-[clamp(1.6rem,2.2vw,2rem)] font-light tracking-[-0.015em] text-[var(--color-ink)] leading-tight">
+          <div className="flex flex-col gap-3">
+            <div className="font-display text-[clamp(1.5rem,2vw,1.9rem)] font-light tracking-[-0.015em] text-[var(--color-ink)] leading-none">
               Guéliz
             </div>
-            <div className="mt-2 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
               Marrakech · Maroc
             </div>
           </div>
-          <div className="col-span-12 md:col-span-3">
-            <div className="font-display text-[clamp(1.4rem,2vw,1.7rem)] font-light italic text-[var(--color-cognac-deep)] leading-tight">
+          <div className="flex flex-col gap-3">
+            <div className="font-display text-[clamp(1.4rem,1.9vw,1.8rem)] font-light italic text-[var(--color-cognac-deep)] leading-none">
               Lauréat 1999
             </div>
-            <div className="mt-2 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
               Faculté de Casablanca · Bordeaux II
             </div>
           </div>
-          <div className="col-span-12 md:col-span-3 flex md:justify-end items-end">
+          <div className="flex md:justify-end">
             <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
               <span className="h-px w-8 bg-[var(--color-cognac)]" />
               Scroller pour découvrir
