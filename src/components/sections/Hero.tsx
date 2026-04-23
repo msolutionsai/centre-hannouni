@@ -120,12 +120,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 md:mt-14 max-w-[58ch] font-display text-[clamp(0.92rem,1.05vw,1.02rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)]"
+            className="mt-10 md:mt-14 max-w-[60ch] font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]"
           >
             Une chirurgie{" "}
             <span className="italic text-[var(--color-cognac-deep)]">précise</span>, un regard{" "}
             <span className="italic text-[var(--color-cognac-deep)]">éclairé</span>, une exigence{" "}
-            <span className="italic text-[var(--color-cognac-deep)]">médicale</span> — pour un résultat naturel qui se reconnaît à sa discrétion.
+            <span className="italic text-[var(--color-cognac-deep)]">médicale</span>, pour un résultat naturel qui se reconnaît à sa discrétion.
           </motion.p>
 
           <motion.div
@@ -154,25 +154,13 @@ export function Hero() {
           transition={{ duration: 1, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
           className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-[var(--color-line)] pt-8 items-end"
         >
-          <p className="col-span-1 md:col-span-9 max-w-[78ch] font-display text-[clamp(1rem,1.25vw,1.15rem)] font-light leading-[1.7] tracking-[-0.005em] text-[var(--color-ink-soft)]">
-            Au cœur de{" "}
-            <span className="font-display text-[clamp(1.3rem,1.85vw,1.7rem)] font-light tracking-[-0.015em] text-[var(--color-ink)] align-baseline">
-              Guéliz
-            </span>
-            , à Marrakech, notre centre associe{" "}
+          <p className="col-span-1 md:col-span-9 max-w-[72ch] font-display text-[clamp(1rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+            Au cœur de Guéliz, à Marrakech, notre centre associe{" "}
             <span className="italic text-[var(--color-cognac-deep)]">expertise médicale</span>,{" "}
             <span className="italic text-[var(--color-cognac-deep)]">technologies de pointe</span>{" "}
             et plus de{" "}
-            <span className="inline-flex items-baseline gap-1 align-baseline">
-              <span className="font-display text-[clamp(1.7rem,2.6vw,2.2rem)] font-light tracking-[-0.02em] text-[var(--color-ink)] leading-none">
-                20
-              </span>
-              <span className="font-display text-[clamp(0.95rem,1.1vw,1.05rem)] italic text-[var(--color-cognac-deep)] leading-none">
-                ans
-              </span>
-            </span>{" "}
-            d’expérience en chirurgie et médecine esthétique — pour offrir une prise en charge{" "}
-            <span className="italic text-[var(--color-cognac-deep)]">précise, naturelle et personnalisée</span>.
+            <span className="italic text-[var(--color-cognac-deep)]">20 ans d’expérience</span>{" "}
+            en chirurgie et médecine esthétique, pour offrir une prise en charge précise, naturelle et personnalisée.
           </p>
           <div className="col-span-1 md:col-span-3 md:justify-self-end">
             <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
