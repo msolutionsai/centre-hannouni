@@ -35,14 +35,14 @@ export function Nav() {
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-4 md:px-10 md:py-5">
           <a href="#top" className="flex items-center gap-3 group" aria-label={clinic.name}>
             <Monogram size={34} className="text-[var(--color-ink)]" />
-            <div className="hidden sm:flex flex-col leading-tight">
-              <span className="font-display text-[17px] font-normal tracking-[0.01em]">
+            <div className="hidden sm:flex flex-col gap-1.5">
+              <span className="font-display text-[17px] font-normal tracking-[0.01em] leading-none">
                 Centre{" "}
                 <span className="italic font-normal text-[var(--color-cognac-deep)]">
                   Hannouni
                 </span>
               </span>
-              <span className="text-[9.5px] uppercase tracking-[0.28em] text-[var(--color-ink-muted)]">
+              <span className="text-[9.5px] uppercase tracking-[0.28em] text-[var(--color-ink-muted)] leading-none">
                 Chirurgie esthétique · Maxillo-faciale
               </span>
             </div>
