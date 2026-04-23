@@ -63,41 +63,42 @@ export function Hero() {
 
         {/* Headline block */}
         <div className="mt-auto max-w-[1040px]">
-          {/* Inline orbital seal — above the title, left-aligned */}
-          {!reduce && (
-            <motion.div
-              aria-hidden
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-8 md:mb-10 hidden md:block"
-            >
+          {/* First title line + inline orbital seal (same baseline) */}
+          <div className="flex items-center gap-5 md:gap-7">
+            {!reduce && (
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
-                className="relative h-[96px] w-[96px]"
+                aria-hidden
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="hidden md:block shrink-0"
               >
-                <svg viewBox="0 0 100 100" className="h-full w-full">
-                  <defs>
-                    <path id="ring-path" d="M50,50 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none" />
-                  </defs>
-                  <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(165,122,78,0.2)" strokeWidth="0.3" />
-                  <text fontSize="6.2" fill="#14171A" letterSpacing="3" style={{ fontFamily: "var(--font-sans)" }}>
-                    <textPath href="#ring-path">
-                      DR HANNOUNI · CHIRURGIEN ESTHÉTIQUE ·
-                    </textPath>
-                  </text>
-                </svg>
-                <span className="absolute inset-0 m-auto h-2 w-2 rounded-full bg-[var(--color-cognac)]" style={{ top: 0, bottom: 0, left: 0, right: 0 }} />
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
+                  className="relative h-[88px] w-[88px] lg:h-[104px] lg:w-[104px]"
+                >
+                  <svg viewBox="0 0 100 100" className="h-full w-full">
+                    <defs>
+                      <path id="ring-path" d="M50,50 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none" />
+                    </defs>
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(165,122,78,0.2)" strokeWidth="0.3" />
+                    <text fontSize="6.2" fill="#14171A" letterSpacing="3" style={{ fontFamily: "var(--font-sans)" }}>
+                      <textPath href="#ring-path">
+                        DR HANNOUNI · CHIRURGIEN ESTHÉTIQUE ·
+                      </textPath>
+                    </text>
+                  </svg>
+                  <span className="absolute inset-0 m-auto h-2 w-2 rounded-full bg-[var(--color-cognac)]" style={{ top: 0, bottom: 0, left: 0, right: 0 }} />
+                </motion.div>
               </motion.div>
-            </motion.div>
-          )}
-
-          <KineticText
-            as="h1"
-            text="La chirurgie"
-            className="display-xl text-[clamp(2.6rem,7.6vw,7.4rem)] text-[var(--color-ink)]"
-          />
+            )}
+            <KineticText
+              as="h1"
+              text="La chirurgie"
+              className="display-xl text-[clamp(2.6rem,7.6vw,7.4rem)] text-[var(--color-ink)]"
+            />
+          </div>
           <div className="mt-1">
             <KineticText
               as="h1"
@@ -106,8 +107,7 @@ export function Hero() {
               className="display-xl text-[clamp(2.6rem,7.6vw,7.4rem)] text-[var(--color-ink)]"
             />
           </div>
-          <div className="mt-2 flex items-end gap-5">
-            <span className="hidden md:block h-[2px] w-[120px] bg-[var(--color-cognac)] translate-y-[-22px]" />
+          <div className="mt-2">
             <KineticText
               as="h1"
               italic
@@ -129,7 +129,7 @@ export function Hero() {
             <span className="font-display italic text-[var(--color-ink)]">éclairé</span>,
             une exigence{" "}
             <span className="font-display italic text-[var(--color-ink)]">médicale</span>.
-            Au cœur de Guéliz, à Marrakech — pour un résultat naturel qui
+            Au cœur de Guéliz, à Marrakech, pour un résultat naturel qui
             se reconnaît à sa discrétion.
           </motion.p>
 
