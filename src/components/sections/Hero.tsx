@@ -1,20 +1,15 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Arrow } from "@/components/ui/Icons";
 import { HeroCanvas } from "@/components/ui/HeroCanvas";
 import { HeroPortrait } from "@/components/ui/HeroPortrait";
 import { KineticText } from "@/components/ui/KineticText";
-import { Counter } from "@/components/ui/Counter";
-import { clinic } from "@/lib/content";
 
 export function Hero() {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section
@@ -27,13 +22,13 @@ export function Hero() {
 
       {/* Portrait — right column, bottom aligned to meta rail line */}
       <div
-        className="pointer-events-none absolute right-0 hidden md:flex items-end justify-end w-[56%]"
+        className="pointer-events-none absolute right-0 hidden md:flex items-end justify-end w-[48%]"
         style={{
           top: "96px",
-          bottom: "152px",
+          bottom: "168px",
         }}
       >
-        <HeroPortrait className="relative mr-[-2%] h-full w-full max-w-[900px]" />
+        <HeroPortrait className="relative mr-[-2%] h-full w-full max-w-[820px]" />
       </div>
 
       {/* Soft left vignette to keep text crisp */}
@@ -50,8 +45,7 @@ export function Hero() {
       <div className="grain pointer-events-none absolute inset-0" />
 
       {/* Content */}
-      <motion.div
-        style={{ y: textY, opacity }}
+      <div
         className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] flex-col justify-between px-6 md:px-10 pt-[140px] md:pt-[160px] pb-10"
       >
         {/* Spacer to push headline to bottom */}
@@ -103,21 +97,21 @@ export function Hero() {
               className="display-xl text-[clamp(2.4rem,6.2vw,6rem)] text-[var(--color-ink)]"
             />
           </div>
-          <div className="mt-2">
+          <div className="mt-5 md:mt-7">
             <KineticText
               as="h1"
               italic
-              text="quand la précision médicale"
+              text="quand la précision"
               delay={0.18}
-              className="display-xl italic text-[clamp(2.1rem,5vw,4.8rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              className="display-xl italic text-[clamp(1.9rem,4.4vw,4.2rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
             />
             <div className="mt-1">
               <KineticText
                 as="h1"
                 italic
-                text="rencontre l’art."
+                text="médicale rencontre l’art."
                 delay={0.24}
-                className="display-xl italic text-[clamp(2.1rem,5vw,4.8rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+                className="display-xl italic text-[clamp(1.9rem,4.4vw,4.2rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
               />
             </div>
           </div>
@@ -157,43 +151,22 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Bottom meta rail */}
+        {/* Bottom meta rail — editorial presentation + scroller */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 border-t border-[var(--color-line)] pt-7 items-end"
+          className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-[var(--color-line)] pt-8 items-end"
         >
-          <div className="flex flex-col gap-3">
-            <div className="flex items-baseline gap-2 leading-none">
-              <Counter
-                to={20}
-                className="font-display text-[clamp(2rem,3.2vw,2.6rem)] font-light tracking-[-0.02em] text-[var(--color-ink)] leading-none"
-                suffix=""
-              />
-              <span className="font-display text-[18px] text-[var(--color-cognac-deep)] italic leading-none">ans</span>
-            </div>
-            <div className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
-              au service de la face
-            </div>
-          </div>
-          <div className="flex flex-col gap-3">
-            <div className="font-display text-[clamp(1.5rem,2vw,1.9rem)] font-light tracking-[-0.015em] text-[var(--color-ink)] leading-none">
-              Guéliz
-            </div>
-            <div className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
-              Marrakech · Maroc
-            </div>
-          </div>
-          <div className="flex flex-col gap-3">
-            <div className="font-display text-[clamp(1.4rem,1.9vw,1.8rem)] font-light italic text-[var(--color-cognac-deep)] leading-none">
-              Lauréat 1999
-            </div>
-            <div className="text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
-              Faculté de Casablanca · Bordeaux II
-            </div>
-          </div>
-          <div className="flex md:justify-end">
+          <p className="col-span-1 md:col-span-9 max-w-[72ch] font-display text-[clamp(1rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+            Au cœur de Guéliz, à Marrakech, notre centre associe{" "}
+            <span className="italic text-[var(--color-cognac-deep)]">expertise médicale</span>,{" "}
+            <span className="italic text-[var(--color-cognac-deep)]">technologies de pointe</span>{" "}
+            et plus de{" "}
+            <span className="italic text-[var(--color-cognac-deep)]">20 ans d’expérience</span>{" "}
+            en chirurgie et médecine esthétique — pour offrir une prise en charge précise, naturelle et personnalisée.
+          </p>
+          <div className="col-span-1 md:col-span-3 md:justify-self-end">
             <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
               <span className="h-px w-8 bg-[var(--color-cognac)]" />
               Scroller pour découvrir
@@ -208,7 +181,7 @@ export function Hero() {
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
