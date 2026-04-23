@@ -76,16 +76,16 @@ export function Hero() {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
-                  className="relative h-[88px] w-[88px] lg:h-[104px] lg:w-[104px]"
+                  className="relative h-[72px] w-[72px] lg:h-[84px] lg:w-[84px]"
                 >
                   <svg viewBox="0 0 100 100" className="h-full w-full">
                     <defs>
                       <path id="ring-path" d="M50,50 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none" />
                     </defs>
                     <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(165,122,78,0.2)" strokeWidth="0.3" />
-                    <text fontSize="6.2" fill="#14171A" letterSpacing="3" style={{ fontFamily: "var(--font-sans)" }}>
+                    <text fontSize="5.8" fill="#14171A" letterSpacing="2.6" style={{ fontFamily: "var(--font-sans)" }}>
                       <textPath href="#ring-path">
-                        DR HANNOUNI · CHIRURGIEN ESTHÉTIQUE ·
+                        CENTRE DR HANNOUNI · CHIRURGIE ESTHÉTIQUE ·
                       </textPath>
                     </text>
                   </svg>
@@ -96,7 +96,7 @@ export function Hero() {
             <KineticText
               as="h1"
               text="La chirurgie"
-              className="display-xl text-[clamp(2.6rem,7.6vw,7.4rem)] text-[var(--color-ink)]"
+              className="display-xl text-[clamp(2.2rem,5.6vw,5.4rem)] text-[var(--color-ink)]"
             />
           </div>
           <div className="mt-1">
@@ -104,16 +104,16 @@ export function Hero() {
               as="h1"
               text="esthétique,"
               delay={0.06}
-              className="display-xl text-[clamp(2.6rem,7.6vw,7.4rem)] text-[var(--color-ink)]"
+              className="display-xl text-[clamp(2.2rem,5.6vw,5.4rem)] text-[var(--color-ink)]"
             />
           </div>
-          <div className="mt-2">
+          <div className="mt-3">
             <KineticText
               as="h1"
               italic
-              text="un art scientifique."
+              text="quand la précision médicale rencontre l’art."
               delay={0.18}
-              className="display-xl italic text-[clamp(2.6rem,7.6vw,7.4rem)] text-[var(--color-cognac-deep)]"
+              className="display-xl italic text-[clamp(1.4rem,2.8vw,2.4rem)] leading-[1.15] text-[var(--color-cognac-deep)]"
             />
           </div>
 
