@@ -4,7 +4,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { useRef } from "react";
 import { Arrow } from "@/components/ui/Icons";
 import { HeroCanvas } from "@/components/ui/HeroCanvas";
-import { FaceContour } from "@/components/ui/FaceContour";
+import { HeroPortrait } from "@/components/ui/HeroPortrait";
 import { KineticText } from "@/components/ui/KineticText";
 import { Counter } from "@/components/ui/Counter";
 import { clinic } from "@/lib/content";
@@ -25,9 +25,9 @@ export function Hero() {
       {/* Ambient generative canvas */}
       <HeroCanvas className="absolute inset-0 h-full w-full" />
 
-      {/* Abstract face contour — right column */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden md:flex items-center justify-end w-[58%]">
-        <FaceContour className="relative mr-[-6%] h-[92vh] w-[92vh] max-w-[820px] opacity-[0.95]" />
+      {/* Portrait — right column */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden md:flex items-center justify-end w-[52%]">
+        <HeroPortrait className="relative mr-[-4%] h-[82vh] w-[82vh] max-w-[760px]" />
       </div>
 
       {/* Soft left vignette to keep text crisp */}
