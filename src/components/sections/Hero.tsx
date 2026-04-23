@@ -76,14 +76,14 @@ export function Hero() {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
-                  className="relative h-[72px] w-[72px] lg:h-[84px] lg:w-[84px]"
+                  className="relative h-[96px] w-[96px] lg:h-[112px] lg:w-[112px]"
                 >
                   <svg viewBox="0 0 100 100" className="h-full w-full">
                     <defs>
                       <path id="ring-path" d="M50,50 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0" fill="none" />
                     </defs>
                     <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(165,122,78,0.2)" strokeWidth="0.3" />
-                    <text fontSize="5.8" fill="#14171A" letterSpacing="2.6" style={{ fontFamily: "var(--font-sans)" }}>
+                    <text fontSize="7.6" fill="#14171A" letterSpacing="1.6" fontWeight="500" style={{ fontFamily: "var(--font-sans)" }}>
                       <textPath href="#ring-path">
                         CENTRE DR HANNOUNI · CHIRURGIE ESTHÉTIQUE ·
                       </textPath>
@@ -107,13 +107,13 @@ export function Hero() {
               className="display-xl text-[clamp(2.2rem,5.6vw,5.4rem)] text-[var(--color-ink)]"
             />
           </div>
-          <div className="mt-3">
+          <div className="mt-2">
             <KineticText
               as="h1"
               italic
               text="quand la précision médicale rencontre l’art."
               delay={0.18}
-              className="display-xl italic text-[clamp(1.4rem,2.8vw,2.4rem)] leading-[1.15] text-[var(--color-cognac-deep)]"
+              className="display-xl italic text-[clamp(1.9rem,4.6vw,4.4rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
             />
           </div>
 
