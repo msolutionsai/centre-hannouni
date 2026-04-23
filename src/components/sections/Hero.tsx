@@ -111,10 +111,19 @@ export function Hero() {
             <KineticText
               as="h1"
               italic
-              text="quand la précision médicale rencontre l’art."
+              text="quand la précision médicale"
               delay={0.18}
               className="display-xl italic text-[clamp(1.9rem,4.6vw,4.4rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
             />
+            <div className="mt-1">
+              <KineticText
+                as="h1"
+                italic
+                text="rencontre l’art."
+                delay={0.24}
+                className="display-xl italic text-[clamp(1.9rem,4.6vw,4.4rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              />
+            </div>
           </div>
 
           <motion.p
