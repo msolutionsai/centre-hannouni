@@ -104,7 +104,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    padding: 0.95rem 1.7rem;
+    padding: 0.85rem 1.3rem;
     border-radius: 999px;
     font-size: 12px;
     font-weight: 500;
@@ -113,6 +113,9 @@ body {
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.5s, color 0.5s, border-color 0.5s;
     cursor: pointer;
     white-space: nowrap;
+  }
+  @media (min-width: 768px) {
+    .btn { padding: 0.95rem 1.7rem; }
   }
   .btn-primary { background: var(--color-ink); color: var(--color-ivory); border: 1px solid var(--color-ink); }
   .btn-primary:hover { background: var(--color-cognac-deep); border-color: var(--color-cognac-deep); }

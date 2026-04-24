@@ -8,7 +8,7 @@ import { Plus, Minus, Check } from "@/components/ui/Icons";
 import { expertiseAreas } from "@/lib/content";
 
 export function Expertises() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section

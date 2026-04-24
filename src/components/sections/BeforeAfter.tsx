@@ -123,7 +123,7 @@ export function BeforeAfter() {
             <div className="relative mx-auto w-full max-w-[540px] lg:max-w-none">
               <BaSlider caseData={cases[active]} />
             </div>
-            <div className="mt-4 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+            <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
               <span>Glissez pour comparer</span>
               <span>{cases[active].label}</span>
             </div>
