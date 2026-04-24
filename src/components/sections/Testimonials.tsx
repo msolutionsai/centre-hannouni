@@ -57,9 +57,9 @@ export function Testimonials() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.35] tracking-[-0.01em] text-[var(--color-ink)] max-w-[68ch]"
             >
-              <span className="text-[var(--color-cognac-deep)] italic">“</span>
+              <span className="text-[var(--color-cognac-deep)] italic mr-[0.18em]">“</span>
               {t.body}
-              <span className="text-[var(--color-cognac-deep)] italic">”</span>
+              <span className="text-[var(--color-cognac-deep)] italic ml-[0.18em]">”</span>
               <footer className="mt-8 flex items-center gap-3 text-[12px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
                 <span className="h-px w-10 bg-[var(--color-cognac)]" />
                 <cite className="not-italic">
