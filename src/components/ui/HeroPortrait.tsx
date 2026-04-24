@@ -156,34 +156,6 @@ export function HeroPortrait({
         />
       </motion.svg>
 
-      {/* Ink splatters — organic cognac dots that puff out on reveal */}
-      <svg
-        viewBox="0 0 400 500"
-        className="pointer-events-none absolute inset-0 h-full w-full -z-[4]"
-        preserveAspectRatio="xMidYMid meet"
-        aria-hidden
-      >
-        {[
-          { cx: 74, cy: 180, r: 4, delay: 0.8 },
-          { cx: 340, cy: 120, r: 3, delay: 1.0 },
-          { cx: 60, cy: 420, r: 5, delay: 1.15 },
-          { cx: 350, cy: 380, r: 3.5, delay: 1.3 },
-          { cx: 200, cy: 60, r: 2.5, delay: 1.45 },
-        ].map((p, i) => (
-          <motion.circle
-            key={i}
-            cx={p.cx}
-            cy={p.cy}
-            r={p.r}
-            fill="#A57A4E"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={reduce ? { opacity: 0.25, scale: 1 } : { opacity: [0, 0.55, 0.2], scale: [0, 1.6, 1] }}
-            transition={{ duration: 1.6, delay: p.delay, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformBox: "fill-box", transformOrigin: "center" }}
-          />
-        ))}
-      </svg>
-
       {/* Cognac ink wash — sweeps across behind the portrait on entry */}
       <motion.div
         aria-hidden
