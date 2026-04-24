@@ -186,7 +186,7 @@ export function Contact() {
                 <Mail size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
                 <div className="min-w-0">
                   <div className="eyebrow mb-1">Courriel</div>
-                  <div className="font-display text-[14.5px] leading-[1.3] text-[var(--color-ink)] group-hover:text-[var(--color-cognac-deep)] transition-colors truncate">
+                  <div className="font-display text-[14.5px] leading-[1.3] text-[var(--color-ink)] group-hover:text-[var(--color-cognac-deep)] transition-colors break-all">
                     {clinic.email}
                   </div>
                 </div>
@@ -208,13 +208,13 @@ export function Contact() {
                 <Clock size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
                 <div>
                   <div className="eyebrow mb-1">Horaires</div>
-                  <ul className="text-[13px] leading-[1.65] text-[var(--color-ink)] space-y-0.5">
+                  <ul className="text-[13px] leading-[1.55] text-[var(--color-ink)] space-y-1.5">
                     {clinic.hours.map((h) => (
-                      <li key={h.day} className="flex items-baseline justify-between gap-3">
-                        <span className="font-display italic text-[var(--color-ink-muted)] truncate">
+                      <li key={h.day} className="flex flex-col">
+                        <span className="font-display italic text-[var(--color-ink-muted)]">
                           {h.day}
                         </span>
-                        <span className="shrink-0">{h.hours}</span>
+                        <span>{h.hours}</span>
                       </li>
                     ))}
                   </ul>
@@ -442,7 +442,7 @@ export function Contact() {
                           disabled={!stepValid}
                           className="btn btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
                         >
-                          Continuer
+                          Suivant
                           <Arrow size={14} />
                         </button>
                       ) : (
