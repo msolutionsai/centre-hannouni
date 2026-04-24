@@ -14,7 +14,7 @@ export function Manifest() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 items-end">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 items-center">
           <div className="col-span-12 md:col-span-7">
             <SplitHeading
               as="h2"
@@ -32,7 +32,7 @@ export function Manifest() {
           </div>
 
           <Reveal delay={0.15} className="col-span-12 md:col-span-5">
-            <p className="max-w-[52ch] font-display text-[clamp(1rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+            <p className="max-w-[52ch] font-display text-[clamp(1.1rem,1.45vw,1.32rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
               Au Centre du Docteur Hannouni, chaque intervention est pensée comme un{" "}
               <span className="italic text-[var(--color-cognac-deep)]">acte d’architecture</span>{" "}
               : une{" "}
