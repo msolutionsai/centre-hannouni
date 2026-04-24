@@ -174,7 +174,7 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 lg:gap-16">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* Left — headline + coordinates */}
           <div className="col-span-12 lg:col-span-5">
             <SplitHeading
@@ -193,42 +193,42 @@ export function Contact() {
 
             <Reveal delay={0.2} className="mt-8 max-w-[44ch]">
               <p className="font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
-                Laissez-nous quelques informations : notre équipe vous recontacte sous
+                Laissez-nous quelques informations, notre équipe vous recontacte sous
                  24 à 48 heures avec un créneau adapté. Vos échanges sont strictement{" "}
                 <span className="italic text-[var(--color-cognac-deep)]">confidentiels</span>.
               </p>
             </Reveal>
 
-            <Reveal delay={0.3} className="mt-12 flex flex-col gap-5">
+            <Reveal delay={0.3} className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6">
               <a
                 href={`tel:${clinic.phoneE164}`}
-                className="group flex items-start gap-4 border-t border-[var(--color-line)] pt-5"
+                className="group col-span-2 sm:col-span-1 flex items-start gap-3 border-t border-[var(--color-line)] pt-4"
               >
-                <Phone size={16} className="mt-1 text-[var(--color-cognac-deep)]" />
-                <div>
-                  <div className="eyebrow mb-1">Téléphone direct</div>
-                  <div className="font-display text-[22px] text-[var(--color-ink)] group-hover:text-[var(--color-cognac-deep)] transition-colors">
+                <Phone size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
+                <div className="min-w-0">
+                  <div className="eyebrow mb-1">Téléphone</div>
+                  <div className="font-display text-[17px] leading-[1.2] text-[var(--color-ink)] group-hover:text-[var(--color-cognac-deep)] transition-colors">
                     {clinic.phoneDisplay}
                   </div>
                 </div>
               </a>
               <a
                 href={`mailto:${clinic.email}`}
-                className="group flex items-start gap-4 border-t border-[var(--color-line)] pt-5"
+                className="group col-span-2 sm:col-span-1 flex items-start gap-3 border-t border-[var(--color-line)] pt-4"
               >
-                <Mail size={16} className="mt-1 text-[var(--color-cognac-deep)]" />
-                <div>
+                <Mail size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
+                <div className="min-w-0">
                   <div className="eyebrow mb-1">Courriel</div>
-                  <div className="font-display text-[18px] text-[var(--color-ink)] group-hover:text-[var(--color-cognac-deep)] transition-colors">
+                  <div className="font-display text-[14.5px] leading-[1.3] text-[var(--color-ink)] group-hover:text-[var(--color-cognac-deep)] transition-colors truncate">
                     {clinic.email}
                   </div>
                 </div>
               </a>
-              <div className="flex items-start gap-4 border-t border-[var(--color-line)] pt-5">
-                <Pin size={16} className="mt-1 text-[var(--color-cognac-deep)]" />
+              <div className="col-span-2 sm:col-span-1 flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
+                <Pin size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
                 <div>
                   <div className="eyebrow mb-1">Adresse</div>
-                  <div className="text-[14.5px] leading-[1.6] text-[var(--color-ink)]">
+                  <div className="text-[13px] leading-[1.55] text-[var(--color-ink)]">
                     {clinic.address.line1}
                     <br />
                     {clinic.address.line2}
@@ -237,17 +237,17 @@ export function Contact() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-start gap-4 border-t border-[var(--color-line)] pt-5">
-                <Clock size={16} className="mt-1 text-[var(--color-cognac-deep)]" />
+              <div className="col-span-2 sm:col-span-1 flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
+                <Clock size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
                 <div>
                   <div className="eyebrow mb-1">Horaires</div>
-                  <ul className="text-[13.5px] leading-[1.7] text-[var(--color-ink)]">
+                  <ul className="text-[13px] leading-[1.65] text-[var(--color-ink)] space-y-0.5">
                     {clinic.hours.map((h) => (
-                      <li key={h.day} className="flex items-center gap-2">
-                        <span className="font-display italic text-[var(--color-ink-muted)] w-[145px]">
+                      <li key={h.day} className="flex items-baseline justify-between gap-3">
+                        <span className="font-display italic text-[var(--color-ink-muted)] truncate">
                           {h.day}
                         </span>
-                        <span>{h.hours}</span>
+                        <span className="shrink-0">{h.hours}</span>
                       </li>
                     ))}
                   </ul>
@@ -257,7 +257,7 @@ export function Contact() {
           </div>
 
           {/* Right — form card */}
-          <div className="col-span-12 lg:col-span-7 lg:col-start-7 lg:-mt-4">
+          <div className="col-span-12 lg:col-span-7 lg:col-start-6 lg:pl-4">
             <Reveal>
               <div className="relative bg-[var(--color-ivory-50)] border border-[var(--color-line)] rounded-[2px] p-6 md:p-10 lg:p-12 overflow-hidden">
                 {/* progress */}

@@ -48,7 +48,7 @@ function BaSlider({ caseData }: { caseData: (typeof cases)[number] }) {
   return (
     <div
       ref={wrapRef}
-      className="ba-wrap aspect-[4/5] md:aspect-[4/5] cursor-col-resize"
+      className="ba-wrap aspect-[4/5] md:aspect-[1/1] cursor-col-resize"
       onMouseDown={(e) => {
         dragging.current = true;
         setFromEvent(e.clientX);
@@ -118,9 +118,9 @@ export function BeforeAfter() {
           </Reveal>
         </div>
 
-        <div className="mt-14 md:mt-20 grid grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="mt-14 md:mt-20 grid grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="col-span-12 lg:col-span-7">
-            <div className="relative">
+            <div className="relative mx-auto w-full max-w-[540px] lg:max-w-none">
               <BaSlider caseData={cases[active]} />
             </div>
             <div className="mt-4 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
