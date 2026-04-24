@@ -5,7 +5,6 @@ import { Credibility } from "@/components/sections/Credibility";
 import { Manifest } from "@/components/sections/Manifest";
 import { Doctor } from "@/components/sections/Doctor";
 import { Centre } from "@/components/sections/Centre";
-import { Expertises } from "@/components/sections/Expertises";
 import { Interventions } from "@/components/sections/Interventions";
 import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { WhyUs } from "@/components/sections/WhyUs";
@@ -23,7 +22,6 @@ export default function Home() {
       <Manifest />
       <Doctor />
       <Centre />
-      <Expertises />
       <Interventions />
       <BeforeAfter />
       <WhyUs />

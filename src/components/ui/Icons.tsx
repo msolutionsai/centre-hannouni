@@ -32,6 +32,13 @@ export const Plus = ({ className, size = 14, strokeWidth = 1.5 }: Props) => (
   </svg>
 );
 
+export const Close = ({ className, size = 14, strokeWidth = 1.5 }: Props) => (
+  <svg {...base(size, className)} strokeWidth={strokeWidth} aria-hidden>
+    <path d="M18 6 6 18" />
+    <path d="m6 6 12 12" />
+  </svg>
+);
+
 export const Minus = ({ className, size = 14, strokeWidth = 1.5 }: Props) => (
   <svg {...base(size, className)} strokeWidth={strokeWidth} aria-hidden>
     <path d="M5 12h14" />
