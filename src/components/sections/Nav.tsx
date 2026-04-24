@@ -35,7 +35,7 @@ export function Nav() {
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-4 md:px-10 md:py-5">
           <a href="#top" className="flex items-center gap-3 group" aria-label={clinic.name}>
             <img
-              src="/logo-hannouni.svg"
+              src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/LOGO%20PRINCIPAL%20HANNOUNI%20PNG.png"
               alt=""
               aria-hidden
               className="h-11 w-11 md:h-12 md:w-12 object-contain shrink-0"
@@ -103,7 +103,7 @@ export function Nav() {
             <div className="flex items-center justify-between px-6 py-4 md:px-10 md:py-5">
               <div className="flex items-center gap-3">
                 <img
-                  src="/logo-hannouni.svg"
+                  src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/LOGO%20PRINCIPAL%20HANNOUNI%20PNG.png"
                   alt=""
                   aria-hidden
                   className="h-11 w-11 object-contain shrink-0 invert"
