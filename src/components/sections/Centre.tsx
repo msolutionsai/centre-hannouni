@@ -7,11 +7,11 @@ import { centreFeatures } from "@/lib/content";
 
 export function Centre() {
   return (
-    <section id="centre" className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] py-24 md:py-40 overflow-hidden">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+    <section id="centre" className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ivory)]/60">
-            <span className="font-display italic text-[12px] tracking-[0.14em] text-[var(--color-cognac-soft)]">
+            <span className="font-display italic text-[14.5px] tracking-[0.14em] text-[var(--color-cognac-soft)]">
               III · Le centre
             </span>
             <span className="h-px w-12 bg-[var(--color-ivory)]/20" />
@@ -36,14 +36,14 @@ export function Centre() {
             </div>
 
             <Reveal delay={0.2} className="mt-10 max-w-[58ch]">
-              <p className="text-[15.5px] leading-[1.85] text-[var(--color-ivory)]/80">
+              <p className="font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ivory)]/80">
                 Un centre pensé pour conjuguer{" "}
-                <span className="font-display italic">pratique médicale</span>,{" "}
-                <span className="font-display italic">maîtrise chirurgicale</span>,{" "}
-                <span className="font-display italic">exigence scientifique</span> et{" "}
-                <span className="font-display italic">sens esthétique</span>. Une structure
+                <span className="italic text-[var(--color-cognac-soft)]">pratique médicale</span>,{" "}
+                <span className="italic text-[var(--color-cognac-soft)]">maîtrise chirurgicale</span>,{" "}
+                <span className="italic text-[var(--color-cognac-soft)]">exigence scientifique</span> et{" "}
+                <span className="italic text-[var(--color-cognac-soft)]">sens esthétique</span>. Une structure
                 conforme aux normes médicales locales et internationales, équipée des
-                technologies modernes de chirurgie esthétique et réparatrice — et dans
+                technologies modernes de chirurgie esthétique et réparatrice, et dans
                 laquelle tous les éléments de confort et de bien-être ont été intégrés
                 pour accompagner nos patients avec discrétion.
               </p>
@@ -52,7 +52,7 @@ export function Centre() {
 
           <div className="col-span-12 lg:col-span-5">
             <Reveal>
-              <div className="relative aspect-[4/5]">
+              <div className="relative mx-auto aspect-[4/5] max-w-[320px] lg:max-w-none">
                 <Portrait variant="centre" className="h-full w-full" caption="Plateau technique" />
               </div>
             </Reveal>

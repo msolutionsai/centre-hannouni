@@ -1,17 +1,21 @@
 "use client";
 
 import { clinic, nav } from "@/lib/content";
-import { Monogram } from "@/components/ui/Icons";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-20 md:pt-28 pb-10">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+    <footer className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-16 md:pt-24 pb-10">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <div className="grid grid-cols-12 gap-8 lg:gap-12 border-b border-white/10 pb-16">
           <div className="col-span-12 md:col-span-5">
             <div className="flex items-center gap-3">
-              <Monogram size={42} className="text-[var(--color-ivory)]" />
+              <img
+                src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/LOGO%20PRINCIPAL%20HANNOUNI%20PNG.png"
+                alt=""
+                aria-hidden
+                className="h-12 w-12 object-contain shrink-0 invert"
+              />
               <div>
                 <div className="font-display text-[20px]">
                   Centre <span className="italic text-[var(--color-cognac-soft)]">Hannouni</span>

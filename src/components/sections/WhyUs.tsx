@@ -8,9 +8,9 @@ export function WhyUs() {
   return (
     <section
       id="pourquoi"
-      className="relative bg-[var(--color-ivory-50)] py-24 md:py-36"
+      className="relative bg-[var(--color-ivory-50)] pt-16 md:pt-24 pb-16 md:pb-24"
     >
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
             <span className="section-no">VII · Pourquoi le centre</span>
@@ -48,7 +48,7 @@ export function WhyUs() {
               <h3 className="mt-5 font-display text-[28px] leading-[1.15] tracking-[-0.015em] text-[var(--color-ink)]">
                 {u.title}
               </h3>
-              <p className="mt-4 text-[14.5px] leading-[1.75] text-[var(--color-ink-soft)] max-w-[44ch]">
+              <p className="mt-4 font-display text-[clamp(0.98rem,1.15vw,1.1rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[44ch]">
                 {u.body}
               </p>
             </StaggerItem>

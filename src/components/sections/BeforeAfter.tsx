@@ -82,9 +82,9 @@ export function BeforeAfter() {
   return (
     <section
       id="avant-apres"
-      className="relative bg-[var(--color-ivory)] py-24 md:py-36 overflow-hidden"
+      className="relative bg-[var(--color-ivory)] pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden"
     >
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
             <span className="section-no">VI · Résultats</span>
@@ -109,10 +109,11 @@ export function BeforeAfter() {
             </div>
           </div>
           <Reveal delay={0.15} className="col-span-12 lg:col-span-5 self-end">
-            <p className="max-w-[46ch] text-[15px] leading-[1.8] text-[var(--color-ink-soft)]">
-              Les images ci-dessous illustrent la philosophie du centre :
-              un résultat naturel, en accord avec l’identité du visage.
-              Des cas réels anonymisés seront présentés sur demande, en consultation.
+            <p className="max-w-[46ch] font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+              Les images ci-dessous illustrent la philosophie du centre : un{" "}
+              <span className="italic text-[var(--color-cognac-deep)]">résultat naturel</span>,
+              en accord avec l’identité du visage. Des cas réels anonymisés seront
+              présentés sur demande, en consultation.
             </p>
           </Reveal>
         </div>

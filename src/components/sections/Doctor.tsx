@@ -20,9 +20,9 @@ export function Doctor() {
   return (
     <section
       id="praticien"
-      className="relative bg-[var(--color-ivory-50)] py-24 md:py-36 overflow-hidden"
+      className="relative bg-[var(--color-ivory-50)] pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden"
     >
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
             <span className="section-no">II · Le praticien</span>
@@ -34,7 +34,7 @@ export function Doctor() {
           {/* Portrait column */}
           <div className="col-span-12 md:col-span-5 lg:col-span-5">
             <Reveal>
-              <div className="relative aspect-[4/5]">
+              <div className="relative mx-auto aspect-[4/5] max-w-[320px] md:max-w-none">
                 <div className="aura hidden md:block" />
                 <Portrait variant="portrait" className="h-full w-full" caption="Portrait · 2024" />
               </div>
@@ -63,13 +63,11 @@ export function Doctor() {
             </div>
 
             <Reveal delay={0.2} className="mt-8 max-w-[58ch]">
-              <p className="text-[15.5px] leading-[1.85] text-[var(--color-ink-soft)]">
+              <p className="font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
                 Le Docteur Hannouni Youssef exerce à Marrakech, dans son centre de
                 chirurgie esthétique et maxillo-faciale situé au cœur de Guéliz. Fort
                 d’une expérience de vingt ans au service de cet{" "}
-                <span className="font-display italic text-[var(--color-ink)]">
-                  art scientifique
-                </span>{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">art scientifique</span>{" "}
                 qu’est la chirurgie plastique, esthétique et réparatrice de la face, il
                 développe une approche où la précision médicale et le sens esthétique ne
                 font qu’un.

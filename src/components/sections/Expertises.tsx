@@ -13,9 +13,9 @@ export function Expertises() {
   return (
     <section
       id="expertises"
-      className="relative bg-[var(--color-ivory)] py-24 md:py-36"
+      className="relative bg-[var(--color-ivory)] pt-16 md:pt-24 pb-16 md:pb-24"
     >
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
             <span className="section-no">IV · Domaines d’expertise</span>
@@ -40,9 +40,10 @@ export function Expertises() {
             </div>
           </div>
           <Reveal delay={0.15} className="col-span-12 lg:col-span-5 lg:pl-10 self-end">
-            <p className="text-[15px] leading-[1.8] text-[var(--color-ink-soft)] max-w-[46ch]">
-              Chaque domaine d’intervention est traité avec une rigueur identique : un
-              diagnostic méticuleux, un protocole personnalisé, une exécution
+            <p className="font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[46ch]">
+              Chaque domaine d’intervention est traité avec une{" "}
+              <span className="italic text-[var(--color-cognac-deep)]">rigueur identique</span>{" "}
+              : un diagnostic méticuleux, un protocole personnalisé, une exécution
               millimétrée et un suivi intégré. C’est cette discipline qui fait
               la crédibilité du résultat.
             </p>

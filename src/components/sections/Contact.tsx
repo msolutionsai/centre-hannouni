@@ -165,8 +165,8 @@ export function Contact() {
   const progress = (step / steps.length) * 100;
 
   return (
-    <section id="rendez-vous" className="relative bg-[var(--color-ivory)] py-24 md:py-36">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-10">
+    <section id="rendez-vous" className="relative bg-[var(--color-ivory)] pt-16 md:pt-24 pb-16 md:pb-24">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
             <span className="section-no">IX · Prise de rendez-vous</span>
@@ -192,9 +192,10 @@ export function Contact() {
             </div>
 
             <Reveal delay={0.2} className="mt-8 max-w-[44ch]">
-              <p className="text-[15px] leading-[1.8] text-[var(--color-ink-soft)]">
+              <p className="font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
                 Laissez-nous quelques informations : notre équipe vous recontacte sous
-                 24 à 48 heures avec un créneau adapté. Vos échanges sont strictement confidentiels.
+                 24 à 48 heures avec un créneau adapté. Vos échanges sont strictement{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">confidentiels</span>.
               </p>
             </Reveal>
 
