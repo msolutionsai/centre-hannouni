@@ -1,5 +1,6 @@
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
+import { ScrollReset } from "@/components/ui/ScrollReset";
 import { Credibility } from "@/components/sections/Credibility";
 import { Manifest } from "@/components/sections/Manifest";
 import { Doctor } from "@/components/sections/Doctor";
@@ -15,6 +16,7 @@ import { Footer } from "@/components/sections/Footer";
 export default function Home() {
   return (
     <main className="relative">
+      <ScrollReset />
       <Nav />
       <Hero />
       <Credibility />

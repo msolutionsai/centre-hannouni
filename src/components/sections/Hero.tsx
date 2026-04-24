@@ -22,7 +22,13 @@ export function Hero() {
 
       {/* Portrait — right column on desktop, top-right on mobile */}
       <div
-        className="pointer-events-none absolute right-0 flex items-end justify-end top-[72px] md:top-[96px] bottom-[58%] md:bottom-[168px] w-[88%] md:w-[48%] opacity-55 md:opacity-100"
+        className="pointer-events-none absolute right-0 flex items-end justify-end top-[72px] md:top-[96px] bottom-[48%] md:bottom-[168px] w-[92%] md:w-[48%] opacity-50 md:opacity-100"
+        style={{
+          maskImage:
+            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage:
+            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+        }}
       >
         <HeroPortrait className="relative mr-[-10%] md:mr-[-2%] h-full w-full max-w-[820px]" />
       </div>
@@ -33,7 +39,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 md:hidden"
         style={{
           background:
-            "linear-gradient(180deg, rgba(245,241,234,0) 18%, rgba(245,241,234,0.55) 38%, rgba(245,241,234,0.92) 54%, rgba(245,241,234,1) 68%)",
+            "linear-gradient(180deg, rgba(245,241,234,0) 10%, rgba(245,241,234,0.35) 30%, rgba(245,241,234,0.9) 50%, rgba(245,241,234,1) 62%)",
         }}
       />
       <div
