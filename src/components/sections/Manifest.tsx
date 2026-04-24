@@ -14,16 +14,8 @@ export function Manifest() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 items-start">
-          <Reveal delay={0.12} className="col-span-12 md:col-span-3 md:pt-3">
-            <div className="flex items-center gap-4">
-              <span className="h-px w-10 bg-[var(--color-cognac)]" />
-              <span className="font-display italic text-[15px] text-[var(--color-ink)]">
-                Dr Hannouni Youssef
-              </span>
-            </div>
-          </Reveal>
-          <div className="col-span-12 md:col-span-9">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 items-end">
+          <div className="col-span-12 md:col-span-7">
             <SplitHeading
               as="h2"
               className="display-lg text-[clamp(1.9rem,5.05vw,4.3rem)] text-[var(--color-ink)]"
@@ -38,11 +30,9 @@ export function Manifest() {
               />
             </div>
           </div>
-        </div>
 
-        <div className="mt-14 md:mt-20 grid grid-cols-12 gap-8">
-          <Reveal delay={0.15} className="col-span-12 md:col-span-9 md:col-start-4">
-            <p className="max-w-[72ch] font-display text-[clamp(1rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+          <Reveal delay={0.15} className="col-span-12 md:col-span-5">
+            <p className="max-w-[52ch] font-display text-[clamp(1rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
               Au Centre du Docteur Hannouni, chaque intervention est pensée comme un{" "}
               <span className="italic text-[var(--color-cognac-deep)]">acte d’architecture</span>{" "}
               : une{" "}
@@ -53,6 +43,12 @@ export function Manifest() {
               démonstratifs. Nous cherchons l’harmonie, la justesse et la durabilité, trois
               exigences que nous mettons au service de chaque visage.
             </p>
+            <div className="mt-6 flex items-center gap-4">
+              <span className="h-px w-10 bg-[var(--color-cognac)]" />
+              <span className="font-display italic text-[15px] text-[var(--color-ink)]">
+                Dr Hannouni Youssef
+              </span>
+            </div>
           </Reveal>
         </div>
       </div>
