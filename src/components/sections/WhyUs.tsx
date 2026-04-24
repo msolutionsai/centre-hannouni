@@ -30,8 +30,12 @@ export function WhyUs() {
       if (!track) return;
       const card = track.children[i] as HTMLElement | undefined;
       if (!card) return;
+      const trackRect = track.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      const padding = parseFloat(getComputedStyle(track).paddingLeft || "0") || 0;
+      const target = track.scrollLeft + (cardRect.left - trackRect.left) - padding;
       track.scrollTo({
-        left: card.offsetLeft - track.offsetLeft,
+        left: Math.max(0, target),
         behavior: reduce ? "auto" : "smooth",
       });
       setActive(i);

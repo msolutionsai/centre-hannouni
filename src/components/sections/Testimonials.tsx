@@ -1,15 +1,35 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow, Star } from "@/components/ui/Icons";
 import { testimonials, clinic } from "@/lib/content";
 
+const AUTOPLAY_MS = 8000;
+const RESUME_MS = 10000;
+
 export function Testimonials() {
+  const reduce = useReducedMotion();
   const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const pauseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const t = testimonials[i];
+
+  const pauseBriefly = useCallback(() => {
+    setPaused(true);
+    if (pauseTimer.current) clearTimeout(pauseTimer.current);
+    pauseTimer.current = setTimeout(() => setPaused(false), RESUME_MS);
+  }, []);
+
+  useEffect(() => {
+    if (paused || reduce) return;
+    const timer = setTimeout(() => {
+      setI((prev) => (prev + 1) % testimonials.length);
+    }, AUTOPLAY_MS);
+    return () => clearTimeout(timer);
+  }, [i, paused, reduce]);
 
   return (
     <section className="relative bg-[var(--color-stone-warm)] pt-16 md:pt-24 pb-16 md:pb-24">
@@ -47,7 +67,12 @@ export function Testimonials() {
           </Reveal>
         </div>
 
-        <div className="mt-16 md:mt-20 relative min-h-[240px]">
+        <div
+          className="mt-16 md:mt-20 relative min-h-[240px]"
+          onMouseEnter={pauseBriefly}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={pauseBriefly}
+        >
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={i}
@@ -77,7 +102,7 @@ export function Testimonials() {
                 key={idx}
                 type="button"
                 aria-label={`Témoignage ${idx + 1}`}
-                onClick={() => setI(idx)}
+                onClick={() => { setI(idx); pauseBriefly(); }}
                 className={`h-[3px] transition-all ${
                   idx === i ? "w-12 bg-[var(--color-ink)]" : "w-6 bg-[var(--color-line)]"
                 }`}
@@ -87,7 +112,7 @@ export function Testimonials() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              onClick={() => setI((i - 1 + testimonials.length) % testimonials.length)}
+              onClick={() => { setI((i - 1 + testimonials.length) % testimonials.length); pauseBriefly(); }}
               className="grid h-11 w-11 place-items-center rounded-full border border-[var(--color-line)] hover:border-[var(--color-ink)] transition-colors"
               aria-label="Précédent"
             >
@@ -95,7 +120,7 @@ export function Testimonials() {
             </button>
             <button
               type="button"
-              onClick={() => setI((i + 1) % testimonials.length)}
+              onClick={() => { setI((i + 1) % testimonials.length); pauseBriefly(); }}
               className="grid h-11 w-11 place-items-center rounded-full border border-[var(--color-line)] hover:border-[var(--color-ink)] transition-colors"
               aria-label="Suivant"
             >

@@ -226,7 +226,7 @@ export function Contact() {
           {/* Form card (order-2 mobile, right col row-span-2 desktop) */}
           <div className="order-2 col-span-12 lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:row-span-2 lg:pl-4 lg:order-none">
             <Reveal>
-              <div className="relative bg-[var(--color-ivory-50)] border border-[var(--color-line)] rounded-[2px] p-5 md:p-10 lg:p-12 overflow-hidden">
+              <div className="relative bg-[var(--color-ivory-50)] border border-[var(--color-line)] rounded-[2px] p-5 md:p-10 lg:p-12">
                 {/* progress */}
                 <div className="flex items-center justify-between mb-6 md:mb-10">
                   <div className="flex items-center gap-6">
