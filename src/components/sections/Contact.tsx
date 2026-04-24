@@ -4,7 +4,8 @@ import { useState, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
-import { Arrow, Check, ChevronDown, Clock, Mail, Phone, Pin, WhatsApp } from "@/components/ui/Icons";
+import { Arrow, Check, Clock, Mail, Phone, Pin, WhatsApp } from "@/components/ui/Icons";
+import { CustomSelect, CustomDate } from "@/components/ui/FormInputs";
 import { clinic, interventionOptions, countryOptions } from "@/lib/content";
 
 type Gender = "Madame" | "Monsieur" | "Non précisé";
@@ -86,43 +87,6 @@ function Field({
   );
 }
 
-function Select({
-  id,
-  label,
-  value,
-  onChange,
-  options,
-  required,
-}: {
-  id: string;
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  options: string[];
-  required?: boolean;
-}) {
-  const filled = value.trim() !== "";
-  return (
-    <div className={`field ${filled ? "filled" : ""}`}>
-      <select
-        id={id}
-        name={id}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        required={required}
-      >
-        <option value="" disabled hidden></option>
-        {options.map((o) => (
-          <option key={o} value={o}>
-            {o}
-          </option>
-        ))}
-      </select>
-      <label htmlFor={id}>{label}{required && " *"}</label>
-      <ChevronDown className="select-caret" size={14} />
-    </div>
-  );
-}
 
 export function Contact() {
   const [step, setStep] = useState(1);
@@ -376,7 +340,7 @@ export function Contact() {
                             <Field id="lastName" label="Nom" value={data.lastName} onChange={(v) => upd("lastName", v)} required autoComplete="family-name" />
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <Field id="birthDate" label="Date de naissance" type="date" value={data.birthDate} onChange={(v) => upd("birthDate", v)} />
+                            <CustomDate id="birthDate" label="Date de naissance" value={data.birthDate} onChange={(v) => upd("birthDate", v)} max={new Date().toISOString().slice(0,10)} />
                           </div>
                         </motion.div>
                       )}
@@ -391,10 +355,10 @@ export function Contact() {
                           className="grid grid-cols-12 gap-x-6 gap-y-5 md:gap-y-7"
                         >
                           <div className="col-span-12">
-                            <Select id="intervention" label="Intervention souhaitée" value={data.intervention} onChange={(v) => upd("intervention", v)} options={interventionOptions} required />
+                            <CustomSelect id="intervention" label="Intervention souhaitée" value={data.intervention} onChange={(v) => upd("intervention", v)} options={interventionOptions} required />
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <Field id="preferredDate" label="Date souhaitée" type="date" value={data.preferredDate} onChange={(v) => upd("preferredDate", v)} />
+                            <CustomDate id="preferredDate" label="Date souhaitée" value={data.preferredDate} onChange={(v) => upd("preferredDate", v)} min={new Date().toISOString().slice(0,10)} />
                           </div>
                           <div className="col-span-12">
                             <div className={`field ${data.message.trim() !== "" ? "filled" : ""}`}>
@@ -434,7 +398,7 @@ export function Contact() {
                             <Field id="city" label="Ville" value={data.city} onChange={(v) => upd("city", v)} autoComplete="address-level2" />
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <Select id="country" label="Pays" value={data.country} onChange={(v) => upd("country", v)} options={countryOptions} />
+                            <CustomSelect id="country" label="Pays" value={data.country} onChange={(v) => upd("country", v)} options={countryOptions} />
                           </div>
                           <div className="col-span-12 mt-2">
                             <label className="flex items-start gap-3 cursor-pointer">
