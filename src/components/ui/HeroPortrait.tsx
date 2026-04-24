@@ -233,7 +233,7 @@ export function HeroPortrait({
             fill
             sizes="(max-width: 768px) 100vw, 56vw"
             priority
-            className="object-contain object-bottom select-none"
+            className="object-contain object-top md:object-bottom select-none"
             style={{
               filter:
                 "drop-shadow(0 28px 36px rgba(20,23,26,0.10)) drop-shadow(0 8px 14px rgba(20,23,26,0.05))",

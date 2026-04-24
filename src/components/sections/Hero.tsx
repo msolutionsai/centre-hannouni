@@ -22,15 +22,15 @@ export function Hero() {
 
       {/* Portrait — right column on desktop, behind title on mobile */}
       <div
-        className="pointer-events-none absolute right-0 flex items-end justify-end top-[72px] md:top-[96px] bottom-[38%] md:bottom-[168px] w-[100%] md:w-[48%] opacity-70 md:opacity-100"
+        className="pointer-events-none absolute right-0 flex items-end justify-center md:justify-end top-[72px] md:top-[96px] bottom-[49%] md:bottom-[168px] w-[78%] md:w-[48%] opacity-70 md:opacity-100"
         style={{
           maskImage:
-            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0) 100%)",
           WebkitMaskImage:
-            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0) 100%)",
         }}
       >
-        <HeroPortrait className="relative mr-[-10%] md:mr-[-2%] h-full w-full max-w-[820px]" />
+        <HeroPortrait className="relative translate-x-[7%] md:translate-x-0 mr-0 md:mr-[-2%] h-full w-full max-w-[820px]" />
       </div>
 
       {/* Soft vignette — vertical on mobile, horizontal on desktop */}
@@ -56,7 +56,7 @@ export function Hero() {
 
       {/* Content */}
       <div
-        className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] flex-col justify-between px-6 md:px-10 pt-[140px] md:pt-[160px] pb-10"
+        className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] flex-col justify-between px-6 md:px-10 pt-[100px] md:pt-[160px] pb-10"
       >
         {/* Spacer — on mobile, reserves the top half for the portrait
             so the headline starts below it rather than overlapping. */}
@@ -97,7 +97,7 @@ export function Hero() {
             <KineticText
               as="h1"
               text="La chirurgie"
-              className="display-xl text-[clamp(2.4rem,6.2vw,6rem)] text-[var(--color-ink)]"
+              className="display-xl text-[clamp(2rem,5.5vw,5.4rem)] text-[var(--color-ink)]"
             />
           </div>
           <div className="mt-1">
@@ -105,16 +105,64 @@ export function Hero() {
               as="h1"
               text="esthétique,"
               delay={0.06}
-              className="display-xl text-[clamp(2.4rem,6.2vw,6rem)] text-[var(--color-ink)]"
+              className="display-xl text-[clamp(2rem,5.5vw,5.4rem)] text-[var(--color-ink)]"
             />
           </div>
-          <div className="mt-5 md:mt-7">
+          {/* Mobile: 5-line italic subtitle — each phrase on its own line, reads as a column beside the portrait */}
+          <div className="mt-5 md:hidden">
+            <KineticText
+              as="h1"
+              italic
+              text="Quand"
+              delay={0.18}
+              className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+            />
+            <div className="mt-1">
+              <KineticText
+                as="h1"
+                italic
+                text="la précision"
+                delay={0.22}
+                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              />
+            </div>
+            <div className="mt-1">
+              <KineticText
+                as="h1"
+                italic
+                text="médicale"
+                delay={0.26}
+                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              />
+            </div>
+            <div className="mt-1">
+              <KineticText
+                as="h1"
+                italic
+                text="rencontre"
+                delay={0.3}
+                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              />
+            </div>
+            <div className="mt-1">
+              <KineticText
+                as="h1"
+                italic
+                text="l’art."
+                delay={0.34}
+                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              />
+            </div>
+          </div>
+
+          {/* Desktop/tablet: original 2-line italic subtitle */}
+          <div className="mt-7 hidden md:block">
             <KineticText
               as="h1"
               italic
               text="quand la précision"
               delay={0.18}
-              className="display-xl italic text-[clamp(1.9rem,4.4vw,4.2rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
             />
             <div className="mt-1">
               <KineticText
@@ -122,7 +170,7 @@ export function Hero() {
                 italic
                 text="médicale rencontre l’art."
                 delay={0.24}
-                className="display-xl italic text-[clamp(1.9rem,4.4vw,4.2rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
               />
             </div>
           </div>
@@ -131,7 +179,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-24 md:mt-14 max-w-[60ch] font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]"
+            className="mt-3 md:mt-14 max-w-[60ch] font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]"
           >
             Une chirurgie{" "}
             <span className="italic text-[var(--color-cognac-deep)]">précise</span>, un regard{" "}
