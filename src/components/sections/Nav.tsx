@@ -108,9 +108,14 @@ export function Nav() {
                   aria-hidden
                   className="h-11 w-11 object-contain shrink-0 invert"
                 />
-                <span className="font-display text-[17px]">
-                  Centre <span className="italic text-[var(--color-cognac-soft)]">Hannouni</span>
-                </span>
+                <div className="flex flex-col gap-1">
+                  <span className="font-display text-[15px] sm:text-[17px] leading-none">
+                    Centre <span className="italic text-[var(--color-cognac-soft)]">Hannouni</span>
+                  </span>
+                  <span className="text-[7px] sm:text-[9.5px] uppercase tracking-[0.14em] sm:tracking-[0.28em] text-[var(--color-ivory)]/60 leading-none whitespace-nowrap">
+                    Chirurgie esthétique · Maxillo-faciale
+                  </span>
+                </div>
               </div>
               <button
                 type="button"
