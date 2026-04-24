@@ -208,8 +208,8 @@ body {
 
 .marquee-track {
   display: flex;
-  gap: 4.5rem;
-  animation: marquee 42s linear infinite;
+  gap: 4rem;
+  animation: marquee 24s linear infinite;
   will-change: transform;
 }
 .marquee-track:hover { animation-play-state: paused; }
