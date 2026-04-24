@@ -18,18 +18,18 @@ export function Centre() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 lg:gap-14">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-14">
           <div className="col-span-12 lg:col-span-7">
             <SplitHeading
               as="h2"
-              className="display-lg text-[clamp(2rem,5.2vw,4.4rem)]"
+              className="display-lg text-[clamp(1.75rem,5.2vw,4.4rem)]"
               text="Un écrin feutré"
             />
             <div className="mt-2 flex items-end gap-4">
               <span className="hidden md:block h-[2px] w-[120px] bg-[var(--color-cognac-soft)] translate-y-[-18px]" />
               <SplitHeading
                 as="h2"
-                className="display-lg italic text-[clamp(2rem,5.2vw,4.4rem)] text-[var(--color-cognac-soft)]"
+                className="display-lg italic text-[clamp(1.75rem,5.2vw,4.4rem)] text-[var(--color-cognac-soft)]"
                 text="au cœur de Guéliz."
                 delay={0.08}
               />

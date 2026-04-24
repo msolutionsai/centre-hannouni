@@ -32,17 +32,17 @@ export function Interventions() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8">
           <div className="col-span-12 lg:col-span-8">
             <SplitHeading
               as="h2"
-              className="display-lg text-[clamp(2rem,5.2vw,4.4rem)] text-[var(--color-ink)]"
+              className="display-lg text-[clamp(1.75rem,5.2vw,4.4rem)] text-[var(--color-ink)]"
               text="Chaque intervention,"
             />
             <div className="mt-2">
               <SplitHeading
                 as="h2"
-                className="display-lg italic text-[clamp(2rem,5.2vw,4.4rem)] text-[var(--color-cognac-deep)]"
+                className="display-lg italic text-[clamp(1.75rem,5.2vw,4.4rem)] text-[var(--color-cognac-deep)]"
                 text="un protocole dédié."
                 delay={0.08}
               />

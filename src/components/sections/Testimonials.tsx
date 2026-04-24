@@ -21,7 +21,7 @@ export function Testimonials() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 items-end">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 items-end">
           <div className="col-span-12 md:col-span-8">
             <SplitHeading
               as="h2"

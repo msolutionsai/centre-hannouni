@@ -174,18 +174,18 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 lg:gap-16 items-start">
-          {/* Left — headline + coordinates */}
-          <div className="col-span-12 lg:col-span-5">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-16 items-start">
+          {/* Headline + intro (order-1 mobile, left col row-1 desktop) */}
+          <div className="order-1 col-span-12 lg:col-span-5 lg:row-start-1">
             <SplitHeading
               as="h2"
-              className="display-lg text-[clamp(2rem,5vw,4rem)] text-[var(--color-ink)]"
+              className="display-lg text-[clamp(1.75rem,5vw,4rem)] text-[var(--color-ink)]"
               text="Prenez rendez-vous,"
             />
             <div className="mt-2">
               <SplitHeading
                 as="h2"
-                className="display-lg italic text-[clamp(2rem,5vw,4rem)] text-[var(--color-cognac-deep)]"
+                className="display-lg italic text-[clamp(1.75rem,5vw,4rem)] text-[var(--color-cognac-deep)]"
                 text="en toute discrétion."
                 delay={0.08}
               />
@@ -198,8 +198,11 @@ export function Contact() {
                 <span className="italic text-[var(--color-cognac-deep)]">confidentiels</span>.
               </p>
             </Reveal>
+          </div>
 
-            <Reveal delay={0.3} className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6">
+          {/* Coordinates (order-3 mobile, left col row-2 desktop) */}
+          <div className="order-3 col-span-12 lg:col-span-5 lg:row-start-2 lg:order-none">
+            <Reveal delay={0.3} className="mt-4 lg:mt-0 grid grid-cols-2 gap-x-6 gap-y-6">
               <a
                 href={`tel:${clinic.phoneE164}`}
                 className="group col-span-2 sm:col-span-1 flex items-start gap-3 border-t border-[var(--color-line)] pt-4"
@@ -256,12 +259,12 @@ export function Contact() {
             </Reveal>
           </div>
 
-          {/* Right — form card */}
-          <div className="col-span-12 lg:col-span-7 lg:col-start-6 lg:pl-4">
+          {/* Form card (order-2 mobile, right col row-span-2 desktop) */}
+          <div className="order-2 col-span-12 lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:row-span-2 lg:pl-4 lg:order-none">
             <Reveal>
-              <div className="relative bg-[var(--color-ivory-50)] border border-[var(--color-line)] rounded-[2px] p-6 md:p-10 lg:p-12 overflow-hidden">
+              <div className="relative bg-[var(--color-ivory-50)] border border-[var(--color-line)] rounded-[2px] p-5 md:p-10 lg:p-12 overflow-hidden">
                 {/* progress */}
-                <div className="flex items-center justify-between mb-10">
+                <div className="flex items-center justify-between mb-6 md:mb-10">
                   <div className="flex items-center gap-6">
                     {steps.map((s) => {
                       const active = s.id === step;
@@ -296,7 +299,7 @@ export function Contact() {
                   </span>
                 </div>
 
-                <div className="relative mb-10 h-px w-full bg-[var(--color-line)]">
+                <div className="relative mb-6 md:mb-10 h-px w-full bg-[var(--color-line)]">
                   <motion.div
                     className="absolute left-0 top-0 h-px bg-[var(--color-ink)]"
                     initial={{ width: 0 }}
@@ -346,7 +349,7 @@ export function Contact() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -30 }}
                           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                          className="grid grid-cols-12 gap-x-6 gap-y-7"
+                          className="grid grid-cols-12 gap-x-6 gap-y-5 md:gap-y-7"
                         >
                           <div className="col-span-12">
                             <div className="eyebrow mb-4">Civilité *</div>
@@ -385,7 +388,7 @@ export function Contact() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -30 }}
                           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                          className="grid grid-cols-12 gap-x-6 gap-y-7"
+                          className="grid grid-cols-12 gap-x-6 gap-y-5 md:gap-y-7"
                         >
                           <div className="col-span-12">
                             <Select id="intervention" label="Intervention souhaitée" value={data.intervention} onChange={(v) => upd("intervention", v)} options={interventionOptions} required />
@@ -416,7 +419,7 @@ export function Contact() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -30 }}
                           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                          className="grid grid-cols-12 gap-x-6 gap-y-7"
+                          className="grid grid-cols-12 gap-x-6 gap-y-5 md:gap-y-7"
                         >
                           <div className="col-span-12 md:col-span-6">
                             <Field id="email" label="Adresse e-mail" type="email" value={data.email} onChange={(v) => upd("email", v)} required autoComplete="email" inputMode="email" />
@@ -458,7 +461,7 @@ export function Contact() {
                       )}
                     </AnimatePresence>
 
-                    <div className="mt-12 flex items-center justify-between gap-4">
+                    <div className="mt-8 md:mt-12 flex items-center justify-between gap-4">
                       <button
                         type="button"
                         onClick={() => setStep((s) => Math.max(1, s - 1))}

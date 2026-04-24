@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-16 md:pt-24 pb-10">
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 border-b border-white/10 pb-16">
+        <div className="grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-12 border-b border-white/10 pb-16">
           <div className="col-span-12 md:col-span-5">
             <div className="flex items-center gap-3">
               <img

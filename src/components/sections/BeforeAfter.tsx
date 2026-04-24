@@ -92,17 +92,17 @@ export function BeforeAfter() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8">
           <div className="col-span-12 lg:col-span-7">
             <SplitHeading
               as="h2"
-              className="display-lg text-[clamp(2rem,5.2vw,4.4rem)] text-[var(--color-ink)]"
+              className="display-lg text-[clamp(1.75rem,5.2vw,4.4rem)] text-[var(--color-ink)]"
               text="Le résultat se reconnaît"
             />
             <div className="mt-2">
               <SplitHeading
                 as="h2"
-                className="display-lg italic text-[clamp(2rem,5.2vw,4.4rem)] text-[var(--color-cognac-deep)]"
+                className="display-lg italic text-[clamp(1.75rem,5.2vw,4.4rem)] text-[var(--color-cognac-deep)]"
                 text="à sa discrétion."
                 delay={0.08}
               />
@@ -118,7 +118,7 @@ export function BeforeAfter() {
           </Reveal>
         </div>
 
-        <div className="mt-14 md:mt-20 grid grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="mt-14 md:mt-20 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-12 items-center">
           <div className="col-span-12 lg:col-span-7">
             <div className="relative mx-auto w-full max-w-[540px] lg:max-w-none">
               <BaSlider caseData={cases[active]} />

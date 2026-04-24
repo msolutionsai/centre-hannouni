@@ -30,7 +30,7 @@ export function Doctor() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 lg:gap-14">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-14">
           {/* Portrait column */}
           <div className="col-span-12 md:col-span-5 lg:col-span-5">
             <Reveal>
@@ -50,13 +50,13 @@ export function Doctor() {
           <div className="col-span-12 md:col-span-7 lg:col-span-7 lg:pl-10">
             <SplitHeading
               as="h2"
-              className="display-lg text-[clamp(2rem,5vw,4rem)] text-[var(--color-ink)]"
+              className="display-lg text-[clamp(1.75rem,5vw,4rem)] text-[var(--color-ink)]"
               text="Vingt années au service"
             />
             <div className="mt-2">
               <SplitHeading
                 as="h2"
-                className="display-lg italic text-[clamp(2rem,5vw,4rem)] text-[var(--color-cognac-deep)]"
+                className="display-lg italic text-[clamp(1.75rem,5vw,4rem)] text-[var(--color-cognac-deep)]"
                 text="de la face."
                 delay={0.06}
               />
