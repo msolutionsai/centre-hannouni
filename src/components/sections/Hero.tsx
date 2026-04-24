@@ -20,26 +20,26 @@ export function Hero() {
       {/* Ambient generative canvas */}
       <HeroCanvas className="absolute inset-0 h-full w-full" />
 
-      {/* Portrait — right column on desktop, top-right on mobile */}
+      {/* Portrait — right column on desktop, behind title on mobile */}
       <div
-        className="pointer-events-none absolute right-0 flex items-end justify-end top-[72px] md:top-[96px] bottom-[48%] md:bottom-[168px] w-[92%] md:w-[48%] opacity-50 md:opacity-100"
+        className="pointer-events-none absolute right-0 flex items-end justify-end top-[72px] md:top-[96px] bottom-[38%] md:bottom-[168px] w-[100%] md:w-[48%] opacity-70 md:opacity-100"
         style={{
           maskImage:
-            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
           WebkitMaskImage:
-            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
         }}
       >
         <HeroPortrait className="relative mr-[-10%] md:mr-[-2%] h-full w-full max-w-[820px]" />
       </div>
 
-      {/* Soft vignette — horizontal on desktop, vertical on mobile to keep text crisp */}
+      {/* Soft vignette — vertical on mobile, horizontal on desktop */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 md:hidden"
         style={{
           background:
-            "linear-gradient(180deg, rgba(245,241,234,0) 10%, rgba(245,241,234,0.35) 30%, rgba(245,241,234,0.9) 50%, rgba(245,241,234,1) 62%)",
+            "linear-gradient(180deg, rgba(245,241,234,0) 10%, rgba(245,241,234,0.35) 30%, rgba(245,241,234,0.92) 52%, rgba(245,241,234,1) 64%)",
         }}
       />
       <div
@@ -58,7 +58,8 @@ export function Hero() {
       <div
         className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] flex-col justify-between px-6 md:px-10 pt-[140px] md:pt-[160px] pb-10"
       >
-        {/* Spacer to push headline to bottom */}
+        {/* Spacer — on mobile, reserves the top half for the portrait
+            so the headline starts below it rather than overlapping. */}
         <div />
 
         {/* Headline block */}
@@ -130,7 +131,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 md:mt-14 max-w-[60ch] font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]"
+            className="mt-24 md:mt-14 max-w-[60ch] font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]"
           >
             Une chirurgie{" "}
             <span className="italic text-[var(--color-cognac-deep)]">précise</span>, un regard{" "}
