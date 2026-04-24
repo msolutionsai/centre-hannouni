@@ -40,14 +40,14 @@ export function Nav() {
               aria-hidden
               className="h-11 w-11 md:h-12 md:w-12 object-contain shrink-0"
             />
-            <div className="hidden sm:flex flex-col gap-1.5">
-              <span className="font-display text-[17px] font-normal tracking-[0.01em] leading-none">
+            <div className="flex flex-col gap-1 sm:gap-1.5">
+              <span className="font-display text-[15px] sm:text-[17px] font-normal tracking-[0.01em] leading-none">
                 Centre{" "}
                 <span className="italic font-normal text-[var(--color-cognac-deep)]">
                   Hannouni
                 </span>
               </span>
-              <span className="text-[9.5px] uppercase tracking-[0.28em] text-[var(--color-ink-muted)] leading-none">
+              <span className="text-[7px] sm:text-[9.5px] uppercase tracking-[0.14em] sm:tracking-[0.28em] text-[var(--color-ink-muted)] leading-none whitespace-nowrap">
                 Chirurgie esthétique · Maxillo-faciale
               </span>
             </div>
