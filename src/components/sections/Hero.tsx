@@ -20,21 +20,25 @@ export function Hero() {
       {/* Ambient generative canvas */}
       <HeroCanvas className="absolute inset-0 h-full w-full" />
 
-      {/* Portrait — right column, bottom aligned to meta rail line */}
+      {/* Portrait — right column on desktop, top-right on mobile */}
       <div
-        className="pointer-events-none absolute right-0 hidden md:flex items-end justify-end w-[48%]"
-        style={{
-          top: "96px",
-          bottom: "168px",
-        }}
+        className="pointer-events-none absolute right-0 flex items-end justify-end top-[72px] md:top-[96px] bottom-[58%] md:bottom-[168px] w-[88%] md:w-[48%] opacity-55 md:opacity-100"
       >
-        <HeroPortrait className="relative mr-[-2%] h-full w-full max-w-[820px]" />
+        <HeroPortrait className="relative mr-[-10%] md:mr-[-2%] h-full w-full max-w-[820px]" />
       </div>
 
-      {/* Soft left vignette to keep text crisp */}
+      {/* Soft vignette — horizontal on desktop, vertical on mobile to keep text crisp */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 md:hidden"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(245,241,234,0) 18%, rgba(245,241,234,0.55) 38%, rgba(245,241,234,0.92) 54%, rgba(245,241,234,1) 68%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden md:block"
         style={{
           background:
             "linear-gradient(90deg, rgba(245,241,234,0.82) 0%, rgba(245,241,234,0.45) 38%, rgba(245,241,234,0) 58%)",
