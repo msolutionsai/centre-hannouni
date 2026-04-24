@@ -103,8 +103,6 @@ export function Portrait({ variant = "hero", className, caption }: Props) {
         animate={reduce ? { opacity: 0.4 } : { opacity: [0.35, 0.55, 0.35] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
-      <div className="grain absolute inset-0" />
-
       {caption ? (
         <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/80">
           <span className="h-px w-8 bg-[var(--color-ivory)]/50" />

@@ -51,9 +51,6 @@ export function Hero() {
         }}
       />
 
-      {/* Grain */}
-      <div className="grain pointer-events-none absolute inset-0" />
-
       {/* Content */}
       <div
         className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] flex-col justify-between px-6 md:px-10 pt-[100px] md:pt-[160px] pb-10"
