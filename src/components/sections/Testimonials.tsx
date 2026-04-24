@@ -25,11 +25,11 @@ export function Testimonials() {
 
   useEffect(() => {
     if (paused || reduce) return;
-    const timer = setTimeout(() => {
+    const id = window.setInterval(() => {
       setI((prev) => (prev + 1) % testimonials.length);
     }, AUTOPLAY_MS);
-    return () => clearTimeout(timer);
-  }, [i, paused, reduce]);
+    return () => window.clearInterval(id);
+  }, [paused, reduce]);
 
   return (
     <section className="relative bg-[var(--color-stone-warm)] pt-16 md:pt-24 pb-16 md:pb-24">

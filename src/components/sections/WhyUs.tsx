@@ -47,22 +47,32 @@ export function WhyUs() {
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        let best: { idx: number; ratio: number } | null = null;
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            const idx = Number((e.target as HTMLElement).dataset.idx);
-            if (!best || e.intersectionRatio > best.ratio)
-              best = { idx, ratio: e.intersectionRatio };
-          }
+    let tid: ReturnType<typeof setTimeout> | null = null;
+    const syncActive = () => {
+      const trackRect = track.getBoundingClientRect();
+      const padding = parseFloat(getComputedStyle(track).paddingLeft || "0") || 0;
+      let closestIdx = 0;
+      let closestDist = Infinity;
+      const kids = track.children;
+      for (let k = 0; k < kids.length; k++) {
+        const c = kids[k] as HTMLElement;
+        const d = Math.abs(c.getBoundingClientRect().left - trackRect.left - padding);
+        if (d < closestDist) {
+          closestDist = d;
+          closestIdx = k;
         }
-        if (best) setActive(best.idx);
-      },
-      { root: track, threshold: [0.4, 0.6, 0.8, 1] }
-    );
-    for (const child of Array.from(track.children)) io.observe(child);
-    return () => io.disconnect();
+      }
+      setActive(closestIdx);
+    };
+    const onScroll = () => {
+      if (tid) clearTimeout(tid);
+      tid = setTimeout(syncActive, 120);
+    };
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      track.removeEventListener("scroll", onScroll);
+      if (tid) clearTimeout(tid);
+    };
   }, []);
 
   useEffect(() => {
