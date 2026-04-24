@@ -34,7 +34,12 @@ export function Nav() {
       >
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-4 md:px-10 md:py-5">
           <a href="#top" className="flex items-center gap-3 group" aria-label={clinic.name}>
-            <Monogram size={34} className="text-[var(--color-ink)]" />
+            <img
+              src="/logo-hannouni.svg"
+              alt=""
+              aria-hidden
+              className="h-11 w-11 md:h-12 md:w-12 object-contain shrink-0"
+            />
             <div className="hidden sm:flex flex-col gap-1.5">
               <span className="font-display text-[17px] font-normal tracking-[0.01em] leading-none">
                 Centre{" "}
@@ -97,7 +102,12 @@ export function Nav() {
           >
             <div className="flex items-center justify-between px-6 py-4 md:px-10 md:py-5">
               <div className="flex items-center gap-3">
-                <Monogram size={34} className="text-[var(--color-ivory)]" />
+                <img
+                  src="/logo-hannouni.svg"
+                  alt=""
+                  aria-hidden
+                  className="h-11 w-11 object-contain shrink-0 invert"
+                />
                 <span className="font-display text-[17px]">
                   Centre <span className="italic text-[var(--color-cognac-soft)]">Hannouni</span>
                 </span>
