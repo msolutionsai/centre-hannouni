@@ -41,15 +41,6 @@ export function HeroCanvas({ className }: { className?: string }) {
       a: 0.14 + Math.random() * 0.12,
     }));
 
-    // Particle dust
-    const dust = Array.from({ length: 60 }).map(() => ({
-      x: Math.random(),
-      y: Math.random(),
-      vy: 0.00005 + Math.random() * 0.00012,
-      r: Math.random() * 1.4 + 0.3,
-      a: 0.15 + Math.random() * 0.35,
-    }));
-
     const onMouse = (e: MouseEvent) => {
       const r = canvas.getBoundingClientRect();
       mouse.current.tx = (e.clientX - r.left) / r.width;
@@ -92,19 +83,6 @@ export function HeroCanvas({ className }: { className?: string }) {
         rg.addColorStop(1, "rgba(245,241,234,0)");
         ctx.fillStyle = rg;
         ctx.fillRect(0, 0, w, h);
-      }
-
-      // Dust
-      for (const d of dust) {
-        d.y -= d.vy;
-        if (d.y < -0.02) {
-          d.y = 1.02;
-          d.x = Math.random();
-        }
-        ctx.fillStyle = `rgba(20,23,26,${d.a * 0.35})`;
-        ctx.beginPath();
-        ctx.arc(d.x * w, d.y * h, d.r, 0, Math.PI * 2);
-        ctx.fill();
       }
 
       raf = requestAnimationFrame(tick);
