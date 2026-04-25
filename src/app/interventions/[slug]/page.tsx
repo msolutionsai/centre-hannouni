@@ -6,7 +6,6 @@ import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
-import { Portrait } from "@/components/ui/Portrait";
 import { Arrow, Check } from "@/components/ui/Icons";
 import { InterventionResults } from "@/components/sections/InterventionResults";
 import { InterventionFaq } from "@/components/sections/InterventionFaq";
@@ -107,13 +106,23 @@ export default async function InterventionPage({
 
             <div className="col-span-12 lg:col-span-5">
               <Reveal>
-                <div className="relative mx-auto aspect-[4/5] max-w-[360px] lg:max-w-none">
+                <div className="relative mx-auto aspect-[4/5] max-w-[360px] lg:max-w-none rounded-[2px] overflow-hidden ring-1 ring-[var(--color-line)] bg-[var(--color-stone-warm)]">
                   <div className="aura hidden md:block" />
-                  <Portrait
-                    variant={intervention.hero.portrait}
-                    className="h-full w-full"
-                    caption={intervention.category}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={intervention.image}
+                    alt={intervention.name}
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
                   />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[40%] bg-[linear-gradient(to_top,rgba(20,23,26,0.55)_0%,rgba(20,23,26,0)_100%)]"
+                  />
+                  <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/85">
+                    <span className="h-px w-8 bg-[var(--color-ivory)]/55" />
+                    {intervention.category}
+                  </div>
                 </div>
               </Reveal>
             </div>
@@ -285,10 +294,14 @@ export default async function InterventionPage({
                   href={`/interventions/${r.slug}`}
                   className="group relative overflow-hidden bg-[var(--color-ivory)] border border-[var(--color-line)] hover:border-[var(--color-ink)] transition-colors"
                 >
-                  <div className="aspect-[4/5] overflow-hidden">
-                    <Portrait
-                      variant={r.hero.portrait}
-                      className="h-full w-full transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
+                  <div className="aspect-[4/5] overflow-hidden bg-[var(--color-stone-warm)]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={r.image}
+                      alt={r.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
                     />
                   </div>
                   <div className="p-6">

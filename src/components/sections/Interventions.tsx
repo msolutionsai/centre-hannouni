@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Portrait } from "@/components/ui/Portrait";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow } from "@/components/ui/Icons";
@@ -84,14 +83,16 @@ export function Interventions() {
                   hover:shadow-[0_30px_70px_-30px_rgba(20,23,26,0.55)]
                 "
               >
-                {/* Portrait */}
+                {/* Image */}
                 <div className="absolute inset-0">
-                  <div
-                    className="absolute inset-0 transition-transform duration-[1300ms] ease-out group-hover:scale-[1.07]"
-                  >
-                    <Portrait
-                      variant={int.hero.portrait}
-                      className="h-full w-full"
+                  <div className="absolute inset-0 transition-transform duration-[1300ms] ease-out group-hover:scale-[1.07]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={int.image}
+                      alt={int.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover object-center"
                     />
                   </div>
                 </div>

@@ -23,6 +23,7 @@ export type InterventionDetail = {
   name: string;
   category: string;
   teaser: string;
+  image: string;
   hero: {
     eyebrow: string;
     headline: string;
@@ -51,6 +52,7 @@ export const interventionDetails: InterventionDetail[] = [
     category: "Chirurgie du nez",
     teaser:
       "Une approche millimétrée pour un nez en harmonie avec l’ensemble du visage.",
+    image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Rhinoplastie.png",
     hero: {
       eyebrow: "I · Chirurgie du nez",
       headline: "Une rhinoplastie millimétrée",
@@ -146,6 +148,7 @@ export const interventionDetails: InterventionDetail[] = [
     category: "Chirurgie du visage",
     teaser:
       "Redessiner l’ovale et le cou sans altérer l’identité du visage.",
+    image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Lifting%20cervico-facial.png",
     hero: {
       eyebrow: "II · Chirurgie du visage",
       headline: "Le lifting cervico-facial,",
@@ -230,6 +233,7 @@ export const interventionDetails: InterventionDetail[] = [
     name: "Blépharoplastie",
     category: "Chirurgie des paupières",
     teaser: "Rouvrir le regard — discrètement, durablement.",
+    image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Ble%CC%81pharoplastie.png",
     hero: {
       eyebrow: "III · Chirurgie des paupières",
       headline: "La blépharoplastie,",
@@ -303,6 +307,7 @@ export const interventionDetails: InterventionDetail[] = [
     name: "Génioplastie",
     category: "Chirurgie du menton",
     teaser: "Rééquilibrer le profil par une correction précise du menton.",
+    image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Ge%CC%81nioplastie.png",
     hero: {
       eyebrow: "IV · Chirurgie du menton",
       headline: "La génioplastie,",
@@ -370,6 +375,7 @@ export const interventionDetails: InterventionDetail[] = [
     category: "Volumétrie",
     teaser:
       "Restaurer les volumes avec la propre graisse du patient — naturel absolu.",
+    image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Lipofilling%20du%20visage.png",
     hero: {
       eyebrow: "V · Volumétrie",
       headline: "Le lipofilling,",
@@ -435,6 +441,7 @@ export const interventionDetails: InterventionDetail[] = [
     name: "Acide hyaluronique",
     category: "Médecine esthétique",
     teaser: "Corriger, volumiser, hydrater — sans bistouri, sans éviction.",
+    image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Acide%20hyaluronique.png",
     hero: {
       eyebrow: "VI · Médecine esthétique",
       headline: "L’acide hyaluronique,",
@@ -503,6 +510,7 @@ export const interventionDetails: InterventionDetail[] = [
     category: "Médecine esthétique",
     teaser:
       "Atténuer les rides d’expression, préserver la mobilité du visage.",
+    image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Botox.png",
     hero: {
       eyebrow: "VII · Médecine esthétique",
       headline: "Le botox,",
@@ -571,6 +579,7 @@ export const interventionDetails: InterventionDetail[] = [
     category: "Maxillo-facial",
     teaser:
       "Corriger l’architecture osseuse pour un visage fonctionnel et harmonieux.",
+    image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Chirurgie%20orthognatique.png",
     hero: {
       eyebrow: "VIII · Maxillo-facial",
       headline: "La chirurgie orthognatique,",
