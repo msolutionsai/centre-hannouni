@@ -7,7 +7,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow, Check } from "@/components/ui/Icons";
-import { InterventionResults } from "@/components/sections/InterventionResults";
+import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import { InterventionFaq } from "@/components/sections/InterventionFaq";
 import {
   interventionDetails,
@@ -149,14 +149,16 @@ export default async function InterventionPage({
         </div>
       </section>
 
-      {/* Présentation */}
+      {/* Présentation — paragraphs + compact before/after slider + indications */}
       <section className="relative bg-[var(--color-ivory-50)] pt-16 md:pt-24 pb-16 md:pb-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <Reveal>
             <span className="section-no">i · Présentation</span>
           </Reveal>
-          <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-10 gap-x-0 md:gap-10 lg:gap-16">
-            <div className="col-span-12 lg:col-span-6 space-y-10">
+
+          <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-12 gap-x-0 md:gap-10 lg:gap-16 items-start">
+            {/* Left column — presentation paragraphs */}
+            <div className="col-span-12 lg:col-span-7 space-y-10">
               {intervention.presentation.map((p, i) => (
                 <Reveal key={i} delay={i * 0.08}>
                   <h2 className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] leading-[1.2] tracking-[-0.015em] text-[var(--color-ink)]">
@@ -168,22 +170,55 @@ export default async function InterventionPage({
                 </Reveal>
               ))}
             </div>
-            <Reveal delay={0.15} className="col-span-12 lg:col-span-5 lg:col-start-8">
-              <div className="eyebrow mb-5">Indications</div>
-              <ul className="grid grid-cols-1 gap-y-3">
-                {intervention.indications.map((ind, j) => (
-                  <li
-                    key={j}
-                    className="flex items-start gap-3 text-[14.5px] leading-[1.6] text-[var(--color-ink-soft)] border-b border-[var(--color-line)] pb-3"
-                  >
-                    <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full border border-[var(--color-cognac)] text-[var(--color-cognac-deep)] shrink-0">
-                      <Check size={10} />
+
+            {/* Right column — compact Avant/Après */}
+            {intervention.results.length > 0 && (
+              <Reveal delay={0.18} className="col-span-12 lg:col-span-5">
+                <div className="mx-auto w-full max-w-[380px] lg:max-w-none lg:sticky lg:top-24">
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="h-px w-8 bg-[var(--color-cognac)]" />
+                    <span className="text-[10.5px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+                      Résultat · avant / après
                     </span>
-                    {ind}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+                  </div>
+                  <BeforeAfterSlider
+                    before={intervention.results[0].before}
+                    after={intervention.results[0].after}
+                  />
+                  <div className="mt-3 font-display italic text-[13px] text-[var(--color-cognac-deep)]">
+                    {intervention.results[0].label}
+                  </div>
+                  <p className="mt-5 font-display italic text-[12px] leading-[1.6] text-[var(--color-ink-muted)]">
+                    Conformément à la réglementation médicale, les photographies
+                    cliniques complètes sont présentées exclusivement en
+                    consultation, avec le consentement explicite des patients
+                    concernés.
+                  </p>
+                </div>
+              </Reveal>
+            )}
+
+            {/* Bottom-left — Indications spans full width on mobile, half on desktop */}
+            {intervention.indications.length > 0 && (
+              <Reveal delay={0.1} className="col-span-12 lg:col-span-7 lg:col-start-1 mt-2">
+                <div className="border-t border-[var(--color-line)] pt-10">
+                  <div className="eyebrow mb-6">Indications</div>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                    {intervention.indications.map((ind, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-3 text-[14.5px] leading-[1.6] text-[var(--color-ink-soft)] border-b border-[var(--color-line)] pb-3"
+                      >
+                        <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full border border-[var(--color-cognac)] text-[var(--color-cognac-deep)] shrink-0">
+                          <Check size={10} />
+                        </span>
+                        {ind}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
           </div>
         </div>
       </section>
@@ -234,32 +269,12 @@ export default async function InterventionPage({
         </div>
       </section>
 
-      {/* Résultats — only if cases provided */}
-      {intervention.results.length > 0 && (
-        <section className="relative bg-[var(--color-ivory-50)] pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden">
-          <div className="mx-auto max-w-[1200px] px-6 md:px-10">
-            <Reveal>
-              <span className="section-no">iii · Résultats</span>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="mt-8 font-display text-[clamp(1.6rem,3.4vw,2.4rem)] leading-[1.15] tracking-[-0.015em] text-[var(--color-ink)] max-w-[42ch]">
-                Le résultat se reconnaît{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">à sa discrétion.</span>
-              </h2>
-            </Reveal>
-            <div className="mt-12 md:mt-16">
-              <InterventionResults cases={intervention.results} />
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* FAQ */}
       {intervention.faq.length > 0 && (
         <section className="relative bg-[var(--color-ivory)] pt-16 md:pt-24 pb-16 md:pb-24">
           <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <Reveal>
-              <span className="section-no">iv · Questions fréquentes</span>
+              <span className="section-no">iii · Questions fréquentes</span>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="mt-8 font-display text-[clamp(1.6rem,3.4vw,2.4rem)] leading-[1.15] tracking-[-0.015em] text-[var(--color-ink)] max-w-[42ch]">
@@ -279,7 +294,7 @@ export default async function InterventionPage({
         <section className="relative bg-[var(--color-stone-warm)] pt-16 md:pt-24 pb-16 md:pb-24">
           <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <Reveal>
-              <span className="section-no">v · Interventions liées</span>
+              <span className="section-no">iv · Interventions liées</span>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="mt-8 font-display text-[clamp(1.6rem,3.4vw,2.4rem)] leading-[1.15] tracking-[-0.015em] text-[var(--color-ink)] max-w-[36ch]">
