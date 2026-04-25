@@ -38,7 +38,7 @@ export function Centre() {
       id="centre"
       className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden"
     >
-      <div className="mx-auto max-w-[1280px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ivory)]/60">
             <span className="font-display italic text-[14.5px] tracking-[0.14em] text-[var(--color-cognac-soft)]">
