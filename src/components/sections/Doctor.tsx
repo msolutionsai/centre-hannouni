@@ -1,6 +1,5 @@
 "use client";
 
-import { Portrait } from "@/components/ui/Portrait";
 import { Reveal, RevealStagger, StaggerItem } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 
@@ -34,9 +33,23 @@ export function Doctor() {
           {/* Portrait column */}
           <div className="col-span-12 md:col-span-5 lg:col-span-5">
             <Reveal>
-              <div className="relative mx-auto aspect-[4/5] max-w-[320px] md:max-w-none">
+              <div className="relative mx-auto aspect-[4/5] max-w-[320px] md:max-w-none rounded-[2px] overflow-hidden ring-1 ring-[var(--color-line)] bg-[var(--color-stone-warm)]">
                 <div className="aura hidden md:block" />
-                <Portrait variant="portrait" className="h-full w-full" caption="Portrait · 2024" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/DR%20HANNOUNI%20PROFIL.webp"
+                  alt="Dr Hannouni Youssef — chirurgien esthétique & maxillo-facial"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-center"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[35%] bg-[linear-gradient(to_top,rgba(20,23,26,0.45)_0%,rgba(20,23,26,0)_100%)]"
+                />
+                <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/85">
+                  <span className="h-px w-8 bg-[var(--color-ivory)]/55" />
+                  Portrait · 2024
+                </div>
               </div>
             </Reveal>
 
