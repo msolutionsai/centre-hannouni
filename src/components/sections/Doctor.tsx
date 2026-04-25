@@ -183,29 +183,6 @@ export function Doctor() {
                   />
                 </motion.div>
 
-                {/* Cognac veil that dissolves diagonally on scroll-in */}
-                {!reduce && (
-                  <motion.div
-                    aria-hidden
-                    className="absolute inset-0 bg-[var(--color-cognac-deep)] mix-blend-multiply pointer-events-none"
-                    initial={{
-                      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-                      opacity: 0.6,
-                    }}
-                    whileInView={{
-                      clipPath:
-                        "polygon(120% 0, 120% 0, -20% 100%, -20% 100%)",
-                      opacity: 0,
-                    }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{
-                      duration: 1.6,
-                      ease: easing,
-                      delay: 0.1,
-                    }}
-                  />
-                )}
-
                 {/* Bottom gradient + caption */}
                 <div
                   aria-hidden
