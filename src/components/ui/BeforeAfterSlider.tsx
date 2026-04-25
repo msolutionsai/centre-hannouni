@@ -2,15 +2,11 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Portrait } from "@/components/ui/Portrait";
 import { Drag } from "@/components/ui/Icons";
-import type { ComponentProps } from "react";
-
-type Variant = ComponentProps<typeof Portrait>["variant"];
 
 type Props = {
-  before: Variant;
-  after: Variant;
+  before: string;
+  after: string;
   className?: string;
 };
 
@@ -49,7 +45,7 @@ export function BeforeAfterSlider({ before, after, className }: Props) {
   return (
     <div
       ref={wrapRef}
-      className={`ba-wrap aspect-[4/5] md:aspect-[1/1] cursor-col-resize ${className ?? ""}`}
+      className={`ba-wrap aspect-[4/5] cursor-col-resize bg-[var(--color-stone-warm)] rounded-[2px] ring-1 ring-[var(--color-line)] ${className ?? ""}`}
       onMouseDown={(e) => {
         dragging.current = true;
         setFromEvent(e.clientX);
@@ -59,11 +55,27 @@ export function BeforeAfterSlider({ before, after, className }: Props) {
         setFromEvent(e.touches[0].clientX);
       }}
     >
-      <Portrait variant={before} className="absolute inset-0 h-full w-full" />
-      <div className="ba-label left-4 bg-black/60 text-white">Avant</div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={before}
+        alt="Avant"
+        decoding="async"
+        draggable={false}
+        className="absolute inset-0 h-full w-full object-cover object-center select-none"
+      />
+      <div className="ba-label left-4 bg-black/65 text-white backdrop-blur-sm">Avant</div>
       <div className="ba-after" style={{ clipPath: `inset(0 0 0 ${pos}%)` }}>
-        <Portrait variant={after} className="absolute inset-0 h-full w-full" />
-        <div className="ba-label right-4 bg-white/80 !text-[var(--color-ink)]">Après</div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={after}
+          alt="Après"
+          decoding="async"
+          draggable={false}
+          className="absolute inset-0 h-full w-full object-cover object-center select-none"
+        />
+        <div className="ba-label right-4 bg-white/85 !text-[var(--color-ink)] backdrop-blur-sm">
+          Après
+        </div>
       </div>
       <div className="ba-handle" style={{ left: `${pos}%` }} />
       <motion.div

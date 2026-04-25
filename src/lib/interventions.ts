@@ -5,9 +5,12 @@ export type PortraitVariant = ComponentProps<typeof Portrait>["variant"];
 
 export type ResultCase = {
   label: string;
-  before: PortraitVariant;
-  after: PortraitVariant;
+  before: string;
+  after: string;
 };
+
+const RESULTS_BASE =
+  "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/PHOTO%20AVANT%20APRES";
 
 export type ProtocolStep = {
   step: string;
@@ -116,14 +119,9 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     results: [
       {
-        label: "Rhinoplastie esthétique · résultat à 6 mois",
-        before: "result-a",
-        after: "result-b",
-      },
-      {
-        label: "Rhinoplastie ultrasonique · à 9 mois",
-        before: "result-b",
-        after: "result-a",
+        label: "Rhinoplastie · avant / après",
+        before: `${RESULTS_BASE}/Rhinoplastie%20AVANT.png`,
+        after: `${RESULTS_BASE}/Rhinoplastie%20APRES.png`,
       },
     ],
     faq: [
@@ -211,9 +209,9 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     results: [
       {
-        label: "Lifting cervico-facial · résultat à 3 mois",
-        before: "portrait",
-        after: "hero",
+        label: "Lifting cervico-facial · avant / après",
+        before: `${RESULTS_BASE}/Lifting%20cervico-facial%20AVANT.png`,
+        after: `${RESULTS_BASE}/Lifting%20cervico-facial%20APRES.png`,
       },
     ],
     faq: [
@@ -285,9 +283,9 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     results: [
       {
-        label: "Blépharoplastie supérieure · à 2 mois",
-        before: "result-b",
-        after: "result-a",
+        label: "Blépharoplastie · avant / après",
+        before: `${RESULTS_BASE}/Ble%CC%81pharoplastie%20AVANT.png`,
+        after: `${RESULTS_BASE}/Ble%CC%81pharoplastie%20APRES.png`,
       },
     ],
     faq: [
@@ -356,7 +354,13 @@ export const interventionDetails: InterventionDetail[] = [
           "Alimentation molle pendant 10 jours. Œdème modéré, sensibilité du menton transitoire.",
       },
     ],
-    results: [],
+    results: [
+      {
+        label: "Génioplastie · avant / après",
+        before: `${RESULTS_BASE}/Ge%CC%81nioplastie%20AVANT%20.png`,
+        after: `${RESULTS_BASE}/Ge%CC%81nioplastie%20APRES.png`,
+      },
+    ],
     faq: [
       {
         q: "Y a-t-il une cicatrice visible ?",
@@ -423,7 +427,13 @@ export const interventionDetails: InterventionDetail[] = [
           "Réinjection en couches fines, à la canule mousse, pour une intégration optimale.",
       },
     ],
-    results: [],
+    results: [
+      {
+        label: "Lipofilling du visage · avant / après",
+        before: `${RESULTS_BASE}/Lipofilling%20du%20visage%20AVANT.png`,
+        after: `${RESULTS_BASE}/Lipofilling%20du%20visage%20APRES.png`,
+      },
+    ],
     faq: [
       {
         q: "Combien de graisse est définitivement intégrée ?",
@@ -491,7 +501,13 @@ export const interventionDetails: InterventionDetail[] = [
           "Évaluation du résultat à distance de l’œdème initial. Ajustement éventuel.",
       },
     ],
-    results: [],
+    results: [
+      {
+        label: "Acide hyaluronique · avant / après",
+        before: `${RESULTS_BASE}/Acide%20hyaluronique%20AVANT.png`,
+        after: `${RESULTS_BASE}/Acide%20hyaluronique%20APRES.png`,
+      },
+    ],
     faq: [
       {
         q: "Combien de temps tient l’acide hyaluronique ?",
@@ -560,7 +576,13 @@ export const interventionDetails: InterventionDetail[] = [
           "Réajustement éventuel pour parfaire l’équilibre.",
       },
     ],
-    results: [],
+    results: [
+      {
+        label: "Botox · avant / après",
+        before: `${RESULTS_BASE}/Botox%20AVANT%20.png`,
+        after: `${RESULTS_BASE}/Botox%20APRES.png`,
+      },
+    ],
     faq: [
       {
         q: "Combien de temps dure l’effet ?",
@@ -640,7 +662,13 @@ export const interventionDetails: InterventionDetail[] = [
           "Hospitalisation 2-3 nuits, alimentation molle 6 semaines, suivi orthodontique de finition sur 6 à 12 mois.",
       },
     ],
-    results: [],
+    results: [
+      {
+        label: "Chirurgie orthognatique · avant / après",
+        before: `${RESULTS_BASE}/Chirurgie%20orthognatique%20AVANT%20.png`,
+        after: `${RESULTS_BASE}/Chirurgie%20orthognatique%20APRES.png`,
+      },
+    ],
     faq: [
       {
         q: "Y a-t-il des cicatrices visibles ?",
