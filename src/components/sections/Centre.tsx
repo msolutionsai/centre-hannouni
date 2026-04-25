@@ -5,29 +5,32 @@ import { Reveal, RevealStagger, StaggerItem } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { centreFeatures } from "@/lib/content";
 
+const R2_BASE =
+  "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Caroussel%20centre%20Hannouni";
+
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200&auto=format&fit=crop",
+    src: `${R2_BASE}/Plateau%20technique%20%C2%B7%20Bloc%20ope%CC%81ratoire.png`,
     alt: "Plateau technique · Bloc opératoire",
   },
   {
-    src: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?q=80&w=1200&auto=format&fit=crop",
+    src: `${R2_BASE}/Espace%20consultation.png`,
     alt: "Espace consultation",
   },
   {
-    src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    src: `${R2_BASE}/E%CC%81quipements%20me%CC%81dicaux.png`,
     alt: "Équipements médicaux",
   },
   {
-    src: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=1200&auto=format&fit=crop",
+    src: `${R2_BASE}/Salon%20d%E2%80%99accueil.png`,
     alt: "Salon d’accueil",
   },
   {
-    src: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?q=80&w=1200&auto=format&fit=crop",
+    src: `${R2_BASE}/Suite%20post-ope%CC%81ratoire.png`,
     alt: "Suite post-opératoire",
   },
   {
-    src: "https://images.unsplash.com/photo-1629904853716-f0bc54eea481?q=80&w=1200&auto=format&fit=crop",
+    src: `${R2_BASE}/De%CC%81tail%20%C2%B7%20Lumie%CC%80re%20sur%20instruments.png`,
     alt: "Détail · Lumière sur instruments",
   },
 ];
