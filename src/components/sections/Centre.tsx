@@ -85,10 +85,8 @@ export function Centre() {
         <RevealStagger className="mt-16 md:mt-24 grid grid-cols-12 gap-x-8 gap-y-12" stagger={0.1}>
           {centreFeatures.map((f, i) => (
             <StaggerItem key={i} className="col-span-12 sm:col-span-6 lg:col-span-3">
-              <div className="font-display italic text-[13px] text-[var(--color-cognac-soft)]">
-                N°{String(i + 1).padStart(2, "0")}
-              </div>
-              <h3 className="mt-3 font-display text-[22px] leading-[1.2] tracking-[-0.01em] text-[var(--color-ivory)]">
+              <span className="block h-px w-8 bg-[var(--color-cognac-soft)]" />
+              <h3 className="mt-4 font-display text-[22px] leading-[1.2] tracking-[-0.01em] text-[var(--color-ivory)]">
                 {f.title}
               </h3>
               <p className="mt-4 text-[14px] leading-[1.7] text-[var(--color-ivory)]/70">

@@ -32,7 +32,7 @@ export function Testimonials() {
   }, [paused, reduce]);
 
   return (
-    <section id="temoignages" className="relative bg-[var(--color-stone-warm)] pt-16 md:pt-24 pb-16 md:pb-24">
+    <section id="temoignages" className="relative bg-[var(--color-stone-warm)] pt-12 md:pt-16 pb-12 md:pb-16">
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
@@ -41,7 +41,7 @@ export function Testimonials() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 items-end">
+        <div className="mt-8 md:mt-10 grid grid-cols-12 gap-y-6 gap-x-0 md:gap-8 items-end">
           <div className="col-span-12 md:col-span-8">
             <SplitHeading
               as="h2"
@@ -68,7 +68,7 @@ export function Testimonials() {
         </div>
 
         <div
-          className="mt-16 md:mt-20 relative min-h-[240px]"
+          className="mt-10 md:mt-12 relative min-h-[180px]"
           onMouseEnter={pauseBriefly}
           onMouseLeave={() => setPaused(false)}
           onTouchStart={pauseBriefly}
@@ -76,16 +76,16 @@ export function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={i}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.35] tracking-[-0.01em] text-[var(--color-ink)] max-w-[68ch]"
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-[clamp(1.2rem,2.4vw,1.8rem)] leading-[1.32] tracking-[-0.01em] text-[var(--color-ink)] max-w-[68ch]"
             >
               <span className="text-[var(--color-cognac-deep)] italic mr-[0.18em]">“</span>
               {t.body}
               <span className="text-[var(--color-cognac-deep)] italic ml-[0.18em]">”</span>
-              <footer className="mt-8 flex items-center gap-3 text-[12px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+              <footer className="mt-5 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
                 <span className="h-px w-10 bg-[var(--color-cognac)]" />
                 <cite className="not-italic">
                   {t.author} — {t.source}
@@ -95,7 +95,7 @@ export function Testimonials() {
           </AnimatePresence>
         </div>
 
-        <div className="mt-12 md:mt-16 flex items-center justify-between border-t border-[var(--color-line)] pt-8">
+        <div className="mt-8 md:mt-10 flex items-center justify-between border-t border-[var(--color-line)] pt-6">
           <div className="flex items-center gap-2">
             {testimonials.map((_, idx) => (
               <button

@@ -108,11 +108,8 @@ export function Interventions() {
                   "
                 />
 
-                {/* Eyebrow + index — top */}
-                <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4 md:p-5 z-10">
-                  <span className="font-display italic text-[12px] text-[var(--color-cognac-soft)]">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                {/* Category — top */}
+                <div className="absolute inset-x-0 top-0 flex items-center justify-end p-4 md:p-5 z-10">
                   <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/70">
                     {int.category}
                   </span>
