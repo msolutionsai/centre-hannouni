@@ -24,84 +24,97 @@ function ArchitectFrame({ reduce }: { reduce: boolean | null }) {
     : { duration: 1.6, ease: easing };
 
   return (
-    <>
-      {/* Cognac frame traced on scroll-in (SVG path-length animation) */}
-      <motion.svg
-        aria-hidden
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.path
-          d="M 0 0 L 100 0 L 100 100 L 0 100 L 0 0"
-          fill="none"
-          stroke="var(--color-cognac)"
-          strokeWidth="0.4"
-          vectorEffect="non-scaling-stroke"
+    <motion.svg
+      aria-hidden
+      className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {/* Cognac frame traced on scroll-in */}
+      <motion.path
+        d="M 0 0 L 100 0 L 100 100 L 0 100 L 0 0"
+        fill="none"
+        stroke="var(--color-cognac)"
+        strokeWidth="0.4"
+        vectorEffect="non-scaling-stroke"
+        variants={{
+          hidden: { pathLength: 0, opacity: 0 },
+          visible: {
+            pathLength: 1,
+            opacity: 0.85,
+            transition: traceTransition,
+          },
+        }}
+      />
+
+      {/* Corner crosses — drawn after the frame */}
+      {[
+        { cx: 0, cy: 0 },
+        { cx: 100, cy: 0 },
+        { cx: 100, cy: 100 },
+        { cx: 0, cy: 100 },
+      ].map((c, i) => (
+        <motion.g
+          key={i}
           variants={{
-            hidden: { pathLength: 0, opacity: 0 },
+            hidden: { opacity: 0, scale: 0.4 },
             visible: {
-              pathLength: 1,
-              opacity: 0.85,
-              transition: traceTransition,
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 0.45,
+                delay: 1.55 + i * 0.08,
+                ease: easing,
+              },
             },
           }}
-        />
-      </motion.svg>
-
-      {/* Corner crosses — appear after the frame is drawn */}
-      {[
-        { pos: "top-0 left-0", origin: "top-left" },
-        { pos: "top-0 right-0", origin: "top-right" },
-        { pos: "bottom-0 right-0", origin: "bottom-right" },
-        { pos: "bottom-0 left-0", origin: "bottom-left" },
-      ].map((c, i) => (
-        <motion.span
-          key={c.origin}
-          aria-hidden
-          className={`pointer-events-none absolute ${c.pos} h-3 w-3 -translate-x-1/2 -translate-y-1/2 z-10`}
-          style={{
-            transform: `translate(${
-              c.origin.includes("right") ? "50%" : "-50%"
-            }, ${c.origin.includes("bottom") ? "50%" : "-50%"})`,
-          }}
-          initial={{ opacity: 0, scale: 0.6 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, delay: 1.5 + i * 0.08, ease: easing }}
+          style={{ transformOrigin: `${c.cx}px ${c.cy}px` }}
         >
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-px w-3 bg-[var(--color-cognac)]" />
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-3 w-px bg-[var(--color-cognac)]" />
-        </motion.span>
+          <line
+            x1={c.cx}
+            y1={c.cy}
+            x2={c.cx}
+            y2={c.cy}
+            stroke="var(--color-cognac)"
+            strokeWidth="1.4"
+            strokeLinecap="butt"
+            vectorEffect="non-scaling-stroke"
+            style={{
+              transform: `translate(0, ${c.cy === 0 ? "-7px" : "0"})`,
+              x1: c.cx,
+              y1: c.cy - 7,
+              x2: c.cx,
+              y2: c.cy + 7,
+            } as React.CSSProperties}
+          />
+          {/* vertical line of the cross */}
+          <line
+            x1={c.cx}
+            x2={c.cx}
+            y1={c.cy - 7}
+            y2={c.cy + 7}
+            stroke="var(--color-cognac)"
+            strokeWidth="1.4"
+            strokeLinecap="butt"
+            vectorEffect="non-scaling-stroke"
+          />
+          {/* horizontal line of the cross */}
+          <line
+            y1={c.cy}
+            y2={c.cy}
+            x1={c.cx - 7}
+            x2={c.cx + 7}
+            stroke="var(--color-cognac)"
+            strokeWidth="1.4"
+            strokeLinecap="butt"
+            vectorEffect="non-scaling-stroke"
+          />
+        </motion.g>
       ))}
-
-      {/* Top-left reference label */}
-      <motion.div
-        className="absolute -top-3.5 left-0 z-10 flex items-center gap-2 px-2 bg-[var(--color-ivory-50)] font-display italic text-[10px] tracking-[0.22em] text-[var(--color-cognac-deep)] uppercase"
-        initial={{ opacity: 0, y: 4 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 1.8, ease: easing }}
-      >
-        <span className="h-px w-4 bg-[var(--color-cognac)]" />
-        <span>Pl. IV · 2024</span>
-      </motion.div>
-
-      {/* Bottom-right dimensions cartouche */}
-      <motion.div
-        className="absolute -bottom-3.5 right-0 z-10 flex items-center gap-2 px-2 bg-[var(--color-ivory-50)] font-display italic text-[10px] tracking-[0.22em] text-[var(--color-cognac-deep)] uppercase"
-        initial={{ opacity: 0, y: -4 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 2, ease: easing }}
-      >
-        <span>H. 1020 · L. 1020</span>
-        <span className="h-px w-4 bg-[var(--color-cognac)]" />
-      </motion.div>
-    </>
+    </motion.svg>
   );
 }
 
@@ -124,50 +137,106 @@ export function Doctor() {
         <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-12 gap-x-0 md:gap-8 lg:gap-14">
           {/* Portrait column */}
           <div className="col-span-12 md:col-span-5 lg:col-span-5">
-            <Reveal>
-              {/* Outer architect plate — extends beyond the image to host the cartouche */}
-              <div className="relative mx-auto w-full max-w-[320px] md:max-w-none px-3 py-4">
-                {/* Architect markings (frame, crosses, cartouches) — sit on the outer plate */}
-                <ArchitectFrame reduce={reduce} />
+            <div className="relative mx-auto w-full max-w-[320px] md:max-w-none px-3 py-4">
+              {/* Architect frame + corner crosses (no labels) */}
+              <ArchitectFrame reduce={reduce} />
 
-                {/* Image — Ken Burns inside */}
-                <div className="relative aspect-[4/5] w-full rounded-[2px] overflow-hidden bg-[var(--color-stone-warm)]">
-                  <div className="aura hidden md:block" />
+              {/* Outer wrapper drives the entrance scale */}
+              <motion.div
+                className="relative aspect-[4/5] w-full rounded-[2px] overflow-hidden bg-[var(--color-stone-warm)]"
+                initial={reduce ? { scale: 1 } : { scale: 1.18 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 1.5, ease: easing }}
+              >
+                <div className="aura hidden md:block" />
+
+                {/* Continuous Ken Burns — wraps the image, runs forever */}
+                <motion.div
+                  className="absolute inset-0"
+                  animate={
+                    reduce
+                      ? undefined
+                      : { scale: [1, 1.06, 1], y: [0, -10, 0] }
+                  }
+                  transition={
+                    reduce
+                      ? undefined
+                      : {
+                          duration: 16,
+                          ease: "easeInOut",
+                          repeat: Infinity,
+                          repeatType: "loop",
+                        }
+                  }
+                >
+                  {/* Image fade-in on scroll-in */}
                   <motion.img
                     src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/DR%20HANNOUNI%20PROFIL.webp"
                     alt="Dr Hannouni Youssef — chirurgien esthétique & maxillo-facial"
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover object-center"
-                    initial={{ scale: 1 }}
-                    animate={
-                      reduce
-                        ? { scale: 1 }
-                        : { scale: [1, 1.04, 1], y: [0, -4, 0] }
-                    }
-                    transition={
-                      reduce
-                        ? undefined
-                        : {
-                            duration: 18,
-                            ease: "easeInOut",
-                            repeat: Infinity,
-                            repeatType: "loop",
-                          }
-                    }
+                    initial={reduce ? { opacity: 1 } : { opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 1.4, ease: easing, delay: 0.15 }}
                   />
+                </motion.div>
 
-                  {/* Bottom gradient + caption (replaces "Portrait · 2024") */}
-                  <div
+                {/* Cognac veil that dissolves diagonally on scroll-in */}
+                {!reduce && (
+                  <motion.div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[35%] bg-[linear-gradient(to_top,rgba(20,23,26,0.55)_0%,rgba(20,23,26,0)_100%)]"
+                    className="absolute inset-0 bg-[var(--color-cognac-deep)] mix-blend-multiply pointer-events-none"
+                    initial={{
+                      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                      opacity: 0.6,
+                    }}
+                    whileInView={{
+                      clipPath:
+                        "polygon(120% 0, 120% 0, -20% 100%, -20% 100%)",
+                      opacity: 0,
+                    }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{
+                      duration: 1.6,
+                      ease: easing,
+                      delay: 0.1,
+                    }}
                   />
-                  <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center gap-3 text-[10.5px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/95 font-display italic">
-                    <span className="h-px w-8 bg-[var(--color-cognac-soft)]" />
-                    Dr. Hannouni Youssef
-                  </div>
+                )}
+
+                {/* Shimmer — light pass that sweeps every ~10 s */}
+                {!reduce && (
+                  <motion.div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 overflow-hidden"
+                  >
+                    <motion.div
+                      className="absolute inset-y-0 -left-[40%] w-[40%] bg-[linear-gradient(120deg,transparent_30%,rgba(245,241,234,0.28)_50%,transparent_70%)] skew-x-[-14deg]"
+                      animate={{ x: ["0%", "350%"] }}
+                      transition={{
+                        duration: 1.6,
+                        repeat: Infinity,
+                        repeatDelay: 9,
+                        ease: [0.45, 0, 0.55, 1],
+                        delay: 2.4,
+                      }}
+                    />
+                  </motion.div>
+                )}
+
+                {/* Bottom gradient + caption */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[35%] bg-[linear-gradient(to_top,rgba(20,23,26,0.55)_0%,rgba(20,23,26,0)_100%)]"
+                />
+                <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center gap-3 text-[10.5px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/95 font-display italic">
+                  <span className="h-px w-8 bg-[var(--color-cognac-soft)]" />
+                  Dr. Hannouni Youssef
                 </div>
-              </div>
-            </Reveal>
+              </motion.div>
+            </div>
           </div>
 
           {/* Biography column */}
