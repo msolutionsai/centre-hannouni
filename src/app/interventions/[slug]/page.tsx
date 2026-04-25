@@ -156,8 +156,8 @@ export default async function InterventionPage({
             <span className="section-no">i · Présentation</span>
           </Reveal>
 
-          <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-12 gap-x-0 md:gap-10 lg:gap-16 items-start">
-            {/* Left column — presentation paragraphs */}
+          <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-10 gap-x-0 md:gap-10 lg:gap-16 lg:items-center">
+            {/* Left column — presentation paragraphs THEN indications, stacked */}
             <div className="col-span-12 lg:col-span-7 space-y-10">
               {intervention.presentation.map((p, i) => (
                 <Reveal key={i} delay={i * 0.08}>
@@ -169,15 +169,36 @@ export default async function InterventionPage({
                   </p>
                 </Reveal>
               ))}
+
+              {intervention.indications.length > 0 && (
+                <Reveal delay={0.1}>
+                  <div className="border-t border-[var(--color-line)] pt-8 md:pt-10">
+                    <div className="eyebrow mb-5">Indications</div>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+                      {intervention.indications.map((ind, j) => (
+                        <li
+                          key={j}
+                          className="flex items-start gap-3 text-[14.5px] leading-[1.6] text-[var(--color-ink-soft)] border-b border-[var(--color-line)] pb-3"
+                        >
+                          <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full border border-[var(--color-cognac)] text-[var(--color-cognac-deep)] shrink-0">
+                            <Check size={10} />
+                          </span>
+                          {ind}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              )}
             </div>
 
             {/* Right column — compact Avant/Après */}
             {intervention.results.length > 0 && (
               <Reveal delay={0.18} className="col-span-12 lg:col-span-5">
-                <div className="mx-auto w-full max-w-[380px] lg:max-w-none lg:sticky lg:top-24">
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="h-px w-8 bg-[var(--color-cognac)]" />
-                    <span className="text-[10.5px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+                <div className="mx-auto w-full max-w-[260px] sm:max-w-[280px]">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="h-px w-6 bg-[var(--color-cognac)]" />
+                    <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
                       Résultat · avant / après
                     </span>
                   </div>
@@ -185,37 +206,14 @@ export default async function InterventionPage({
                     before={intervention.results[0].before}
                     after={intervention.results[0].after}
                   />
-                  <div className="mt-3 font-display italic text-[13px] text-[var(--color-cognac-deep)]">
-                    {intervention.results[0].label}
+                  <div className="mt-3 flex items-center justify-between gap-3">
+                    <span className="font-display italic text-[12.5px] text-[var(--color-cognac-deep)]">
+                      {intervention.results[0].label}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--color-ink-muted)] whitespace-nowrap">
+                      détails en consultation
+                    </span>
                   </div>
-                  <p className="mt-5 font-display italic text-[12px] leading-[1.6] text-[var(--color-ink-muted)]">
-                    Conformément à la réglementation médicale, les photographies
-                    cliniques complètes sont présentées exclusivement en
-                    consultation, avec le consentement explicite des patients
-                    concernés.
-                  </p>
-                </div>
-              </Reveal>
-            )}
-
-            {/* Bottom-left — Indications spans full width on mobile, half on desktop */}
-            {intervention.indications.length > 0 && (
-              <Reveal delay={0.1} className="col-span-12 lg:col-span-7 lg:col-start-1 mt-2">
-                <div className="border-t border-[var(--color-line)] pt-10">
-                  <div className="eyebrow mb-6">Indications</div>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
-                    {intervention.indications.map((ind, j) => (
-                      <li
-                        key={j}
-                        className="flex items-start gap-3 text-[14.5px] leading-[1.6] text-[var(--color-ink-soft)] border-b border-[var(--color-line)] pb-3"
-                      >
-                        <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full border border-[var(--color-cognac)] text-[var(--color-cognac-deep)] shrink-0">
-                          <Check size={10} />
-                        </span>
-                        {ind}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </Reveal>
             )}
