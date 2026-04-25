@@ -216,7 +216,7 @@ export default async function InterventionPage({
                   <h3 className="font-display text-[clamp(1.2rem,2.2vw,1.6rem)] leading-[1.2] tracking-[-0.015em] text-[var(--color-ink)]">
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-[14.5px] leading-[1.7] text-[var(--color-ink-soft)] max-w-[58ch]">
+                  <p className="mt-3 font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[58ch]">
                     {step.body}
                   </p>
                 </div>
@@ -314,7 +314,7 @@ export default async function InterventionPage({
                         <Arrow size={12} />
                       </span>
                     </div>
-                    <p className="mt-3 text-[13.5px] leading-[1.65] text-[var(--color-ink-soft)]">
+                    <p className="mt-3 font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)]">
                       {r.teaser}
                     </p>
                   </div>

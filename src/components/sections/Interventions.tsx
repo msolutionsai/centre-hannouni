@@ -183,8 +183,9 @@ export function Interventions() {
           delay={0.1}
           className="mt-12 md:mt-14 flex flex-col items-start md:flex-row md:items-center justify-between gap-6 border-t border-[var(--color-line)] pt-8"
         >
-          <p className="max-w-[50ch] text-[14px] leading-[1.65] text-[var(--color-ink-soft)]">
-            Une intervention non listée ? Nous étudions chaque demande avec la même rigueur —
+          <p className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[50ch]">
+            Une intervention non listée ? Nous étudions chaque demande avec la même{" "}
+            <span className="italic text-[var(--color-cognac-deep)]">rigueur</span> —
             parce qu’il n’existe pas deux visages identiques.
           </p>
           <a href="#rendez-vous" className="btn btn-primary">

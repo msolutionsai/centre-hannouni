@@ -89,7 +89,7 @@ export function Centre() {
               <h3 className="mt-4 font-display text-[22px] leading-[1.2] tracking-[-0.01em] text-[var(--color-ivory)]">
                 {f.title}
               </h3>
-              <p className="mt-4 text-[14px] leading-[1.7] text-[var(--color-ivory)]/70">
+              <p className="mt-4 font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ivory)]/70">
                 {f.body}
               </p>
             </StaggerItem>

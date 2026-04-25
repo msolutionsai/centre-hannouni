@@ -43,7 +43,7 @@ export function InterventionFaq({ items }: { items: FaqItem[] }) {
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <p className="pb-8 max-w-[68ch] text-[14.5px] leading-[1.7] text-[var(--color-ink-soft)]">
+                  <p className="pb-8 max-w-[68ch] font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)]">
                     {it.a}
                   </p>
                 </motion.div>

@@ -280,7 +280,7 @@ export function Contact() {
                     <h3 className="mt-6 font-display text-[28px] md:text-[32px] tracking-[-0.015em] text-[var(--color-ink)]">
                       Votre demande a bien été transmise.
                     </h3>
-                    <p className="mt-4 mx-auto max-w-[46ch] text-[14.5px] leading-[1.75] text-[var(--color-ink-soft)]">
+                    <p className="mt-4 mx-auto max-w-[46ch] font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)]">
                       Le secrétariat du Centre Hannouni vous recontacte sous 24 à 48 heures
                       pour confirmer votre rendez-vous. Un courriel de confirmation vous a été envoyé.
                     </p>

@@ -71,7 +71,7 @@ export function InterventionResults({ cases }: { cases: ResultCase[] }) {
             <p className="font-display italic text-[14px] text-[var(--color-ink-muted)]">
               Note déontologique
             </p>
-            <p className="mt-2 text-[13.5px] leading-[1.7] text-[var(--color-ink-soft)]">
+            <p className="mt-2 font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)]">
               Conformément à la réglementation médicale, les photographies cliniques
               complètes sont présentées exclusivement en consultation, avec le
               consentement explicite des patients concernés.
