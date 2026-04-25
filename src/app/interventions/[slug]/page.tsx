@@ -60,6 +60,7 @@ export default async function InterventionPage({
           <Reveal>
             <Link
               href="/#interventions"
+              scroll={false}
               className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors"
             >
               <Arrow size={12} className="rotate-180" />

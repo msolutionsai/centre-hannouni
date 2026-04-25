@@ -63,7 +63,12 @@ export function BeforeAfterSlider({ before, after, className }: Props) {
         draggable={false}
         className="absolute inset-0 h-full w-full object-cover object-center select-none"
       />
-      <div className="ba-label left-4 bg-black/65 text-white backdrop-blur-sm">Avant</div>
+      <div
+        className="ba-label left-4 backdrop-blur-sm"
+        style={{ background: "rgba(20,23,26,0.78)", color: "var(--color-ivory)" }}
+      >
+        Avant
+      </div>
       <div className="ba-after" style={{ clipPath: `inset(0 0 0 ${pos}%)` }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -73,7 +78,10 @@ export function BeforeAfterSlider({ before, after, className }: Props) {
           draggable={false}
           className="absolute inset-0 h-full w-full object-cover object-center select-none"
         />
-        <div className="ba-label right-4 bg-white/85 !text-[var(--color-ink)] backdrop-blur-sm">
+        <div
+          className="ba-label right-4 backdrop-blur-sm"
+          style={{ background: "rgba(245,241,234,0.92)", color: "var(--color-ink)" }}
+        >
           Après
         </div>
       </div>
