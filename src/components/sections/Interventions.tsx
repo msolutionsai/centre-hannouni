@@ -1,13 +1,99 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow } from "@/components/ui/Icons";
 import { interventionDetails } from "@/lib/interventions";
 
+const AUTOPLAY_MS = 4500;
+const RESUME_AFTER_MS = 7000;
+
 export function Interventions() {
+  const reduce = useReducedMotion();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // Track viewport: enable carousel logic only on mobile
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  // Programmatically center the card at `idx` in the scrolling track.
+  // Smooth scrolling stalls when the tab is hidden, so we fall back to
+  // instant in that case — autoplay still advances rather than freezing.
+  const scrollToCard = useCallback((idx: number, smooth = true) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.children[idx] as HTMLElement | undefined;
+    if (!card) return;
+    const left = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
+    const behavior: ScrollBehavior =
+      smooth && !document.hidden ? "smooth" : ("instant" as ScrollBehavior);
+    track.scrollTo({ left, behavior });
+  }, []);
+
+  // Briefly pause autoplay when the user touches/scrolls/taps
+  const pauseBriefly = useCallback(() => {
+    setPaused(true);
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => setPaused(false), RESUME_AFTER_MS);
+  }, []);
+
+  // Update activeIdx as the user scrolls — pick the card whose center
+  // is closest to the track's center
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const update = () => {
+      const r = track.getBoundingClientRect();
+      const center = r.left + r.width / 2;
+      let best = 0;
+      let min = Infinity;
+      Array.from(track.children).forEach((child, idx) => {
+        const cr = (child as HTMLElement).getBoundingClientRect();
+        const d = Math.abs(cr.left + cr.width / 2 - center);
+        if (d < min) {
+          min = d;
+          best = idx;
+        }
+      });
+      setActiveIdx(best);
+    };
+    track.addEventListener("scroll", update, { passive: true });
+    return () => track.removeEventListener("scroll", update);
+  }, []);
+
+  // Center the first card on initial mobile layout
+  useEffect(() => {
+    if (!isMobile) return;
+    const id = setTimeout(() => scrollToCard(0, false), 80);
+    return () => clearTimeout(id);
+  }, [isMobile, scrollToCard]);
+
+  // Autoplay — mobile only, respects reduce-motion and pause
+  useEffect(() => {
+    if (!isMobile || paused || reduce) return;
+    const id = window.setInterval(() => {
+      setActiveIdx((prev) => {
+        const next = (prev + 1) % interventionDetails.length;
+        scrollToCard(next);
+        return next;
+      });
+    }, AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [isMobile, paused, reduce, scrollToCard]);
+
   return (
     <section
       id="interventions"
@@ -46,137 +132,195 @@ export function Interventions() {
           </Reveal>
         </div>
 
-        {/* Cards — horizontal scroll mobile / 4×2 grid desktop */}
+        {/* Cards — mobile carousel (snap-center, autoplay) / desktop 4-col grid */}
         <div
+          ref={trackRef}
+          onTouchStart={pauseBriefly}
+          onPointerDown={(e) => { if (e.pointerType !== "mouse") pauseBriefly(); }}
+          onWheel={pauseBriefly}
+          aria-roledescription="carousel"
+          aria-label="Interventions"
           className="
             mt-10 md:mt-14
-            -mx-6 md:mx-0 px-6 md:px-0
+            -mx-6 md:mx-0
+            px-[8vw] sm:px-[20vw] md:px-0
             flex md:grid md:grid-cols-4
             gap-4 md:gap-5
             overflow-x-auto md:overflow-visible
             snap-x snap-mandatory md:snap-none
             no-scrollbar
+            scroll-smooth
           "
         >
-          {interventionDetails.map((int, i) => (
-            <motion.div
-              key={int.slug}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{
-                duration: 0.9,
-                delay: (i % 4) * 0.06,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="snap-start shrink-0 w-[78%] sm:w-[60%] md:w-auto"
-            >
-              <Link
-                href={`/interventions/${int.slug}`}
-                className="
-                  group relative block overflow-hidden
-                  aspect-[5/6] md:aspect-[1/1]
-                  bg-[var(--color-ink)]
-                  rounded-[2px]
-                  ring-1 ring-[var(--color-line)]
-                  transition-[transform,box-shadow] duration-700 ease-out
-                  hover:shadow-[0_30px_70px_-30px_rgba(20,23,26,0.55)]
-                "
+          {interventionDetails.map((int, i) => {
+            const isActive = isMobile && i === activeIdx;
+            return (
+              <motion.div
+                key={int.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{
+                  duration: 0.9,
+                  delay: (i % 4) * 0.06,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                aria-roledescription="slide"
+                aria-label={`${i + 1} / ${interventionDetails.length} · ${int.name}`}
+                className="snap-center md:snap-align-none shrink-0 w-[84vw] sm:w-[60vw] md:w-auto"
               >
-                {/* Image */}
-                <div className="absolute inset-0">
-                  <div className="absolute inset-0 transition-transform duration-[1300ms] ease-out group-hover:scale-[1.07]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={int.image}
-                      alt={int.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="absolute inset-0 h-full w-full object-cover object-center"
-                    />
-                  </div>
-                </div>
-
-                {/* Vertical gradient — always visible, intensifies on hover */}
                 <div
-                  aria-hidden
+                  data-active={isActive ? "true" : "false"}
                   className="
-                    pointer-events-none absolute inset-x-0 bottom-0 h-[78%]
-                    bg-[linear-gradient(to_top,rgba(20,23,26,0.95)_8%,rgba(20,23,26,0.55)_42%,rgba(20,23,26,0)_100%)]
-                    transition-opacity duration-700 ease-out
-                    opacity-90 group-hover:opacity-100
+                    transition-[opacity,filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+                    data-[active=false]:opacity-60 data-[active=false]:[filter:saturate(0.8)]
+                    md:opacity-100 md:[filter:none]
                   "
-                />
-
-                {/* Category — top */}
-                <div className="absolute inset-x-0 top-0 flex items-center justify-end p-4 md:p-5 z-10">
-                  <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/70">
-                    {int.category}
-                  </span>
-                </div>
-
-                {/* Content — bottom; lifts subtly on hover, reveals teaser + CTA */}
-                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 z-10 text-[var(--color-ivory)]">
-                  <h3
+                >
+                  <Link
+                    href={`/interventions/${int.slug}`}
                     className="
-                      font-display tracking-[-0.015em] leading-[1.1]
-                      text-[clamp(1.4rem,1.8vw,1.55rem)]
-                      transition-transform duration-700 ease-out
-                      md:group-hover:-translate-y-1
+                      group relative block overflow-hidden
+                      aspect-[5/6] md:aspect-[1/1]
+                      bg-[var(--color-ink)]
+                      rounded-[2px]
+                      ring-1 ring-[var(--color-line)]
+                      transition-[transform,box-shadow] duration-700 ease-out
+                      hover:shadow-[0_30px_70px_-30px_rgba(20,23,26,0.55)]
                     "
                   >
-                    {int.name}
-                  </h3>
-
-                  {/* Reveal block — visible by default on mobile, hover-reveal on md+ */}
-                  <div
-                    className="
-                      mt-2
-                      grid grid-rows-[1fr] md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]
-                      transition-[grid-template-rows] duration-[750ms] ease-out
-                    "
-                  >
-                    <div className="overflow-hidden">
-                      <p
-                        className="
-                          font-display text-[13px] leading-[1.5] text-[var(--color-ivory)]/85
-                          max-w-[34ch]
-                          transition-opacity duration-500 delay-100 ease-out
-                          opacity-100 md:opacity-0 md:group-hover:opacity-100
-                        "
-                      >
-                        {int.teaser}
-                      </p>
-                      <div
-                        className="
-                          mt-4 inline-flex items-center gap-2
-                          text-[10.5px] uppercase tracking-[0.22em] text-[var(--color-ivory)]
-                          transition-all duration-500 delay-200 ease-out
-                          opacity-100 md:opacity-0 md:group-hover:opacity-100
-                          md:translate-y-1 md:group-hover:translate-y-0
-                        "
-                      >
-                        <span className="h-px w-6 bg-[var(--color-cognac-soft)]" />
-                        Découvrir
-                        <Arrow size={11} />
+                    {/* Image */}
+                    <div className="absolute inset-0">
+                      <div className="absolute inset-0 transition-transform duration-[1300ms] ease-out group-hover:scale-[1.07]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={int.image}
+                          alt={int.name}
+                          loading="lazy"
+                          decoding="async"
+                          className="absolute inset-0 h-full w-full object-cover object-center"
+                        />
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* Cognac edge accent on hover */}
-                <span
-                  aria-hidden
-                  className="
-                    pointer-events-none absolute left-0 right-0 bottom-0 h-px
-                    origin-left bg-[var(--color-cognac)]
-                    scale-x-0 group-hover:scale-x-100
-                    transition-transform duration-700 ease-out
-                  "
-                />
-              </Link>
-            </motion.div>
-          ))}
+                    {/* Vertical gradient — always visible, intensifies on hover */}
+                    <div
+                      aria-hidden
+                      className="
+                        pointer-events-none absolute inset-x-0 bottom-0 h-[78%]
+                        bg-[linear-gradient(to_top,rgba(20,23,26,0.95)_8%,rgba(20,23,26,0.55)_42%,rgba(20,23,26,0)_100%)]
+                        transition-opacity duration-700 ease-out
+                        opacity-90 group-hover:opacity-100
+                      "
+                    />
+
+                    {/* Category — top */}
+                    <div className="absolute inset-x-0 top-0 flex items-center justify-end p-4 md:p-5 z-10">
+                      <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/70">
+                        {int.category}
+                      </span>
+                    </div>
+
+                    {/* Content — bottom; lifts subtly on hover, reveals teaser + CTA */}
+                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 z-10 text-[var(--color-ivory)]">
+                      <h3
+                        className="
+                          font-display tracking-[-0.015em] leading-[1.1]
+                          text-[clamp(1.4rem,1.8vw,1.55rem)]
+                          transition-transform duration-700 ease-out
+                          md:group-hover:-translate-y-1
+                        "
+                      >
+                        {int.name}
+                      </h3>
+
+                      {/* Reveal block — visible by default on mobile, hover-reveal on md+ */}
+                      <div
+                        className="
+                          mt-2
+                          grid grid-rows-[1fr] md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]
+                          transition-[grid-template-rows] duration-[750ms] ease-out
+                        "
+                      >
+                        <div className="overflow-hidden">
+                          <p
+                            className="
+                              font-display text-[13px] leading-[1.5] text-[var(--color-ivory)]/85
+                              max-w-[34ch]
+                              transition-opacity duration-500 delay-100 ease-out
+                              opacity-100 md:opacity-0 md:group-hover:opacity-100
+                            "
+                          >
+                            {int.teaser}
+                          </p>
+                          <div
+                            className="
+                              mt-4 inline-flex items-center gap-2
+                              text-[10.5px] uppercase tracking-[0.22em] text-[var(--color-ivory)]
+                              transition-all duration-500 delay-200 ease-out
+                              opacity-100 md:opacity-0 md:group-hover:opacity-100
+                              md:translate-y-1 md:group-hover:translate-y-0
+                            "
+                          >
+                            <span className="h-px w-6 bg-[var(--color-cognac-soft)]" />
+                            Découvrir
+                            <Arrow size={11} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Cognac edge accent — full on active mobile, hover on desktop */}
+                    <span
+                      aria-hidden
+                      className="
+                        pointer-events-none absolute left-0 right-0 bottom-0 h-px
+                        origin-left bg-[var(--color-cognac)]
+                        scale-x-0 group-hover:scale-x-100
+                        md:transition-transform md:duration-700 md:ease-out
+                      "
+                      style={
+                        isMobile
+                          ? {
+                              transform: isActive ? "scaleX(1)" : "scaleX(0)",
+                              transition: "transform 700ms cubic-bezier(0.22,1,0.36,1)",
+                            }
+                          : undefined
+                      }
+                    />
+                  </Link>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Mobile pagination dots — reflect activeIdx; tap to jump */}
+        <div className="mt-6 flex md:hidden items-center justify-center gap-2">
+          {interventionDetails.map((_, i) => {
+            const isActive = i === activeIdx;
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  pauseBriefly();
+                  setActiveIdx(i);
+                  scrollToCard(i);
+                }}
+                aria-label={`Aller à l’intervention ${i + 1}`}
+                aria-current={isActive}
+                className="h-1.5 rounded-full transition-all duration-700"
+                style={{
+                  width: isActive ? 24 : 8,
+                  background: isActive
+                    ? "var(--color-ink)"
+                    : "rgba(20,23,26,0.25)",
+                  transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                }}
+              />
+            );
+          })}
         </div>
 
         <Reveal

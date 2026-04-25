@@ -81,10 +81,6 @@ export function ExpandingGallery({
             "
           />
 
-          <div className="absolute top-4 right-4 z-10 font-display italic text-[10px] tracking-[0.2em] text-[var(--color-ivory)]/85 uppercase">
-            {String(active + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
-          </div>
-
           <div className="absolute inset-x-0 bottom-16 px-5 z-10 text-[var(--color-ivory)] flex items-center gap-3">
             <span className="h-px w-10 bg-[var(--color-cognac-soft)]" />
             <span className="font-display italic text-[13px] tracking-[0.04em]">

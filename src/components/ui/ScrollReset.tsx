@@ -3,16 +3,21 @@
 import { useEffect } from "react";
 
 /**
- * Forces the page to open at the top on initial load — unless the URL
- * carries a hash, in which case we manually scroll the matching section
- * into view. CSS `scroll-behavior: smooth` is briefly disabled so the
- * programmatic jump is instant and not interrupted by concurrent layout
- * shifts (Reveal animations, font swap, image decode).
+ * Decides where the home page lands when it mounts.
  *
- * Implementation note: we drive the polling with `setInterval` rather
- * than `requestAnimationFrame` because rAF is throttled when the tab is
- * hidden (e.g. the user came from a background restore), which can
- * silently drop the scroll-to-section.
+ * Priority:
+ *   1. sessionStorage["scrollTo"] — set by the back-link from a slug
+ *      page. Most reliable across browsers and ignores any URL state.
+ *   2. URL hash (e.g. /#temoignages) — supports shared/bookmarked links.
+ *   3. Otherwise scroll to the top (Hero).
+ *
+ * Once a target is scrolled to, the URL hash is cleared via
+ * history.replaceState so a refresh always lands on the Hero rather
+ * than re-scrolling to the section.
+ *
+ * Polling uses setInterval (not requestAnimationFrame) because rAF is
+ * throttled when the tab is hidden, which silently dropped the scroll
+ * for users coming back from a backgrounded tab.
  */
 export function ScrollReset() {
   useEffect(() => {
@@ -28,23 +33,33 @@ export function ScrollReset() {
     const prevBehavior = html.style.scrollBehavior;
     html.style.scrollBehavior = "auto";
 
-    const hash = window.location.hash.slice(1);
+    let target: string | null = null;
+    try {
+      target = sessionStorage.getItem("scrollTo");
+      if (target) sessionStorage.removeItem("scrollTo");
+    } catch {
+      /* private mode or storage disabled */
+    }
+    if (!target) {
+      const hash = window.location.hash.slice(1);
+      if (hash) target = hash;
+    }
 
-    if (!hash) {
+    if (!target) {
       window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
       html.style.scrollBehavior = prevBehavior;
       return;
     }
 
     const navOffset = 16;
-    const settle = (target: HTMLElement) => {
-      const rect = target.getBoundingClientRect();
+    const settle = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
       const targetY = Math.max(0, rect.top + window.scrollY - navOffset);
       window.scrollTo({ top: targetY, left: 0, behavior: "instant" as ScrollBehavior });
     };
 
     let attempts = 0;
-    const maxAttempts = 60; // ~3s @ 50ms cadence
+    const maxAttempts = 60;
     let intervalId: ReturnType<typeof setInterval> | null = null;
     let verifyTimers: ReturnType<typeof setTimeout>[] = [];
     let restoreTimer: ReturnType<typeof setTimeout> | null = null;
@@ -55,11 +70,18 @@ export function ScrollReset() {
       if (restoreTimer !== null) clearTimeout(restoreTimer);
     };
 
+    const cleanUrl = () => {
+      if (!window.location.hash) return;
+      try {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      } catch {
+        /* ignore */
+      }
+    };
+
     const onFound = (el: HTMLElement) => {
       cleanup();
       settle(el);
-      // Layout may shift after fonts/images settle. Re-measure twice
-      // and correct if drift exceeds 8px.
       verifyTimers = [120, 280].map((delay) =>
         setTimeout(() => {
           const rect = el.getBoundingClientRect();
@@ -68,11 +90,12 @@ export function ScrollReset() {
       );
       restoreTimer = setTimeout(() => {
         html.style.scrollBehavior = prevBehavior;
-      }, 320);
+        cleanUrl();
+      }, 360);
     };
 
     const tryScroll = () => {
-      const el = document.getElementById(hash);
+      const el = target ? document.getElementById(target) : null;
       if (el) {
         onFound(el);
         return;
@@ -80,11 +103,10 @@ export function ScrollReset() {
       if (++attempts >= maxAttempts) {
         cleanup();
         html.style.scrollBehavior = prevBehavior;
+        cleanUrl();
       }
     };
 
-    // First attempt synchronously — DOM is committed by the time
-    // useEffect fires, so element should already be present.
     tryScroll();
     if (intervalId === null && attempts < maxAttempts) {
       intervalId = setInterval(tryScroll, 50);

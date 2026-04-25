@@ -8,6 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow, Check } from "@/components/ui/Icons";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
+import { BackToInterventions } from "@/components/ui/BackToInterventions";
 import { InterventionFaq } from "@/components/sections/InterventionFaq";
 import {
   interventionDetails,
@@ -58,14 +59,7 @@ export default async function InterventionPage({
       <section className="relative bg-[var(--color-ivory)] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <Reveal>
-            <Link
-              href="/#interventions"
-              scroll={false}
-              className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors"
-            >
-              <Arrow size={12} className="rotate-180" />
-              Toutes les interventions
-            </Link>
+            <BackToInterventions />
           </Reveal>
 
           <Reveal delay={0.05} className="mt-10 flex items-center gap-4 text-[var(--color-ink-muted)]">
