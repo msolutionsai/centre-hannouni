@@ -133,7 +133,7 @@ export function Contact() {
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
-            <span className="section-no">IX · Prise de rendez-vous</span>
+            <span className="section-no">VI · Prise de rendez-vous</span>
             <span className="h-px w-12 bg-[var(--color-line)]" />
           </div>
         </Reveal>

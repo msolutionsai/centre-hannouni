@@ -25,7 +25,7 @@ export function Doctor() {
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
-            <span className="section-no">II · Le praticien</span>
+            <span className="section-no">IV · Le praticien</span>
             <span className="h-px w-12 bg-[var(--color-line)]" />
           </div>
         </Reveal>

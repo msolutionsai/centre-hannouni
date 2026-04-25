@@ -32,11 +32,11 @@ export function Testimonials() {
   }, [paused, reduce]);
 
   return (
-    <section className="relative bg-[var(--color-stone-warm)] pt-16 md:pt-24 pb-16 md:pb-24">
+    <section id="temoignages" className="relative bg-[var(--color-stone-warm)] pt-16 md:pt-24 pb-16 md:pb-24">
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
-            <span className="section-no">VIII · Témoignages</span>
+            <span className="section-no">V · Témoignages</span>
             <span className="h-px w-12 bg-[var(--color-line)]" />
           </div>
         </Reveal>

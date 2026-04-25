@@ -73,7 +73,7 @@ export function Nav() {
               <Phone size={14} />
               {clinic.phoneDisplay}
             </a>
-            <a href="#rendez-vous" className="btn btn-primary hidden sm:inline-flex">
+            <a href="/#rendez-vous" className="btn btn-primary hidden sm:inline-flex">
               Prendre rendez-vous
               <Arrow size={14} />
             </a>

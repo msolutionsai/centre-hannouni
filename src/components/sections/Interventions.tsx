@@ -1,22 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Portrait } from "@/components/ui/Portrait";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow } from "@/components/ui/Icons";
-import { interventionsHighlight } from "@/lib/content";
-
-const variants: Array<"hero" | "portrait" | "result-a" | "result-b" | "surgery" | "hands" | "centre"> = [
-  "portrait",
-  "result-a",
-  "hero",
-  "result-b",
-  "hands",
-  "centre",
-  "surgery",
-  "result-a",
-];
+import { interventionDetails } from "@/lib/interventions";
 
 export function Interventions() {
   return (
@@ -27,7 +17,7 @@ export function Interventions() {
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ink-muted)]">
-            <span className="section-no">V · Interventions</span>
+            <span className="section-no">I · Interventions</span>
             <span className="h-px w-12 bg-[var(--color-line)]" />
           </div>
         </Reveal>
@@ -58,10 +48,9 @@ export function Interventions() {
         </div>
 
         <div className="mt-14 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {interventionsHighlight.map((int, i) => (
-            <motion.a
-              key={i}
-              href="#rendez-vous"
+          {interventionDetails.map((int, i) => (
+            <motion.div
+              key={int.slug}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -70,32 +59,32 @@ export function Interventions() {
                 delay: (i % 4) * 0.06,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group relative overflow-hidden bg-[var(--color-ivory)] border border-[var(--color-line)] hover:border-[var(--color-ink)] transition-colors"
             >
-              <div className="aspect-[4/5] overflow-hidden">
-                <motion.div
-                  className="h-full w-full"
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Portrait variant={variants[i % variants.length]} className="h-full w-full" />
-                </motion.div>
-              </div>
-              <div className="p-5 md:p-6">
-                <div className="eyebrow mb-3">{int.sub}</div>
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="font-display text-[22px] leading-[1.15] tracking-[-0.015em] text-[var(--color-ink)]">
-                    {int.name}
-                  </h3>
-                  <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-ink)] group-hover:bg-[var(--color-ink)] group-hover:text-[var(--color-ivory)] group-hover:border-[var(--color-ink)] transition-all">
-                    <Arrow size={12} />
-                  </span>
+              <Link
+                href={`/interventions/${int.slug}`}
+                className="group relative block overflow-hidden bg-[var(--color-ivory)] border border-[var(--color-line)] hover:border-[var(--color-ink)] transition-colors"
+              >
+                <div className="aspect-[4/5] overflow-hidden">
+                  <div className="h-full w-full transition-transform duration-1000 ease-out group-hover:scale-[1.04]">
+                    <Portrait variant={int.hero.portrait} className="h-full w-full" />
+                  </div>
                 </div>
-                <p className="mt-3 text-[13.5px] leading-[1.65] text-[var(--color-ink-soft)]">
-                  {int.teaser}
-                </p>
-              </div>
-            </motion.a>
+                <div className="p-5 md:p-6">
+                  <div className="eyebrow mb-3">{int.category}</div>
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="font-display text-[22px] leading-[1.15] tracking-[-0.015em] text-[var(--color-ink)]">
+                      {int.name}
+                    </h3>
+                    <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-ink)] group-hover:bg-[var(--color-ink)] group-hover:text-[var(--color-ivory)] group-hover:border-[var(--color-ink)] transition-all">
+                      <Arrow size={12} />
+                    </span>
+                  </div>
+                  <p className="mt-3 text-[13.5px] leading-[1.65] text-[var(--color-ink-soft)]">
+                    {int.teaser}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
 

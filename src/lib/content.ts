@@ -26,12 +26,12 @@ export const clinic = {
 };
 
 export const nav = [
-  { label: "Le Centre", href: "#centre" },
-  { label: "Dr Hannouni", href: "#praticien" },
-  { label: "Expertises", href: "#expertises" },
-  { label: "Interventions", href: "#interventions" },
-  { label: "Résultats", href: "#avant-apres" },
-  { label: "Contact", href: "#rendez-vous" },
+  { label: "Interventions", href: "/#interventions" },
+  { label: "Expertises", href: "/#expertises" },
+  { label: "Le Centre", href: "/#centre" },
+  { label: "Dr Hannouni", href: "/#praticien" },
+  { label: "Témoignages", href: "/#temoignages" },
+  { label: "Contact", href: "/#rendez-vous" },
 ];
 
 export const credibilityItems = [
