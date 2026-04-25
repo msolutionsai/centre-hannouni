@@ -215,11 +215,10 @@ export function Interventions() {
                 className="snap-center md:snap-align-none shrink-0 w-[84vw] sm:w-[60vw] md:w-auto"
               >
                 <div
-                  data-active={isActive ? "true" : "false"}
+                  data-active={isMobile ? (isActive ? "true" : "false") : undefined}
                   className="
                     transition-[opacity,filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
                     data-[active=false]:opacity-60 data-[active=false]:[filter:saturate(0.8)]
-                    md:opacity-100 md:[filter:none]
                   "
                 >
                   <Link
