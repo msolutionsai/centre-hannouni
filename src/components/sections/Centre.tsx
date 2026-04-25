@@ -78,9 +78,9 @@ export function Centre() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.25} className="mt-12 md:mt-16">
+        <div className="mt-12 md:mt-16">
           <ExpandingGallery images={galleryImages} />
-        </Reveal>
+        </div>
 
         <RevealStagger className="mt-16 md:mt-24 grid grid-cols-12 gap-x-8 gap-y-12" stagger={0.1}>
           {centreFeatures.map((f, i) => (
