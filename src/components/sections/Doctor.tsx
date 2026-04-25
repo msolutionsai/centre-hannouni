@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { Reveal, RevealStagger, StaggerItem } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 
@@ -15,7 +16,98 @@ const milestones = [
   },
 ];
 
+const easing = [0.22, 1, 0.36, 1] as const;
+
+function ArchitectFrame({ reduce }: { reduce: boolean | null }) {
+  const traceTransition = reduce
+    ? { duration: 0 }
+    : { duration: 1.6, ease: easing };
+
+  return (
+    <>
+      {/* Cognac frame traced on scroll-in (SVG path-length animation) */}
+      <motion.svg
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.path
+          d="M 0 0 L 100 0 L 100 100 L 0 100 L 0 0"
+          fill="none"
+          stroke="var(--color-cognac)"
+          strokeWidth="0.4"
+          vectorEffect="non-scaling-stroke"
+          variants={{
+            hidden: { pathLength: 0, opacity: 0 },
+            visible: {
+              pathLength: 1,
+              opacity: 0.85,
+              transition: traceTransition,
+            },
+          }}
+        />
+      </motion.svg>
+
+      {/* Corner crosses — appear after the frame is drawn */}
+      {[
+        { pos: "top-0 left-0", origin: "top-left" },
+        { pos: "top-0 right-0", origin: "top-right" },
+        { pos: "bottom-0 right-0", origin: "bottom-right" },
+        { pos: "bottom-0 left-0", origin: "bottom-left" },
+      ].map((c, i) => (
+        <motion.span
+          key={c.origin}
+          aria-hidden
+          className={`pointer-events-none absolute ${c.pos} h-3 w-3 -translate-x-1/2 -translate-y-1/2 z-10`}
+          style={{
+            transform: `translate(${
+              c.origin.includes("right") ? "50%" : "-50%"
+            }, ${c.origin.includes("bottom") ? "50%" : "-50%"})`,
+          }}
+          initial={{ opacity: 0, scale: 0.6 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 1.5 + i * 0.08, ease: easing }}
+        >
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-px w-3 bg-[var(--color-cognac)]" />
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-3 w-px bg-[var(--color-cognac)]" />
+        </motion.span>
+      ))}
+
+      {/* Top-left reference label */}
+      <motion.div
+        className="absolute -top-3.5 left-0 z-10 flex items-center gap-2 px-2 bg-[var(--color-ivory-50)] font-display italic text-[10px] tracking-[0.22em] text-[var(--color-cognac-deep)] uppercase"
+        initial={{ opacity: 0, y: 4 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 1.8, ease: easing }}
+      >
+        <span className="h-px w-4 bg-[var(--color-cognac)]" />
+        <span>Pl. IV · 2024</span>
+      </motion.div>
+
+      {/* Bottom-right dimensions cartouche */}
+      <motion.div
+        className="absolute -bottom-3.5 right-0 z-10 flex items-center gap-2 px-2 bg-[var(--color-ivory-50)] font-display italic text-[10px] tracking-[0.22em] text-[var(--color-cognac-deep)] uppercase"
+        initial={{ opacity: 0, y: -4 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 2, ease: easing }}
+      >
+        <span>H. 1020 · L. 1020</span>
+        <span className="h-px w-4 bg-[var(--color-cognac)]" />
+      </motion.div>
+    </>
+  );
+}
+
 export function Doctor() {
+  const reduce = useReducedMotion();
+
   return (
     <section
       id="praticien"
@@ -29,33 +121,52 @@ export function Doctor() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-14">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-12 gap-x-0 md:gap-8 lg:gap-14">
           {/* Portrait column */}
           <div className="col-span-12 md:col-span-5 lg:col-span-5">
             <Reveal>
-              <div className="relative mx-auto aspect-[4/5] max-w-[320px] md:max-w-none rounded-[2px] overflow-hidden ring-1 ring-[var(--color-line)] bg-[var(--color-stone-warm)]">
-                <div className="aura hidden md:block" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/DR%20HANNOUNI%20PROFIL.webp"
-                  alt="Dr Hannouni Youssef — chirurgien esthétique & maxillo-facial"
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover object-center"
-                />
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[35%] bg-[linear-gradient(to_top,rgba(20,23,26,0.45)_0%,rgba(20,23,26,0)_100%)]"
-                />
-                <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/85">
-                  <span className="h-px w-8 bg-[var(--color-ivory)]/55" />
-                  Portrait · 2024
+              {/* Outer architect plate — extends beyond the image to host the cartouche */}
+              <div className="relative mx-auto w-full max-w-[320px] md:max-w-none px-3 py-4">
+                {/* Architect markings (frame, crosses, cartouches) — sit on the outer plate */}
+                <ArchitectFrame reduce={reduce} />
+
+                {/* Image — Ken Burns inside */}
+                <div className="relative aspect-[4/5] w-full rounded-[2px] overflow-hidden bg-[var(--color-stone-warm)]">
+                  <div className="aura hidden md:block" />
+                  <motion.img
+                    src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/DR%20HANNOUNI%20PROFIL.webp"
+                    alt="Dr Hannouni Youssef — chirurgien esthétique & maxillo-facial"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                    initial={{ scale: 1 }}
+                    animate={
+                      reduce
+                        ? { scale: 1 }
+                        : { scale: [1, 1.04, 1], y: [0, -4, 0] }
+                    }
+                    transition={
+                      reduce
+                        ? undefined
+                        : {
+                            duration: 18,
+                            ease: "easeInOut",
+                            repeat: Infinity,
+                            repeatType: "loop",
+                          }
+                    }
+                  />
+
+                  {/* Bottom gradient + caption (replaces "Portrait · 2024") */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[35%] bg-[linear-gradient(to_top,rgba(20,23,26,0.55)_0%,rgba(20,23,26,0)_100%)]"
+                  />
+                  <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center gap-3 text-[10.5px] uppercase tracking-[0.22em] text-[var(--color-ivory)]/95 font-display italic">
+                    <span className="h-px w-8 bg-[var(--color-cognac-soft)]" />
+                    Dr. Hannouni Youssef
+                  </div>
                 </div>
               </div>
-            </Reveal>
-
-            <Reveal delay={0.15} className="mt-6 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
-              <span>Dr Hannouni Y.</span>
-              <span>Marrakech · 20 ans</span>
             </Reveal>
           </div>
 
