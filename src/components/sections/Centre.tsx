@@ -1,14 +1,44 @@
 "use client";
 
-import { Portrait } from "@/components/ui/Portrait";
+import { ExpandingGallery } from "@/components/ui/ExpandingGallery";
 import { Reveal, RevealStagger, StaggerItem } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { centreFeatures } from "@/lib/content";
 
+const galleryImages = [
+  {
+    src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200&auto=format&fit=crop",
+    alt: "Plateau technique · Bloc opératoire",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?q=80&w=1200&auto=format&fit=crop",
+    alt: "Espace consultation",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+    alt: "Équipements médicaux",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=1200&auto=format&fit=crop",
+    alt: "Salon d’accueil",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?q=80&w=1200&auto=format&fit=crop",
+    alt: "Suite post-opératoire",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1629904853716-f0bc54eea481?q=80&w=1200&auto=format&fit=crop",
+    alt: "Détail · Lumière sur instruments",
+  },
+];
+
 export function Centre() {
   return (
-    <section id="centre" className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden">
-      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+    <section
+      id="centre"
+      className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-16 md:pt-24 pb-16 md:pb-24 overflow-hidden"
+    >
+      <div className="mx-auto max-w-[1280px] px-6 md:px-10">
         <Reveal>
           <div className="flex items-center gap-4 text-[var(--color-ivory)]/60">
             <span className="font-display italic text-[14.5px] tracking-[0.14em] text-[var(--color-cognac-soft)]">
@@ -18,7 +48,7 @@ export function Centre() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-14">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-14 items-end">
           <div className="col-span-12 lg:col-span-7">
             <SplitHeading
               as="h2"
@@ -34,32 +64,25 @@ export function Centre() {
                 delay={0.08}
               />
             </div>
-
-            <Reveal delay={0.2} className="mt-10 max-w-[58ch]">
-              <p className="font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ivory)]/80">
-                Un centre pensé pour conjuguer{" "}
-                <span className="italic text-[var(--color-cognac-soft)]">pratique médicale</span>,{" "}
-                <span className="italic text-[var(--color-cognac-soft)]">maîtrise chirurgicale</span>,{" "}
-                <span className="italic text-[var(--color-cognac-soft)]">exigence scientifique</span> et{" "}
-                <span className="italic text-[var(--color-cognac-soft)]">sens esthétique</span>. Une structure
-                conforme aux normes médicales locales et internationales, équipée des
-                technologies modernes de chirurgie esthétique et réparatrice, et dans
-                laquelle tous les éléments de confort et de bien-être ont été intégrés
-                pour accompagner nos patients avec discrétion.
-              </p>
-            </Reveal>
           </div>
 
-          <div className="col-span-12 lg:col-span-5">
-            <Reveal>
-              <div className="relative mx-auto aspect-[4/5] max-w-[320px] lg:max-w-none">
-                <Portrait variant="centre" className="h-full w-full" caption="Plateau technique" />
-              </div>
-            </Reveal>
-          </div>
+          <Reveal delay={0.2} className="col-span-12 lg:col-span-5">
+            <p className="font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ivory)]/80 max-w-[44ch]">
+              Un centre pensé pour conjuguer{" "}
+              <span className="italic text-[var(--color-cognac-soft)]">pratique médicale</span>,{" "}
+              <span className="italic text-[var(--color-cognac-soft)]">maîtrise chirurgicale</span>{" "}
+              et{" "}
+              <span className="italic text-[var(--color-cognac-soft)]">sens esthétique</span> —
+              équipé des technologies modernes, conforme aux normes internationales.
+            </p>
+          </Reveal>
         </div>
 
-        <RevealStagger className="mt-20 md:mt-28 grid grid-cols-12 gap-x-8 gap-y-12" stagger={0.1}>
+        <Reveal delay={0.25} className="mt-12 md:mt-16">
+          <ExpandingGallery images={galleryImages} />
+        </Reveal>
+
+        <RevealStagger className="mt-16 md:mt-24 grid grid-cols-12 gap-x-8 gap-y-12" stagger={0.1}>
           {centreFeatures.map((f, i) => (
             <StaggerItem key={i} className="col-span-12 sm:col-span-6 lg:col-span-3">
               <div className="font-display italic text-[13px] text-[var(--color-cognac-soft)]">
@@ -68,7 +91,9 @@ export function Centre() {
               <h3 className="mt-3 font-display text-[22px] leading-[1.2] tracking-[-0.01em] text-[var(--color-ivory)]">
                 {f.title}
               </h3>
-              <p className="mt-4 text-[14px] leading-[1.7] text-[var(--color-ivory)]/70">{f.body}</p>
+              <p className="mt-4 text-[14px] leading-[1.7] text-[var(--color-ivory)]/70">
+                {f.body}
+              </p>
             </StaggerItem>
           ))}
         </RevealStagger>
