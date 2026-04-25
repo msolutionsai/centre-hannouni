@@ -10,7 +10,7 @@ const R2_BASE =
 
 const galleryImages = [
   {
-    src: `${R2_BASE}/Plateau%20technique%20%C2%B7%20Bloc%20ope%CC%81ratoire.png`,
+    src: `${R2_BASE}/Plateau%20technique%20%C2%B7%20Bloc%20ope%CC%81ratoire.png?v=2`,
     alt: "Plateau technique · Bloc opératoire",
   },
   {
@@ -18,11 +18,11 @@ const galleryImages = [
     alt: "Espace consultation",
   },
   {
-    src: `${R2_BASE}/E%CC%81quipements%20me%CC%81dicaux.png`,
+    src: `${R2_BASE}/E%CC%81quipements%20me%CC%81dicaux.png?v=2`,
     alt: "Équipements médicaux",
   },
   {
-    src: `${R2_BASE}/Salon%20d%E2%80%99accueil.png`,
+    src: `${R2_BASE}/Salon%20d%E2%80%99accueil.png?v=2`,
     alt: "Salon d’accueil",
   },
   {
