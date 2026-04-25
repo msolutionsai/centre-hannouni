@@ -156,19 +156,21 @@ export default async function InterventionPage({
             <span className="section-no">i · Présentation</span>
           </Reveal>
 
-          <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-10 gap-x-0 md:gap-10 lg:gap-16 lg:items-center">
-            {/* Left column — presentation paragraphs THEN indications, stacked */}
-            <div className="col-span-12 lg:col-span-7 space-y-10">
-              {intervention.presentation.map((p, i) => (
-                <Reveal key={i} delay={i * 0.08}>
-                  <h2 className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] leading-[1.2] tracking-[-0.015em] text-[var(--color-ink)]">
-                    {p.title}
-                  </h2>
-                  <p className="mt-4 font-display text-[clamp(1rem,1.2vw,1.15rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)]">
-                    {p.body}
-                  </p>
-                </Reveal>
-              ))}
+          <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-10 gap-x-0 md:gap-10 lg:gap-16 items-stretch">
+            {/* Left column — presentation + indications, vertically centered to balance with slider */}
+            <div className="col-span-12 lg:col-span-7 flex flex-col gap-10 lg:gap-12 lg:justify-center">
+              <div className="space-y-10">
+                {intervention.presentation.map((p, i) => (
+                  <Reveal key={i} delay={i * 0.08}>
+                    <h2 className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] leading-[1.2] tracking-[-0.015em] text-[var(--color-ink)]">
+                      {p.title}
+                    </h2>
+                    <p className="mt-4 font-display text-[clamp(1rem,1.2vw,1.15rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+                      {p.body}
+                    </p>
+                  </Reveal>
+                ))}
+              </div>
 
               {intervention.indications.length > 0 && (
                 <Reveal delay={0.1}>
@@ -192,13 +194,13 @@ export default async function InterventionPage({
               )}
             </div>
 
-            {/* Right column — compact Avant/Après */}
+            {/* Right column — Avant/Après slider matched to hero portrait size */}
             {intervention.results.length > 0 && (
               <Reveal delay={0.18} className="col-span-12 lg:col-span-5">
-                <div className="mx-auto w-full max-w-[260px] sm:max-w-[280px]">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="h-px w-6 bg-[var(--color-cognac)]" />
-                    <span className="text-[10px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+                <div className="mx-auto w-full max-w-[360px] lg:max-w-none">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="h-px w-8 bg-[var(--color-cognac)]" />
+                    <span className="text-[10.5px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
                       Résultat · avant / après
                     </span>
                   </div>
@@ -206,8 +208,8 @@ export default async function InterventionPage({
                     before={intervention.results[0].before}
                     after={intervention.results[0].after}
                   />
-                  <div className="mt-3 flex items-center justify-between gap-3">
-                    <span className="font-display italic text-[12.5px] text-[var(--color-cognac-deep)]">
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <span className="font-display italic text-[13px] text-[var(--color-cognac-deep)]">
                       {intervention.results[0].label}
                     </span>
                     <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--color-ink-muted)] whitespace-nowrap">
