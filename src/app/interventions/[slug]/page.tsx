@@ -91,7 +91,7 @@ export default async function InterventionPage({
                 </p>
               </Reveal>
 
-              <Reveal delay={0.35} className="mt-10">
+              <Reveal delay={0.35} className="mt-10 hidden md:block">
                 <Link href="/#rendez-vous" className="btn btn-primary">
                   Prendre rendez-vous
                   <Arrow size={14} />
@@ -285,8 +285,9 @@ export default async function InterventionPage({
       )}
 
       {/* Related */}
+      <div className="flex flex-col">
       {related.length > 0 && (
-        <section className="relative bg-[var(--color-stone-warm)] pt-16 md:pt-24 pb-16 md:pb-24">
+        <section className="relative bg-[var(--color-stone-warm)] pt-16 md:pt-24 pb-16 md:pb-24 order-2 md:order-1">
           <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <Reveal>
               <span className="section-no">iv · Interventions liées</span>
@@ -335,8 +336,8 @@ export default async function InterventionPage({
         </section>
       )}
 
-      {/* Final CTA */}
-      <section className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-20 md:pt-28 pb-20 md:pb-28">
+      {/* Final CTA — on mobile, comes right after FAQ (before Related); on desktop, stays at the end */}
+      <section className="relative bg-[var(--color-ink)] text-[var(--color-ivory)] pt-20 md:pt-28 pb-20 md:pb-28 order-1 md:order-2">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10 text-center">
           <Reveal>
             <span className="font-display italic text-[14.5px] tracking-[0.14em] text-[var(--color-cognac-soft)]">
@@ -362,6 +363,7 @@ export default async function InterventionPage({
           </Reveal>
         </div>
       </section>
+      </div>
 
       <Footer />
     </main>
