@@ -214,7 +214,7 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 8s linear infinite;
+  animation: marquee 22s linear infinite;
   will-change: transform;
 }
 .marquee-set {
@@ -224,7 +224,7 @@ body {
   flex-shrink: 0;
 }
 @media (min-width: 768px) {
-  .marquee-track { animation-duration: 14s; }
+  .marquee-track { animation-duration: 18s; }
 }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-track.is-paused { animation-play-state: paused; }
