@@ -8,8 +8,8 @@ import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow } from "@/components/ui/Icons";
 import { interventionDetails } from "@/lib/interventions";
 
-const AUTOPLAY_MS = 6500;
-const RESUME_AFTER_MS = 9000;
+const AUTOPLAY_MS = 5500;
+const RESUME_AFTER_MS = 8000;
 
 export function Interventions() {
   const reduce = useReducedMotion();
