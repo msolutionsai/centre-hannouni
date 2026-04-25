@@ -8,7 +8,6 @@ import { expertiseAreas } from "@/lib/content";
 type Area = (typeof expertiseAreas)[number];
 
 export function Credibility() {
-  const items = [...expertiseAreas, ...expertiseAreas];
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [anchor, setAnchor] = useState<DOMRect | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -108,52 +107,57 @@ export function Credibility() {
       <div
         className={`marquee-track py-7 ${openIdx !== null ? "is-paused" : ""}`}
       >
-        {items.map((it, i) => {
-          const realIdx = i % expertiseAreas.length;
-          const isActive = openIdx === i || openIdx === realIdx;
-          return (
-            <button
-              key={i}
-              type="button"
-              data-expertise-item
-              aria-expanded={isActive}
-              aria-controls="expertise-popup"
-              onMouseEnter={(e) => {
-                if (!isMobile) openWithAnchor(i, e.currentTarget);
-              }}
-              onMouseLeave={() => {
-                if (!isMobile) scheduleClose();
-              }}
-              onFocus={(e) => openWithAnchor(i, e.currentTarget)}
-              onBlur={() => {
-                if (!isMobile) scheduleClose();
-              }}
-              onClick={(e) => {
-                if (isActive) closeNow();
-                else openWithAnchor(i, e.currentTarget);
-              }}
-              className={`group relative flex items-center gap-4 shrink-0 px-2 -mx-2 py-1 outline-none transition-colors ${
-                isActive ? "text-[var(--color-cognac-deep)]" : "text-[var(--color-ink)]"
-              }`}
-            >
-              <span className="font-display italic text-[13px] text-[var(--color-cognac-deep)]">
-                {it.num}
-              </span>
-              <span className="font-display text-[17px] tracking-[-0.01em] whitespace-nowrap group-hover:text-[var(--color-cognac-deep)] transition-colors">
-                {it.name}
-              </span>
-              <span className="h-1 w-1 rounded-full bg-[var(--color-cognac)] opacity-70" />
-              <span className="font-display italic text-[12.5px] text-[var(--color-ink-muted)] whitespace-nowrap">
-                {it.lead}
-              </span>
-              <span
-                className={`absolute left-2 right-2 -bottom-0.5 h-px origin-left bg-[var(--color-cognac-deep)] transition-transform duration-500 ease-out ${
-                  isActive ? "scale-x-100" : "scale-x-0"
-                }`}
-              />
-            </button>
-          );
-        })}
+        {[0, 1].map((copy) => (
+          <div key={copy} className="marquee-set" aria-hidden={copy === 1}>
+            {expertiseAreas.map((it, realIdx) => {
+              const i = copy * expertiseAreas.length + realIdx;
+              const isActive = openIdx === i || openIdx === realIdx;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  data-expertise-item
+                  aria-expanded={isActive}
+                  aria-controls="expertise-popup"
+                  tabIndex={copy === 1 ? -1 : 0}
+                  onMouseEnter={(e) => {
+                    if (!isMobile) openWithAnchor(i, e.currentTarget);
+                  }}
+                  onMouseLeave={() => {
+                    if (!isMobile) scheduleClose();
+                  }}
+                  onFocus={(e) => openWithAnchor(i, e.currentTarget)}
+                  onBlur={() => {
+                    if (!isMobile) scheduleClose();
+                  }}
+                  onClick={(e) => {
+                    if (isActive) closeNow();
+                    else openWithAnchor(i, e.currentTarget);
+                  }}
+                  className={`group relative flex items-center gap-4 shrink-0 px-2 -mx-2 py-1 outline-none transition-colors ${
+                    isActive ? "text-[var(--color-cognac-deep)]" : "text-[var(--color-ink)]"
+                  }`}
+                >
+                  <span className="font-display italic text-[13px] text-[var(--color-cognac-deep)]">
+                    {it.num}
+                  </span>
+                  <span className="font-display text-[17px] tracking-[-0.01em] whitespace-nowrap group-hover:text-[var(--color-cognac-deep)] transition-colors">
+                    {it.name}
+                  </span>
+                  <span className="h-1 w-1 rounded-full bg-[var(--color-cognac)] opacity-70" />
+                  <span className="font-display italic text-[12.5px] text-[var(--color-ink-muted)] whitespace-nowrap">
+                    {it.lead}
+                  </span>
+                  <span
+                    className={`absolute left-2 right-2 -bottom-0.5 h-px origin-left bg-[var(--color-cognac-deep)] transition-transform duration-500 ease-out ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </div>
+        ))}
       </div>
 
       <AnimatePresence>

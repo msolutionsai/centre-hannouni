@@ -213,12 +213,18 @@ body {
 
 .marquee-track {
   display: flex;
-  gap: 4rem;
-  animation: marquee 14s linear infinite;
+  width: max-content;
+  animation: marquee 8s linear infinite;
   will-change: transform;
 }
+.marquee-set {
+  display: flex;
+  gap: 4rem;
+  padding-right: 4rem;
+  flex-shrink: 0;
+}
 @media (min-width: 768px) {
-  .marquee-track { animation-duration: 24s; }
+  .marquee-track { animation-duration: 14s; }
 }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-track.is-paused { animation-play-state: paused; }

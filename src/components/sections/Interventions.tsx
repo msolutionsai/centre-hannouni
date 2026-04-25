@@ -50,6 +50,47 @@ export function Interventions() {
     resumeTimer.current = setTimeout(() => setPaused(false), RESUME_AFTER_MS);
   }, []);
 
+  // JS-based axis lock — touch-action: pan-x alone leaks small horizontal
+  // movement into the carousel during vertical drags on iOS Safari, which
+  // makes snap-mandatory yank cards sideways. We measure direction on the
+  // first ~8px of touchmove and disable horizontal overflow when the
+  // gesture is clearly vertical, restoring it on touchend.
+  const touchStart = useRef({ x: 0, y: 0 });
+  const axisLocked = useRef<"x" | "y" | null>(null);
+
+  const onTouchStart = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      const t = e.touches[0];
+      touchStart.current = { x: t.clientX, y: t.clientY };
+      axisLocked.current = null;
+      pauseBriefly();
+    },
+    [pauseBriefly]
+  );
+
+  const onTouchMove = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
+    if (axisLocked.current !== null) return;
+    const t = e.touches[0];
+    const dx = Math.abs(t.clientX - touchStart.current.x);
+    const dy = Math.abs(t.clientY - touchStart.current.y);
+    if (dx < 6 && dy < 6) return;
+    const track = trackRef.current;
+    if (!track) return;
+    if (dy > dx) {
+      // Vertical-leaning gesture — let the page scroll, freeze carousel
+      axisLocked.current = "y";
+      track.style.overflowX = "hidden";
+    } else {
+      axisLocked.current = "x";
+    }
+  }, []);
+
+  const onTouchEnd = useCallback(() => {
+    const track = trackRef.current;
+    if (track) track.style.overflowX = "";
+    axisLocked.current = null;
+  }, []);
+
   // Update activeIdx as the user scrolls — pick the card whose center
   // is closest to the track's center
   useEffect(() => {
@@ -135,8 +176,10 @@ export function Interventions() {
         {/* Cards — mobile carousel (snap-center, autoplay) / desktop 4-col grid */}
         <div
           ref={trackRef}
-          onTouchStart={pauseBriefly}
-          onPointerDown={(e) => { if (e.pointerType !== "mouse") pauseBriefly(); }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onTouchCancel={onTouchEnd}
           onWheel={pauseBriefly}
           aria-roledescription="carousel"
           aria-label="Interventions"
