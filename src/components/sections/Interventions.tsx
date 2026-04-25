@@ -8,8 +8,8 @@ import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow } from "@/components/ui/Icons";
 import { interventionDetails } from "@/lib/interventions";
 
-const AUTOPLAY_MS = 4500;
-const RESUME_AFTER_MS = 7000;
+const AUTOPLAY_MS = 6500;
+const RESUME_AFTER_MS = 9000;
 
 export function Interventions() {
   const reduce = useReducedMotion();
@@ -150,6 +150,8 @@ export function Interventions() {
             snap-x snap-mandatory md:snap-none
             no-scrollbar
             scroll-smooth
+            touch-pan-x md:touch-auto
+            overscroll-x-contain
           "
         >
           {interventionDetails.map((int, i) => {
