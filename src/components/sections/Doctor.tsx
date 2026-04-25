@@ -206,26 +206,6 @@ export function Doctor() {
                   />
                 )}
 
-                {/* Shimmer — light pass that sweeps every ~10 s */}
-                {!reduce && (
-                  <motion.div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 overflow-hidden"
-                  >
-                    <motion.div
-                      className="absolute inset-y-0 -left-[40%] w-[40%] bg-[linear-gradient(120deg,transparent_30%,rgba(245,241,234,0.28)_50%,transparent_70%)] skew-x-[-14deg]"
-                      animate={{ x: ["0%", "350%"] }}
-                      transition={{
-                        duration: 1.6,
-                        repeat: Infinity,
-                        repeatDelay: 9,
-                        ease: [0.45, 0, 0.55, 1],
-                        delay: 2.4,
-                      }}
-                    />
-                  </motion.div>
-                )}
-
                 {/* Bottom gradient + caption */}
                 <div
                   aria-hidden
