@@ -5,14 +5,24 @@ import { Reveal, RevealStagger, StaggerItem } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 
 const milestones = [
-  { year: "1999", label: "Lauréat, Faculté de médecine de Casablanca" },
-  { year: "—", label: "Doctorat en médecine — thèse en chirurgie de la main" },
-  { year: "—", label: "Diplôme de l’Université Victor Segalen Bordeaux 2" },
-  { year: "—", label: "Diplôme universitaire de chirurgie des lambeaux" },
+  { year: "1999", label: "Lauréat de la Faculté de médecine de Casablanca" },
+  { year: "2000 – 2003", label: "Internat au CHU de Casablanca" },
+  { year: "2004", label: "Thèse de doctorat en médecine" },
+  { year: "2007 – 2008", label: "Diplômé de l’Université de Bordeaux" },
   {
     year: "—",
     label:
-      "Travaux de recherche en microchirurgie et chirurgie réparatrice · laboratoire d’anatomie, Université de Bordeaux",
+      "Attaché du service de chirurgie esthétique et maxillo-faciale, hôpital Pellegrin · France",
+  },
+  {
+    year: "—",
+    label:
+      "Compagnonnage auprès du Professeur P. Caix — sommité mondiale en anatomie, dissection et recherche",
+  },
+  {
+    year: "—",
+    label:
+      "Membre de la Société Marocaine de Chirurgie Esthétique et Maxillo-Faciale",
   },
 ];
 
@@ -225,15 +235,15 @@ export function Doctor() {
             </Reveal>
 
             <RevealStagger className="mt-12 md:mt-16" stagger={0.09}>
-              <div className="eyebrow mb-6">Parcours · Diplômes</div>
+              <div className="eyebrow mb-6">Parcours · Diplômes & Affiliations</div>
               <ul className="divide-y divide-[var(--color-line)]">
                 {milestones.map((m, i) => (
                   <StaggerItem key={i}>
                     <li className="grid grid-cols-12 gap-4 py-5 md:py-6">
-                      <span className="col-span-3 md:col-span-2 font-display italic text-[15px] text-[var(--color-cognac-deep)]">
+                      <span className="col-span-4 md:col-span-3 font-display italic text-[15px] text-[var(--color-cognac-deep)] whitespace-nowrap">
                         {m.year}
                       </span>
-                      <span className="col-span-9 md:col-span-10 text-[14.5px] leading-[1.6] text-[var(--color-ink-soft)]">
+                      <span className="col-span-8 md:col-span-9 text-[14.5px] leading-[1.6] text-[var(--color-ink-soft)]">
                         {m.label}
                       </span>
                     </li>
