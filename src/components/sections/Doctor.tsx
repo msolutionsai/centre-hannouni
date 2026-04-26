@@ -278,27 +278,50 @@ export function Doctor() {
             </RevealStagger>
           </div>
 
-          {/* 5 · Affiliations narrative — mobile order-5, desktop left col row 3 */}
+          {/* 5 · Affiliations — mobile order-5, desktop left col row 3 */}
           <div className="order-5 col-span-12 lg:col-span-5 lg:col-start-1 lg:row-start-3 lg:order-none">
-            <Reveal delay={0.3}>
-              <div className="eyebrow mb-4">Au-delà des diplômes</div>
-              <p className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[44ch]">
-                Une formation enrichie auprès de{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">
-                  référents internationaux
-                </span>
-                . Attaché au service de chirurgie esthétique et maxillo-faciale de
-                l’hôpital{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">Pellegrin</span>, en
-                France, puis compagnonnage auprès du{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">Professeur P. Caix</span>,
-                sommité mondiale en anatomie, dissection et recherche. Aujourd’hui membre de la{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">
-                  Société Marocaine de Chirurgie Esthétique et Maxillo-Faciale
-                </span>
-                .
+            <RevealStagger stagger={0.09}>
+              <div className="eyebrow mb-3">Au-delà des diplômes</div>
+              <p className="font-display italic text-[14.5px] leading-[1.5] text-[var(--color-cognac-deep)] mb-5 max-w-[40ch]">
+                Une formation enrichie auprès de référents internationaux.
               </p>
-            </Reveal>
+              <ul className="divide-y divide-[var(--color-line)] border-t border-[var(--color-line)]">
+                {[
+                  (
+                    <>
+                      Attaché au service de chirurgie esthétique et
+                      maxillo-faciale de l’hôpital{" "}
+                      <Accent>Pellegrin</Accent> · France
+                    </>
+                  ),
+                  (
+                    <>
+                      Compagnonnage auprès du{" "}
+                      <Accent>Professeur P. Caix</Accent>, sommité mondiale en
+                      anatomie, dissection et recherche
+                    </>
+                  ),
+                  (
+                    <>
+                      Membre de la{" "}
+                      <Accent>
+                        Société Marocaine de Chirurgie Esthétique et
+                        Maxillo-Faciale
+                      </Accent>
+                    </>
+                  ),
+                ].map((item, i) => (
+                  <StaggerItem key={i}>
+                    <li className="flex items-start gap-3 py-4 md:py-5">
+                      <span className="mt-2 h-1 w-1 rounded-full bg-[var(--color-cognac)] shrink-0" />
+                      <span className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+                        {item}
+                      </span>
+                    </li>
+                  </StaggerItem>
+                ))}
+              </ul>
+            </RevealStagger>
           </div>
         </div>
       </div>
