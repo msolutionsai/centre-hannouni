@@ -7,7 +7,7 @@ import { SplitHeading } from "@/components/ui/SplitHeading";
 const milestones = [
   { year: "1999", label: "Lauréat de la Faculté de médecine de Casablanca" },
   { year: "2000 – 2003", label: "Internat au CHU de Casablanca" },
-  { year: "2004", label: "Thèse de doctorat en médecine" },
+  { year: "2004", label: "Thèse de doctorat en médecine — chirurgie de la main" },
   { year: "2007 – 2008", label: "Diplômé de l’Université de Bordeaux" },
   {
     year: "—",
