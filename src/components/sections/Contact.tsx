@@ -164,7 +164,7 @@ export function Contact() {
             </Reveal>
           </div>
 
-          {/* Coordinates — phone | email · address | horaires (left col row-2 desktop, stacked on mobile) */}
+          {/* Phone + Email row (row 2 left on desktop, after heading on mobile) */}
           <div className="order-3 col-span-12 lg:col-span-5 lg:row-start-2 lg:order-none">
             <Reveal delay={0.3} className="mt-4 lg:mt-0 grid grid-cols-12 gap-x-5 gap-y-6">
               <a
@@ -191,34 +191,42 @@ export function Contact() {
                   </div>
                 </div>
               </a>
-              <div className="col-span-12 sm:col-span-7 flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
-                <Pin size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
-                <div>
-                  <div className="eyebrow mb-1">Adresse</div>
-                  <div className="text-[13px] leading-[1.55] text-[var(--color-ink)]">
-                    {clinic.address.line1}
-                    <br />
-                    {clinic.address.line2}
-                    <br />
-                    {clinic.address.city}
-                  </div>
+            </Reveal>
+          </div>
+
+          {/* Address (row 3 left on desktop) */}
+          <div className="order-4 col-span-12 lg:col-span-5 lg:row-start-3 lg:order-none">
+            <Reveal delay={0.32} className="flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
+              <Pin size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
+              <div>
+                <div className="eyebrow mb-1">Adresse</div>
+                <div className="text-[13px] leading-[1.55] text-[var(--color-ink)]">
+                  {clinic.address.line1}
+                  <br />
+                  {clinic.address.line2}
+                  <br />
+                  {clinic.address.city}
                 </div>
               </div>
-              <div className="col-span-12 sm:col-span-5 flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
-                <Clock size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="eyebrow mb-2">Horaires</div>
-                  <ul className="text-[12.5px] leading-[1.5] text-[var(--color-ink)] space-y-2">
-                    {clinic.hours.map((h) => (
-                      <li key={h.day} className="flex flex-col">
-                        <span className="font-display italic text-[var(--color-ink-muted)]">
-                          {h.day}
-                        </span>
-                        <span>{h.hours}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            </Reveal>
+          </div>
+
+          {/* Horaires (row 3 right on desktop, aligned with Address) */}
+          <div className="order-5 col-span-12 lg:col-span-7 lg:col-start-6 lg:row-start-3 lg:order-none">
+            <Reveal delay={0.35} className="flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
+              <Clock size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
+              <div className="flex-1 min-w-0">
+                <div className="eyebrow mb-2">Horaires</div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-[13px] leading-[1.55] text-[var(--color-ink)]">
+                  {clinic.hours.map((h) => (
+                    <li key={h.day} className="flex flex-col">
+                      <span className="font-display italic text-[var(--color-ink-muted)]">
+                        {h.day}
+                      </span>
+                      <span>{h.hours}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           </div>

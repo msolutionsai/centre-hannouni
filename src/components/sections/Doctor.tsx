@@ -9,21 +9,6 @@ const milestones = [
   { year: "2000 – 2003", label: "Internat au CHU de Casablanca" },
   { year: "2004", label: "Thèse de doctorat en médecine — chirurgie de la main" },
   { year: "2007 – 2008", label: "Diplômé de l’Université de Bordeaux" },
-  {
-    year: "—",
-    label:
-      "Attaché du service de chirurgie esthétique et maxillo-faciale, hôpital Pellegrin · France",
-  },
-  {
-    year: "—",
-    label:
-      "Compagnonnage auprès du Professeur P. Caix — sommité mondiale en anatomie, dissection et recherche",
-  },
-  {
-    year: "—",
-    label:
-      "Membre de la Société Marocaine de Chirurgie Esthétique et Maxillo-Faciale",
-  },
 ];
 
 const easing = [0.22, 1, 0.36, 1] as const;
@@ -204,6 +189,26 @@ export function Doctor() {
                 </div>
               </motion.div>
             </div>
+
+            {/* Affiliations — narrative below the portrait */}
+            <Reveal delay={0.35} className="mt-10 md:mt-12">
+              <div className="eyebrow mb-4">Au-delà des diplômes</div>
+              <p className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[44ch]">
+                Une formation enrichie auprès de{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">
+                  référents internationaux
+                </span>{" "}
+                — attaché au service de chirurgie esthétique et maxillo-faciale de l’hôpital{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">Pellegrin</span>, en France,
+                puis compagnonnage auprès du{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">Professeur P. Caix</span>,
+                sommité mondiale en anatomie, dissection et recherche. Aujourd’hui membre de la{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">
+                  Société Marocaine de Chirurgie Esthétique et Maxillo-Faciale
+                </span>
+                .
+              </p>
+            </Reveal>
           </div>
 
           {/* Biography column */}
