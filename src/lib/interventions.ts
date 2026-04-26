@@ -63,12 +63,12 @@ export const interventionDetails: InterventionDetail[] = [
       portrait: "result-a",
     },
     intro:
-      "La rhinoplastie est l’intervention emblématique de notre centre. Esthétique, fonctionnelle ou secondaire, elle exige une lecture précise de l’architecture du visage et un sens du résultat naturel.",
+      "La rhinoplastie est l’intervention emblématique de notre centre. Esthétique, fonctionnelle ou secondaire, elle exige une lecture précise de l’anatomie du visage et un sens du résultat naturel.",
     presentation: [
       {
-        title: "Une chirurgie d’architecture",
+        title: "Une chirurgie de précision",
         body:
-          "Le nez est l’ancre du visage. Sa modification, même infime, déplace l’équilibre de l’ensemble. Notre approche commence par une analyse architecturale du visage, puis une planification millimétrée — pour un résultat qui ne se remarque qu’à sa cohérence.",
+          "Le nez est l’ancre du visage. Sa modification, même infime, déplace l’équilibre de l’ensemble. Notre approche commence par une analyse anatomique du visage, puis une planification millimétrée — pour un résultat qui ne se remarque qu’à sa cohérence.",
       },
       {
         title: "Esthétique & fonctionnelle",
@@ -101,7 +101,7 @@ export const interventionDetails: InterventionDetail[] = [
         step: "02",
         title: "Planification millimétrée",
         body:
-          "Examen pré-opératoire, repères architecturaux, choix de la technique (ouverte, fermée, ultrasonique). Rien n’est laissé au hasard.",
+          "Examen pré-opératoire, repères anatomiques, choix de la technique (ouverte, fermée, ultrasonique). Rien n’est laissé au hasard.",
       },
       {
         step: "03",
@@ -318,7 +318,7 @@ export const interventionDetails: InterventionDetail[] = [
       {
         title: "Génioplastie osseuse ou par implant",
         body:
-          "Selon le défaut à corriger, nous proposons une ostéotomie de glissement (modifie l’os) ou un implant sur mesure. La planification s’appuie sur l’analyse architecturale de la face.",
+          "Selon le défaut à corriger, nous proposons une ostéotomie de glissement (modifie l’os) ou un implant sur mesure. La planification s’appuie sur l’analyse anatomique de la face.",
       },
     ],
     indications: [
@@ -338,7 +338,7 @@ export const interventionDetails: InterventionDetail[] = [
         step: "01",
         title: "Analyse céphalométrique",
         body:
-          "Téléradiographie de profil, analyse architecturale, simulation du résultat.",
+          "Téléradiographie de profil, analyse anatomique, simulation du résultat.",
       },
       {
         step: "02",
@@ -600,16 +600,16 @@ export const interventionDetails: InterventionDetail[] = [
     name: "Chirurgie orthognatique",
     category: "Maxillo-facial",
     teaser:
-      "Corriger l’architecture osseuse pour un visage fonctionnel et harmonieux.",
+      "Corriger l’anatomie osseuse pour un visage fonctionnel et harmonieux.",
     image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Chirurgie%20orthognatique.png",
     hero: {
       eyebrow: "VIII · Maxillo-facial",
       headline: "La chirurgie orthognatique,",
-      italicSuffix: "rétablir l’architecture.",
+      italicSuffix: "rétablir l’équilibre.",
       portrait: "surgery",
     },
     intro:
-      "La chirurgie orthognatique corrige les anomalies de croissance des bases osseuses du visage. C’est une chirurgie d’architecture, à la fois fonctionnelle et esthétique.",
+      "La chirurgie orthognatique corrige les anomalies de croissance des bases osseuses du visage. C’est une chirurgie morphologique, à la fois fonctionnelle et esthétique.",
     presentation: [
       {
         title: "Fonction d’abord, esthétique ensuite",
@@ -626,7 +626,7 @@ export const interventionDetails: InterventionDetail[] = [
       "Classe II ou III squelettique",
       "Béance antérieure ou latérale",
       "Asymétrie maxillo-mandibulaire",
-      "Apnées du sommeil d’origine architecturale",
+      "Apnées du sommeil d’origine anatomique",
       "Profil disharmonieux secondaire",
     ],
     meta: {
@@ -638,7 +638,7 @@ export const interventionDetails: InterventionDetail[] = [
     protocol: [
       {
         step: "01",
-        title: "Analyse architecturale",
+        title: "Analyse anatomique",
         body:
           "Téléradiographie, scanner 3D, modèles dentaires. Analyse en concertation avec l’orthodontiste.",
       },

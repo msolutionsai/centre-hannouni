@@ -34,7 +34,7 @@ export function Manifest() {
           <Reveal delay={0.15} className="col-span-12 md:col-span-5">
             <p className="max-w-[52ch] font-display text-[clamp(1.1rem,1.45vw,1.32rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
               Au Centre du Docteur Hannouni, chaque intervention est pensée comme un{" "}
-              <span className="italic text-[var(--color-cognac-deep)]">acte d’architecture</span>{" "}
+              <span className="italic text-[var(--color-cognac-deep)]">geste de précision</span>{" "}
               : une{" "}
               <span className="italic text-[var(--color-cognac-deep)]">lecture anatomique</span>{" "}
               méthodique, une{" "}

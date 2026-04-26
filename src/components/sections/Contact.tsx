@@ -164,7 +164,7 @@ export function Contact() {
             </Reveal>
           </div>
 
-          {/* Coordinates (order-3 mobile, left col row-2 desktop) */}
+          {/* Coordinates — phone, email, address (order-3 mobile, left col row-2 desktop) */}
           <div className="order-3 col-span-12 lg:col-span-5 lg:row-start-2 lg:order-none">
             <Reveal delay={0.3} className="mt-4 lg:mt-0 grid grid-cols-2 gap-x-6 gap-y-6">
               <a
@@ -191,7 +191,7 @@ export function Contact() {
                   </div>
                 </div>
               </a>
-              <div className="col-span-2 sm:col-span-1 flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
+              <div className="col-span-2 flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
                 <Pin size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
                 <div>
                   <div className="eyebrow mb-1">Adresse</div>
@@ -204,21 +204,25 @@ export function Contact() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-2 sm:col-span-1 flex items-start gap-3 border-t border-[var(--color-line)] pt-4">
-                <Clock size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
-                <div>
-                  <div className="eyebrow mb-1">Horaires</div>
-                  <ul className="text-[13px] leading-[1.55] text-[var(--color-ink)] space-y-1.5">
-                    {clinic.hours.map((h) => (
-                      <li key={h.day} className="flex flex-col">
-                        <span className="font-display italic text-[var(--color-ink-muted)]">
-                          {h.day}
-                        </span>
-                        <span>{h.hours}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            </Reveal>
+          </div>
+
+          {/* Horaires — sits below the form on desktop, after coordinates on mobile */}
+          <div className="order-4 col-span-12 lg:col-span-7 lg:col-start-6 lg:row-start-3 lg:order-none">
+            <Reveal delay={0.35} className="flex items-start gap-3 border-t border-[var(--color-line)] pt-5">
+              <Clock size={14} className="mt-1 text-[var(--color-cognac-deep)] shrink-0" />
+              <div className="flex-1">
+                <div className="eyebrow mb-3">Horaires</div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-[13px] leading-[1.55] text-[var(--color-ink)]">
+                  {clinic.hours.map((h) => (
+                    <li key={h.day} className="flex flex-col">
+                      <span className="font-display italic text-[var(--color-ink-muted)]">
+                        {h.day}
+                      </span>
+                      <span>{h.hours}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           </div>

@@ -19,6 +19,7 @@ export const clinic = {
   email: "contact@centre-hannouni.ma",
   hours: [
     { day: "Lundi — Vendredi", hours: "09h00 — 19h00" },
+    { day: "Lun. — Ven. · sur rendez-vous", hours: "20h00 — 23h30" },
     { day: "Samedi", hours: "09h00 — 13h00" },
     { day: "Dimanche", hours: "Sur rendez-vous" },
   ],
@@ -118,9 +119,9 @@ export const expertiseAreas = [
     name: "Chirurgie orthognatique",
     lead: "Réaligner la structure.",
     body:
-      "Une chirurgie des bases osseuses du visage pour rétablir une occlusion correcte et l’équilibre architectural de la face.",
+      "Une chirurgie des bases osseuses du visage pour rétablir une occlusion correcte et l’équilibre anatomique de la face.",
     items: [
-      "Analyse architecturale de la face",
+      "Analyse anatomique de la face",
       "Chirurgie maxillaire & mandibulaire",
       "Coordination orthodontiste / chirurgien",
       "Suivi post-opératoire intégré",
@@ -186,7 +187,7 @@ export const interventionsHighlight = [
     name: "Chirurgie orthognatique",
     sub: "Maxillo-facial",
     teaser:
-      "Corriger l’architecture osseuse pour un visage fonctionnel et harmonieux.",
+      "Corriger l’anatomie osseuse pour un visage fonctionnel et harmonieux.",
   },
 ];
 
@@ -195,7 +196,7 @@ export const whyUs = [
     num: "01",
     title: "Une expertise rare",
     body:
-      "Chirurgie esthétique, plastique, réparatrice et maxillo-faciale — une double lecture, médicale et architecturale, de la face.",
+      "Chirurgie esthétique, plastique, réparatrice et maxillo-faciale — une double lecture, médicale et anatomique, de la face.",
   },
   {
     num: "02",
