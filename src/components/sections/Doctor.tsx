@@ -1,8 +1,49 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, RevealStagger, StaggerItem } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
+
+const Accent = ({ children }: { children: ReactNode }) => (
+  <span className="italic text-[var(--color-cognac-deep)]">{children}</span>
+);
+
+const milestones: { year: string; label: ReactNode }[] = [
+  {
+    year: "1999",
+    label: (
+      <>
+        Lauréat de la <Accent>Faculté de médecine de Casablanca</Accent>
+      </>
+    ),
+  },
+  {
+    year: "2000 à 2003",
+    label: (
+      <>
+        Internat au <Accent>CHU de Casablanca</Accent>
+      </>
+    ),
+  },
+  {
+    year: "2004",
+    label: (
+      <>
+        <Accent>Thèse de doctorat en médecine</Accent>, consacrée à la chirurgie de
+        la main
+      </>
+    ),
+  },
+  {
+    year: "2007 à 2008",
+    label: (
+      <>
+        Diplômé de l’<Accent>Université de Bordeaux</Accent>
+      </>
+    ),
+  },
+];
 
 const easing = [0.22, 1, 0.36, 1] as const;
 
@@ -216,31 +257,25 @@ export function Doctor() {
             </Reveal>
           </div>
 
-          {/* 4 · Parcours prose — mobile order-4, desktop right col row 3 */}
+          {/* 4 · Parcours timeline — mobile order-4, desktop right col row 3 */}
           <div className="order-4 col-span-12 lg:col-span-7 lg:col-start-6 lg:row-start-3 lg:order-none">
-            <Reveal delay={0.25}>
-              <div className="eyebrow mb-4">Parcours · Diplômes & Affiliations</div>
-              <p className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[58ch]">
-                Lauréat de la{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">
-                  Faculté de médecine de Casablanca
-                </span>{" "}
-                en 1999, le Docteur Hannouni effectue son{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">
-                  internat au CHU de Casablanca
-                </span>{" "}
-                de 2000 à 2003. Il soutient sa{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">
-                  thèse de doctorat en médecine
-                </span>
-                , consacrée à la chirurgie de la main, en 2004, puis obtient son diplôme
-                de l’
-                <span className="italic text-[var(--color-cognac-deep)]">
-                  Université de Bordeaux
-                </span>{" "}
-                entre 2007 et 2008.
-              </p>
-            </Reveal>
+            <RevealStagger stagger={0.09}>
+              <div className="eyebrow mb-6">Parcours · Diplômes & Affiliations</div>
+              <ul className="divide-y divide-[var(--color-line)]">
+                {milestones.map((m, i) => (
+                  <StaggerItem key={i}>
+                    <li className="grid grid-cols-12 gap-4 py-5 md:py-6">
+                      <span className="col-span-4 md:col-span-3 font-display italic text-[15px] text-[var(--color-cognac-deep)] whitespace-nowrap">
+                        {m.year}
+                      </span>
+                      <span className="col-span-8 md:col-span-9 font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+                        {m.label}
+                      </span>
+                    </li>
+                  </StaggerItem>
+                ))}
+              </ul>
+            </RevealStagger>
           </div>
 
           {/* 5 · Affiliations narrative — mobile order-5, desktop left col row 3 */}
