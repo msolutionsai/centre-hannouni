@@ -22,7 +22,7 @@ export function Hero() {
 
       {/* Portrait — right column on desktop, behind title on mobile */}
       <div
-        className="pointer-events-none absolute right-0 flex items-end justify-center md:justify-end top-[72px] md:top-[96px] bottom-[49%] md:bottom-[168px] w-[78%] md:w-[48%] opacity-70 md:opacity-100"
+        className="pointer-events-none absolute right-0 flex items-end justify-center md:justify-end top-[72px] md:top-[96px] bottom-[49%] md:bottom-[168px] w-[78%] md:w-[48%] opacity-100"
         style={{
           maskImage:
             "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0) 100%)",
