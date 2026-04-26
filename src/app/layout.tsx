@@ -17,11 +17,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Dr Hannouni Youssef — Chirurgie esthétique & maxillo-faciale · Marrakech",
+  title: "Dr Hannouni Youssef · Chirurgie esthétique & maxillo-faciale · Marrakech",
   description:
     "Centre du Docteur Hannouni à Guéliz, Marrakech. Vingt années dédiées à la chirurgie plastique, esthétique et réparatrice de la face. La chirurgie esthétique, un art scientifique.",
   openGraph: {
-    title: "Centre du Docteur Hannouni — Marrakech",
+    title: "Centre du Docteur Hannouni · Marrakech",
     description:
       "La chirurgie esthétique, un art scientifique. Dr Hannouni Youssef, chirurgien esthétique et maxillo-facial à Marrakech.",
     type: "website",

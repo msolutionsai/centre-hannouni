@@ -88,7 +88,7 @@ export function Testimonials() {
               <footer className="mt-5 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
                 <span className="h-px w-10 bg-[var(--color-cognac)]" />
                 <cite className="not-italic">
-                  {t.author} — {t.source}
+                  {t.author} · {t.source}
                 </cite>
               </footer>
             </motion.blockquote>

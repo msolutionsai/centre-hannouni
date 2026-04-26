@@ -378,7 +378,7 @@ export function Contact() {
                                 value={data.message}
                                 onChange={(e) => upd("message", e.target.value)}
                               />
-                              <label htmlFor="message">Message — précisez vos attentes</label>
+                              <label htmlFor="message">Message · précisez vos attentes</label>
                             </div>
                           </div>
                         </motion.div>

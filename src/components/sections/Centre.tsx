@@ -75,7 +75,7 @@ export function Centre() {
               <span className="italic text-[var(--color-cognac-soft)]">pratique médicale</span>,{" "}
               <span className="italic text-[var(--color-cognac-soft)]">maîtrise chirurgicale</span>{" "}
               et{" "}
-              <span className="italic text-[var(--color-cognac-soft)]">sens esthétique</span> —
+              <span className="italic text-[var(--color-cognac-soft)]">sens esthétique</span>,
               équipé des technologies modernes, conforme aux normes internationales.
             </p>
           </Reveal>

@@ -373,7 +373,7 @@ export function Interventions() {
         >
           <p className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[50ch]">
             Une intervention non listée ? Nous étudions chaque demande avec la même{" "}
-            <span className="italic text-[var(--color-cognac-deep)]">rigueur</span> —
+            <span className="italic text-[var(--color-cognac-deep)]">rigueur</span>,
             parce qu’il n’existe pas deux visages identiques.
           </p>
           <a href="#rendez-vous" className="btn btn-primary">

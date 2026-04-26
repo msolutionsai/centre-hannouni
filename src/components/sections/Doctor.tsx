@@ -1,15 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Reveal, RevealStagger, StaggerItem } from "@/components/ui/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
-
-const milestones = [
-  { year: "1999", label: "Lauréat de la Faculté de médecine de Casablanca" },
-  { year: "2000 – 2003", label: "Internat au CHU de Casablanca" },
-  { year: "2004", label: "Thèse de doctorat en médecine — chirurgie de la main" },
-  { year: "2007 – 2008", label: "Diplômé de l’Université de Bordeaux" },
-];
 
 const easing = [0.22, 1, 0.36, 1] as const;
 
@@ -129,9 +122,26 @@ export function Doctor() {
           </div>
         </Reveal>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-12 gap-x-0 md:gap-8 lg:gap-14">
-          {/* Portrait column */}
-          <div className="col-span-12 md:col-span-5 lg:col-span-5">
+        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-10 md:gap-y-12 gap-x-0 md:gap-x-8 lg:gap-x-14 items-start">
+          {/* 1 · Heading — mobile order-1, desktop right col row 1 */}
+          <div className="order-1 col-span-12 lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:order-none">
+            <SplitHeading
+              as="h2"
+              className="display-lg text-[clamp(1.75rem,5vw,4rem)] text-[var(--color-ink)]"
+              text="Vingt années au service"
+            />
+            <div className="mt-2">
+              <SplitHeading
+                as="h2"
+                className="display-lg italic text-[clamp(1.75rem,5vw,4rem)] text-[var(--color-cognac-deep)]"
+                text="de la face."
+                delay={0.06}
+              />
+            </div>
+          </div>
+
+          {/* 2 · Portrait — mobile order-2, desktop left col rows 1-2 */}
+          <div className="order-2 col-span-12 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:order-none">
             <div className="relative mx-auto w-full max-w-[320px] md:max-w-none px-3 py-4">
               {/* Architect frame + corner crosses (no labels) */}
               <ArchitectFrame reduce={reduce} />
@@ -168,7 +178,7 @@ export function Doctor() {
                   {/* Image fade-in on scroll-in */}
                   <motion.img
                     src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/DR%20HANNOUNI%20PROFIL.webp"
-                    alt="Dr Hannouni Youssef — chirurgien esthétique & maxillo-facial"
+                    alt="Dr Hannouni Youssef · chirurgien esthétique & maxillo-facial"
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover object-center"
                     initial={reduce ? { opacity: 1 } : { opacity: 0 }}
@@ -189,45 +199,11 @@ export function Doctor() {
                 </div>
               </motion.div>
             </div>
-
-            {/* Affiliations — narrative below the portrait */}
-            <Reveal delay={0.35} className="mt-10 md:mt-12">
-              <div className="eyebrow mb-4">Au-delà des diplômes</div>
-              <p className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[44ch]">
-                Une formation enrichie auprès de{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">
-                  référents internationaux
-                </span>{" "}
-                — attaché au service de chirurgie esthétique et maxillo-faciale de l’hôpital{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">Pellegrin</span>, en France,
-                puis compagnonnage auprès du{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">Professeur P. Caix</span>,
-                sommité mondiale en anatomie, dissection et recherche. Aujourd’hui membre de la{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">
-                  Société Marocaine de Chirurgie Esthétique et Maxillo-Faciale
-                </span>
-                .
-              </p>
-            </Reveal>
           </div>
 
-          {/* Biography column */}
-          <div className="col-span-12 md:col-span-7 lg:col-span-7 lg:pl-10">
-            <SplitHeading
-              as="h2"
-              className="display-lg text-[clamp(1.75rem,5vw,4rem)] text-[var(--color-ink)]"
-              text="Vingt années au service"
-            />
-            <div className="mt-2">
-              <SplitHeading
-                as="h2"
-                className="display-lg italic text-[clamp(1.75rem,5vw,4rem)] text-[var(--color-cognac-deep)]"
-                text="de la face."
-                delay={0.06}
-              />
-            </div>
-
-            <Reveal delay={0.2} className="mt-8 max-w-[58ch]">
+          {/* 3 · Intro paragraph — mobile order-3, desktop right col row 2 */}
+          <div className="order-3 col-span-12 lg:col-span-7 lg:col-start-6 lg:row-start-2 lg:order-none">
+            <Reveal delay={0.2} className="max-w-[58ch]">
               <p className="font-display text-[clamp(1.05rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
                 Le Docteur Hannouni Youssef exerce à Marrakech, dans son centre de
                 chirurgie esthétique et maxillo-faciale situé au cœur de Guéliz. Fort
@@ -238,24 +214,56 @@ export function Doctor() {
                 font qu’un.
               </p>
             </Reveal>
+          </div>
 
-            <RevealStagger className="mt-12 md:mt-16" stagger={0.09}>
-              <div className="eyebrow mb-6">Parcours · Diplômes & Affiliations</div>
-              <ul className="divide-y divide-[var(--color-line)]">
-                {milestones.map((m, i) => (
-                  <StaggerItem key={i}>
-                    <li className="grid grid-cols-12 gap-4 py-5 md:py-6">
-                      <span className="col-span-4 md:col-span-3 font-display italic text-[15px] text-[var(--color-cognac-deep)] whitespace-nowrap">
-                        {m.year}
-                      </span>
-                      <span className="col-span-8 md:col-span-9 text-[14.5px] leading-[1.6] text-[var(--color-ink-soft)]">
-                        {m.label}
-                      </span>
-                    </li>
-                  </StaggerItem>
-                ))}
-              </ul>
-            </RevealStagger>
+          {/* 4 · Parcours prose — mobile order-4, desktop right col row 3 */}
+          <div className="order-4 col-span-12 lg:col-span-7 lg:col-start-6 lg:row-start-3 lg:order-none">
+            <Reveal delay={0.25}>
+              <div className="eyebrow mb-4">Parcours · Diplômes & Affiliations</div>
+              <p className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[58ch]">
+                Lauréat de la{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">
+                  Faculté de médecine de Casablanca
+                </span>{" "}
+                en 1999, le Docteur Hannouni effectue son{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">
+                  internat au CHU de Casablanca
+                </span>{" "}
+                de 2000 à 2003. Il soutient sa{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">
+                  thèse de doctorat en médecine
+                </span>
+                , consacrée à la chirurgie de la main, en 2004, puis obtient son diplôme
+                de l’
+                <span className="italic text-[var(--color-cognac-deep)]">
+                  Université de Bordeaux
+                </span>{" "}
+                entre 2007 et 2008.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* 5 · Affiliations narrative — mobile order-5, desktop left col row 3 */}
+          <div className="order-5 col-span-12 lg:col-span-5 lg:col-start-1 lg:row-start-3 lg:order-none">
+            <Reveal delay={0.3}>
+              <div className="eyebrow mb-4">Au-delà des diplômes</div>
+              <p className="font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.6] tracking-[-0.005em] text-[var(--color-ink-soft)] max-w-[44ch]">
+                Une formation enrichie auprès de{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">
+                  référents internationaux
+                </span>
+                . Attaché au service de chirurgie esthétique et maxillo-faciale de
+                l’hôpital{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">Pellegrin</span>, en
+                France, puis compagnonnage auprès du{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">Professeur P. Caix</span>,
+                sommité mondiale en anatomie, dissection et recherche. Aujourd’hui membre de la{" "}
+                <span className="italic text-[var(--color-cognac-deep)]">
+                  Société Marocaine de Chirurgie Esthétique et Maxillo-Faciale
+                </span>
+                .
+              </p>
+            </Reveal>
           </div>
         </div>
       </div>

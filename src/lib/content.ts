@@ -18,9 +18,9 @@ export const clinic = {
   whatsapp: "+212524457700",
   email: "contact@centre-hannouni.ma",
   hours: [
-    { day: "Lundi — Vendredi", hours: "09h00 — 19h00" },
-    { day: "Lun. — Ven. · sur rendez-vous", hours: "20h00 — 23h30" },
-    { day: "Samedi", hours: "09h00 — 13h00" },
+    { day: "Lundi à Vendredi", hours: "09h00 à 19h00" },
+    { day: "Lun. à Ven. · sur rendez-vous", hours: "20h00 à 23h30" },
+    { day: "Samedi", hours: "09h00 à 13h00" },
     { day: "Dimanche", hours: "Sur rendez-vous" },
   ],
   mapsQuery: "Dr+Hannouni+Youssef+Marrakech+Gueliz",
@@ -57,12 +57,12 @@ export const centreFeatures = [
   {
     title: "Un accompagnement humain",
     body:
-      "Un personnel paramédical qualifié, discret et bienveillant — pour une prise en charge aussi rigoureuse qu’attentive, de la première consultation au suivi.",
+      "Un personnel paramédical qualifié, discret et bienveillant, pour une prise en charge aussi rigoureuse qu’attentive, de la première consultation au suivi.",
   },
   {
     title: "Confort & discrétion",
     body:
-      "Tous les éléments de confort et de bien-être ont été intégrés à la structure — une expérience feutrée, protégée, à la hauteur de nos patients.",
+      "Tous les éléments de confort et de bien-être ont été intégrés à la structure : une expérience feutrée, protégée, à la hauteur de nos patients.",
   },
 ];
 
@@ -75,7 +75,7 @@ export const expertiseAreas = [
       "Un éventail de soins non invasifs pour préserver la fraîcheur du visage et corriger les signes du temps avec subtilité.",
     items: [
       "Botox",
-      "Acide hyaluronique — comblement & volumétrie",
+      "Acide hyaluronique · comblement & volumétrie",
       "Hyaluronidase",
       "Dermabrasion",
       "Lasers",
@@ -89,7 +89,7 @@ export const expertiseAreas = [
     name: "Chirurgie plastique réparatrice",
     lead: "Restaurer avec rigueur.",
     body:
-      "Une démarche chirurgicale précise pour réparer la peau, les tissus et les cicatrices — avec une attention extrême au détail.",
+      "Une démarche chirurgicale précise pour réparer la peau, les tissus et les cicatrices, avec une attention extrême au détail.",
     items: [
       "Chirurgie cutanée & correction des cicatrices",
       "Chirurgie des tumeurs cutanées",
@@ -102,7 +102,7 @@ export const expertiseAreas = [
     name: "Chirurgie esthétique du visage",
     lead: "L’équilibre, sans artifice.",
     body:
-      "Une chirurgie esthétique centrée sur l’harmonie du visage et de son expression — jamais sur l’exagération.",
+      "Une chirurgie esthétique centrée sur l’harmonie du visage et de son expression, jamais sur l’exagération.",
     items: [
       "Rhinoplastie",
       "Génioplastie",
@@ -132,7 +132,7 @@ export const expertiseAreas = [
     name: "Rhinoplastie",
     lead: "L’art du nez, silencieusement.",
     body:
-      "Une expertise dédiée à la rhinoplastie — esthétique et fonctionnelle — pour un résultat naturel, personnalisé, sans signature visible.",
+      "Une expertise dédiée à la rhinoplastie, esthétique et fonctionnelle, pour un résultat naturel, personnalisé, sans signature visible.",
     items: [
       "Rhinoplastie esthétique",
       "Rhinoplastie fonctionnelle",
@@ -158,7 +158,7 @@ export const interventionsHighlight = [
   {
     name: "Blépharoplastie",
     sub: "Chirurgie des paupières",
-    teaser: "Rouvrir le regard — discrètement, durablement.",
+    teaser: "Rouvrir le regard, discrètement et durablement.",
   },
   {
     name: "Génioplastie",
@@ -169,13 +169,13 @@ export const interventionsHighlight = [
     name: "Lipofilling du visage",
     sub: "Volumétrie",
     teaser:
-      "Restaurer les volumes avec la propre graisse du patient — naturel absolu.",
+      "Restaurer les volumes avec la propre graisse du patient : naturel absolu.",
   },
   {
     name: "Acide hyaluronique",
     sub: "Médecine esthétique",
     teaser:
-      "Corriger, volumiser, hydrater — sans bistouri, sans éviction.",
+      "Corriger, volumiser, hydrater : sans bistouri, sans éviction.",
   },
   {
     name: "Botox",
@@ -196,7 +196,7 @@ export const whyUs = [
     num: "01",
     title: "Une expertise rare",
     body:
-      "Chirurgie esthétique, plastique, réparatrice et maxillo-faciale — une double lecture, médicale et anatomique, de la face.",
+      "Chirurgie esthétique, plastique, réparatrice et maxillo-faciale : une double lecture, médicale et anatomique, de la face.",
   },
   {
     num: "02",
@@ -214,19 +214,19 @@ export const whyUs = [
     num: "04",
     title: "Une écoute sincère",
     body:
-      "Une consultation approfondie, une recommandation honnête — y compris quand l’intervention n’est pas la bonne réponse.",
+      "Une consultation approfondie, une recommandation honnête, y compris quand l’intervention n’est pas la bonne réponse.",
   },
   {
     num: "05",
     title: "Un centre discret",
     body:
-      "Une structure feutrée en plein cœur de Guéliz — confidentialité totale, confort irréprochable.",
+      "Une structure feutrée en plein cœur de Guéliz : confidentialité totale, confort irréprochable.",
   },
   {
     num: "06",
     title: "Un suivi intégré",
     body:
-      "De la première consultation aux contrôles post-opératoires, un accompagnement unique — pensé, calibré, humain.",
+      "De la première consultation aux contrôles post-opératoires, un accompagnement unique, pensé, calibré, humain.",
   },
 ];
 

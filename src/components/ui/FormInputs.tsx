@@ -90,7 +90,7 @@ export function CustomSelect({ id, label, value, onChange, options, required }: 
         onKeyDown={onKey}
         className="w-full bg-transparent border-0 border-b border-[var(--color-line)] pt-6 pb-[0.65rem] text-[15px] text-left text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-ink)] appearance-none cursor-pointer pr-8"
       >
-        <span className={filled ? "" : "opacity-0"}>{value || "—"}</span>
+        <span className={filled ? "" : "opacity-0"}>{value || "·"}</span>
       </button>
       <label htmlFor={id}>
         {label}
@@ -280,7 +280,7 @@ export function CustomDate({ id, label, value, onChange, required, min, max }: D
         onClick={() => setOpen((o) => !o)}
         className="w-full bg-transparent border-0 border-b border-[var(--color-line)] pt-6 pb-[0.65rem] text-[15px] text-left text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-ink)] appearance-none cursor-pointer pr-8"
       >
-        <span className={filled ? "" : "opacity-0"}>{formatDisplay(value) || "—"}</span>
+        <span className={filled ? "" : "opacity-0"}>{formatDisplay(value) || "·"}</span>
       </button>
       <label htmlFor={id}>
         {label}

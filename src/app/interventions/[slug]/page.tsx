@@ -29,7 +29,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const i = getInterventionBySlug(slug);
   if (!i) return {};
-  const title = `${i.name} — ${clinic.shortName} · ${i.category}`;
+  const title = `${i.name} · ${clinic.shortName} · ${i.category}`;
   return {
     title,
     description: i.intro,

@@ -68,33 +68,33 @@ export const interventionDetails: InterventionDetail[] = [
       {
         title: "Une chirurgie de précision",
         body:
-          "Le nez est l’ancre du visage. Sa modification, même infime, déplace l’équilibre de l’ensemble. Notre approche commence par une analyse anatomique du visage, puis une planification millimétrée — pour un résultat qui ne se remarque qu’à sa cohérence.",
+          "Le nez est l’ancre du visage. Sa modification, même infime, déplace l’équilibre de l’ensemble. Notre approche commence par une analyse anatomique du visage, puis une planification millimétrée, pour un résultat qui ne se remarque qu’à sa cohérence.",
       },
       {
         title: "Esthétique & fonctionnelle",
         body:
-          "Nous intégrons systématiquement l’évaluation respiratoire à la planification esthétique. Une rhinoplastie réussie corrige les disgrâces visibles sans jamais compromettre — et idéalement en améliorant — la fonction nasale.",
+          "Nous intégrons systématiquement l’évaluation respiratoire à la planification esthétique. Une rhinoplastie réussie corrige les disgrâces visibles sans jamais compromettre la fonction nasale, et idéalement en l’améliorant.",
       },
     ],
     indications: [
       "Bosse dorsale, nez busqué",
       "Pointe tombante ou trop projetée",
       "Asymétrie post-traumatique",
-      "Cloison déviée — gêne respiratoire",
+      "Cloison déviée · gêne respiratoire",
       "Reprise après une première rhinoplastie",
     ],
     meta: {
-      duration: "1h30 — 3h",
+      duration: "1h30 à 3h",
       anesthesia: "Générale",
       hospitalization: "Ambulatoire ou 1 nuit",
-      socialResume: "10 — 14 jours",
+      socialResume: "10 à 14 jours",
     },
     protocol: [
       {
         step: "01",
         title: "Consultation approfondie",
         body:
-          "Analyse morphologique, simulation 2D, écoute des attentes — la consultation est le moment où se dessine l’intention chirurgicale.",
+          "Analyse morphologique, simulation 2D, écoute des attentes : la consultation est le moment où se dessine l’intention chirurgicale.",
         duration: "60 min",
       },
       {
@@ -108,7 +108,7 @@ export const interventionDetails: InterventionDetail[] = [
         title: "Intervention",
         body:
           "Sous anesthésie générale, en bloc opératoire conforme aux normes internationales. Techniques mini-invasives privilégiées.",
-        duration: "1h30 — 3h",
+        duration: "1h30 à 3h",
       },
       {
         step: "04",
@@ -154,7 +154,7 @@ export const interventionDetails: InterventionDetail[] = [
       portrait: "portrait",
     },
     intro:
-      "Le lifting cervico-facial restaure l’ovale du visage et la ligne du cou en repositionnant les structures profondes. C’est une chirurgie d’équilibre — jamais d’étirement.",
+      "Le lifting cervico-facial restaure l’ovale du visage et la ligne du cou en repositionnant les structures profondes. C’est une chirurgie d’équilibre, jamais d’étirement.",
     presentation: [
       {
         title: "Repositionner, jamais tirer",
@@ -174,10 +174,10 @@ export const interventionDetails: InterventionDetail[] = [
       "Affaissement des plis nasogéniens (selon technique)",
     ],
     meta: {
-      duration: "3h — 4h",
+      duration: "3h à 4h",
       anesthesia: "Générale",
       hospitalization: "1 nuit",
-      socialResume: "14 — 21 jours",
+      socialResume: "14 à 21 jours",
     },
     protocol: [
       {
@@ -198,7 +198,7 @@ export const interventionDetails: InterventionDetail[] = [
         title: "Intervention SMAS",
         body:
           "Repositionnement des structures profondes, redrapage cutané sans tension. Cicatrices dissimulées dans les plis péri-auriculaires.",
-        duration: "3h — 4h",
+        duration: "3h à 4h",
       },
       {
         step: "04",
@@ -217,7 +217,7 @@ export const interventionDetails: InterventionDetail[] = [
     faq: [
       {
         q: "Le lifting va-t-il modifier mes traits ?",
-        a: "Non. L’objectif est de repositionner — pas de transformer. Vos proches reconnaîtront un visage reposé, jamais étranger.",
+        a: "Non. L’objectif est de repositionner, pas de transformer. Vos proches reconnaîtront un visage reposé, jamais étranger.",
       },
       {
         q: "Combien de temps tient un lifting ?",
@@ -230,7 +230,7 @@ export const interventionDetails: InterventionDetail[] = [
     slug: "blepharoplastie",
     name: "Blépharoplastie",
     category: "Chirurgie des paupières",
-    teaser: "Rouvrir le regard — discrètement, durablement.",
+    teaser: "Rouvrir le regard, discrètement et durablement.",
     image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Ble%CC%81pharoplastie.png",
     hero: {
       eyebrow: "III · Chirurgie des paupières",
@@ -254,10 +254,10 @@ export const interventionDetails: InterventionDetail[] = [
       "Asymétrie palpébrale",
     ],
     meta: {
-      duration: "1h — 2h",
+      duration: "1h à 2h",
       anesthesia: "Locale ou générale",
       hospitalization: "Ambulatoire",
-      socialResume: "7 — 10 jours",
+      socialResume: "7 à 10 jours",
     },
     protocol: [
       {
@@ -272,7 +272,7 @@ export const interventionDetails: InterventionDetail[] = [
         title: "Intervention",
         body:
           "Tracé minutieux dans les plis. Technique trans-conjonctivale possible pour les paupières inférieures (sans cicatrice visible).",
-        duration: "1h — 2h",
+        duration: "1h à 2h",
       },
       {
         step: "03",
@@ -291,7 +291,7 @@ export const interventionDetails: InterventionDetail[] = [
     faq: [
       {
         q: "Peut-on combiner blépharoplastie et lifting ?",
-        a: "Oui — c’est même fréquent. La cohérence du regard avec l’ovale est essentielle pour un résultat harmonieux.",
+        a: "Oui, c’est même fréquent. La cohérence du regard avec l’ovale est essentielle pour un résultat harmonieux.",
       },
       {
         q: "L’intervention modifie-t-elle la forme de l’œil ?",
@@ -328,10 +328,10 @@ export const interventionDetails: InterventionDetail[] = [
       "Disproportion menton / lèvre / nez",
     ],
     meta: {
-      duration: "1h — 2h",
+      duration: "1h à 2h",
       anesthesia: "Générale",
       hospitalization: "Ambulatoire",
-      socialResume: "7 — 10 jours",
+      socialResume: "7 à 10 jours",
     },
     protocol: [
       {
@@ -344,8 +344,8 @@ export const interventionDetails: InterventionDetail[] = [
         step: "02",
         title: "Intervention par voie endo-buccale",
         body:
-          "Pas de cicatrice visible — l’incision est faite à l’intérieur de la bouche. Ostéotomie ou implant selon le plan.",
-        duration: "1h — 2h",
+          "Pas de cicatrice visible : l’incision est faite à l’intérieur de la bouche. Ostéotomie ou implant selon le plan.",
+        duration: "1h à 2h",
       },
       {
         step: "03",
@@ -364,7 +364,7 @@ export const interventionDetails: InterventionDetail[] = [
     faq: [
       {
         q: "Y a-t-il une cicatrice visible ?",
-        a: "Non — l’abord est endo-buccal. Aucune cicatrice n’apparaît sur la peau.",
+        a: "Non, l’abord est endo-buccal. Aucune cicatrice n’apparaît sur la peau.",
       },
       {
         q: "Peut-on associer la génioplastie à une rhinoplastie ?",
@@ -378,7 +378,7 @@ export const interventionDetails: InterventionDetail[] = [
     name: "Lipofilling du visage",
     category: "Volumétrie",
     teaser:
-      "Restaurer les volumes avec la propre graisse du patient — naturel absolu.",
+      "Restaurer les volumes avec la propre graisse du patient : naturel absolu.",
     image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Lipofilling%20du%20visage.png",
     hero: {
       eyebrow: "V · Volumétrie",
@@ -390,7 +390,7 @@ export const interventionDetails: InterventionDetail[] = [
       "Le lipofilling restaure les volumes du visage avec votre propre graisse, prélevée sur une zone donneuse. C’est l’apport de matière le plus naturel qui soit.",
     presentation: [
       {
-        title: "Une matière biocompatible — la vôtre",
+        title: "Une matière biocompatible : la vôtre",
         body:
           "La graisse autologue présente l’avantage absolu d’être votre propre tissu. Une fois intégrée, elle vit, vieillit et se comporte comme le reste de votre visage.",
       },
@@ -405,7 +405,7 @@ export const interventionDetails: InterventionDetail[] = [
       duration: "1h30",
       anesthesia: "Locale ou générale légère",
       hospitalization: "Ambulatoire",
-      socialResume: "5 — 8 jours",
+      socialResume: "5 à 8 jours",
     },
     protocol: [
       {
@@ -441,7 +441,7 @@ export const interventionDetails: InterventionDetail[] = [
       },
       {
         q: "Peut-on combiner lipofilling et lifting ?",
-        a: "Oui — c’est l’association de référence pour traiter à la fois la perte de tonicité et de volume.",
+        a: "Oui, c’est l’association de référence pour traiter à la fois la perte de tonicité et de volume.",
       },
     ],
     related: ["lifting-cervico-facial", "blepharoplastie", "acide-hyaluronique"],
@@ -450,7 +450,7 @@ export const interventionDetails: InterventionDetail[] = [
     slug: "acide-hyaluronique",
     name: "Acide hyaluronique",
     category: "Médecine esthétique",
-    teaser: "Corriger, volumiser, hydrater — sans bistouri, sans éviction.",
+    teaser: "Corriger, volumiser, hydrater : sans bistouri, sans éviction.",
     image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Acide%20hyaluronique.png",
     hero: {
       eyebrow: "VI · Médecine esthétique",
@@ -459,23 +459,23 @@ export const interventionDetails: InterventionDetail[] = [
       portrait: "result-b",
     },
     intro:
-      "L’acide hyaluronique est l’outil le plus polyvalent de la médecine esthétique. Bien posé, il corrige avec subtilité — jamais avec excès.",
+      "L’acide hyaluronique est l’outil le plus polyvalent de la médecine esthétique. Bien posé, il corrige avec subtilité, jamais avec excès.",
     presentation: [
       {
         title: "La règle d’or : la mesure",
         body:
-          "Notre approche est minimaliste — nous ne posons que ce qui est strictement nécessaire pour rétablir un équilibre. Aucun visage ne doit porter la signature d’un produit.",
+          "Notre approche est minimaliste : nous ne posons que ce qui est strictement nécessaire pour rétablir un équilibre. Aucun visage ne doit porter la signature d’un produit.",
       },
     ],
     indications: [
       "Sillons nasogéniens, plis d’amertume",
       "Cernes creux (sillon naso-jugal)",
       "Pommettes, ovale du visage",
-      "Lèvres — hydratation, contour, volume mesuré",
+      "Lèvres · hydratation, contour, volume mesuré",
       "Nez médical (rhinoplastie sans bistouri légère)",
     ],
     meta: {
-      duration: "30 — 45 min",
+      duration: "30 à 45 min",
       anesthesia: "Crème anesthésiante",
       hospitalization: "Ambulatoire",
       socialResume: "Immédiate",
@@ -492,7 +492,7 @@ export const interventionDetails: InterventionDetail[] = [
         title: "Injection",
         body:
           "Technique à la canule privilégiée pour minimiser le risque vasculaire et l’inconfort.",
-        duration: "20 — 30 min",
+        duration: "20 à 30 min",
       },
       {
         step: "03",
@@ -537,7 +537,7 @@ export const interventionDetails: InterventionDetail[] = [
       "Le botox détend les muscles responsables des rides d’expression. La règle est la mesure : le visage doit rester mobile, expressif, vivant.",
     presentation: [
       {
-        title: "Rides d’expression — pas rides cutanées",
+        title: "Rides d’expression · pas rides cutanées",
         body:
           "Le botox ne traite pas les plis cutanés profonds (qui relèvent du lifting ou de l’AH). Il agit en amont, en relâchant les muscles à l’origine du pli.",
       },
@@ -546,11 +546,11 @@ export const interventionDetails: InterventionDetail[] = [
       "Rides du lion (entre les sourcils)",
       "Rides frontales",
       "Pattes d’oie",
-      "Bruxisme — masséters hypertrophiés",
+      "Bruxisme · masséters hypertrophiés",
       "Hyperhidrose axillaire ou palmaire",
     ],
     meta: {
-      duration: "15 — 20 min",
+      duration: "15 à 20 min",
       anesthesia: "Aucune",
       hospitalization: "Ambulatoire",
       socialResume: "Immédiate",
@@ -590,7 +590,7 @@ export const interventionDetails: InterventionDetail[] = [
       },
       {
         q: "Le visage va-t-il paraître figé ?",
-        a: "Non — pas avec un dosage juste. Notre approche privilégie une atténuation, jamais une paralysie.",
+        a: "Non, pas avec un dosage juste. Notre approche privilégie une atténuation, jamais une paralysie.",
       },
     ],
     related: ["acide-hyaluronique", "blepharoplastie", "lipofilling-du-visage"],
@@ -614,7 +614,7 @@ export const interventionDetails: InterventionDetail[] = [
       {
         title: "Fonction d’abord, esthétique ensuite",
         body:
-          "Une mauvaise occlusion compromet la mastication, la respiration, la phonation. La chirurgie orthognatique restaure d’abord la fonction — la transformation esthétique en découle naturellement.",
+          "Une mauvaise occlusion compromet la mastication, la respiration, la phonation. La chirurgie orthognatique restaure d’abord la fonction. La transformation esthétique en découle naturellement.",
       },
       {
         title: "Une équipe pluridisciplinaire",
@@ -630,10 +630,10 @@ export const interventionDetails: InterventionDetail[] = [
       "Profil disharmonieux secondaire",
     ],
     meta: {
-      duration: "3h — 5h",
+      duration: "3h à 5h",
       anesthesia: "Générale",
-      hospitalization: "2 — 3 nuits",
-      socialResume: "21 — 30 jours",
+      hospitalization: "2 à 3 nuits",
+      socialResume: "21 à 30 jours",
     },
     protocol: [
       {
@@ -653,7 +653,7 @@ export const interventionDetails: InterventionDetail[] = [
         title: "Intervention",
         body:
           "Ostéotomies maxillaire et / ou mandibulaire selon le plan. Voie endo-buccale, aucune cicatrice cutanée.",
-        duration: "3h — 5h",
+        duration: "3h à 5h",
       },
       {
         step: "04",

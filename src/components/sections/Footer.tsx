@@ -75,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-6 text-[11px] uppercase tracking-[0.2em] text-[var(--color-ivory)]/55">
-          <span>© {year} Centre du Docteur Hannouni · Marrakech — Tous droits réservés</span>
+          <span>© {year} Centre du Docteur Hannouni · Marrakech · Tous droits réservés</span>
           <div className="flex items-center gap-6">
             <span>Mentions légales</span>
             <span>Politique de confidentialité</span>
