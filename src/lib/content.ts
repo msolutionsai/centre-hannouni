@@ -26,6 +26,7 @@ export const clinic = {
 };
 
 export const nav = [
+  { label: "Accueil", href: "/#top" },
   { label: "Interventions", href: "/#interventions" },
   { label: "Le Centre", href: "/#centre" },
   { label: "Dr Hannouni", href: "/#praticien" },
