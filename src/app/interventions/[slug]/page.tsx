@@ -33,9 +33,14 @@ export async function generateMetadata({
   return {
     title,
     description: i.intro,
+    alternates: {
+      canonical: `/interventions/${i.slug}`,
+    },
     openGraph: {
       title,
       description: i.intro,
+      url: `/interventions/${i.slug}`,
+      type: "article",
     },
   };
 }
@@ -51,8 +56,53 @@ export default async function InterventionPage({
 
   const related = getRelated(intervention.related);
 
+  const SITE_URL = "https://centrehannouni.com";
+  const procedureLd = {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    "@id": `${SITE_URL}/interventions/${intervention.slug}#procedure`,
+    name: intervention.name,
+    alternateName: intervention.category,
+    description: intervention.intro,
+    procedureType: "SurgicalProcedure",
+    image: intervention.image,
+    url: `${SITE_URL}/interventions/${intervention.slug}`,
+    bodyLocation: "Face",
+    preparation: intervention.protocol[0]?.body,
+    followup: intervention.protocol[intervention.protocol.length - 1]?.body,
+    performer: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#founder`,
+      name: clinic.doctor.fullName,
+      jobTitle: clinic.doctor.title,
+    },
+    isAvailableAtOrFrom: { "@id": `${SITE_URL}/#clinic` },
+  };
+
+  const faqLd = intervention.faq.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: intervention.faq.map((q) => ({
+          "@type": "Question",
+          name: q.q,
+          acceptedAnswer: { "@type": "Answer", text: q.a },
+        })),
+      }
+    : null;
+
   return (
     <main className="relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(procedureLd) }}
+      />
+      {faqLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      ) : null}
       <Nav />
 
       {/* Hero — name + lead + portrait + meta */}
