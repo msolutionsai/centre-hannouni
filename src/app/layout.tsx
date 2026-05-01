@@ -104,8 +104,8 @@ const structuredData = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 31.6358,
-    longitude: -7.9911,
+    latitude: 31.6325077,
+    longitude: -8.0150143,
   },
   openingHoursSpecification: [
     {
@@ -147,6 +147,10 @@ const structuredData = {
     "@type": "City",
     name: "Marrakech",
   },
+  sameAs: [
+    "https://www.google.com/maps?cid=15724608745825718949",
+    "https://www.google.com/maps/place/Dr+Hannouni+Youssef+-+Centre+de+chirurgie+esth%C3%A9tique+et+maxillo+faciale+Marrakech/@31.6325077,-8.0150143,17z/data=!3m1!4b1!4m6!3m5!1s0xdafef40f5970321:0xda3908577ef152a5!8m2!3d31.6325077!4d-8.0150143!16s%2Fg%2F11mk9qqf5x",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
