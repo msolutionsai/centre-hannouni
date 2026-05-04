@@ -148,6 +148,29 @@ body {
   resize: none;
 }
 .field input:focus, .field select:focus, .field textarea:focus { border-bottom-color: var(--color-ink); }
+
+/* Neutralise le fond bleu / jaune que les navigateurs (Webkit/Blink, Firefox) imposent
+   aux champs auto-remplis. On force la couleur du texte et on retarde la transition
+   pour que l'autofill ne réécrase pas les styles natifs. */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus,
+.field input:-webkit-autofill:active,
+.field textarea:-webkit-autofill,
+.field select:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-ink) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--color-ivory-50) inset !important;
+  caret-color: var(--color-ink);
+  border-bottom-color: var(--color-line) !important;
+  transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
+}
+.field input:autofill,
+.field textarea:autofill,
+.field select:autofill {
+  background: transparent !important;
+  color: var(--color-ink) !important;
+}
+
 .field label {
   position: absolute;
   left: 0;

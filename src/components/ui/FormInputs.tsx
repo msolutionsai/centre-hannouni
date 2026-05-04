@@ -167,6 +167,10 @@ const MONTHS_FR = [
   "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
   "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre",
 ];
+const MONTHS_SHORT_FR = [
+  "Janv.", "Févr.", "Mars", "Avr.", "Mai", "Juin",
+  "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc.",
+];
 const DAYS_FR = ["L", "M", "M", "J", "V", "S", "D"];
 
 function pad(n: number) {
@@ -187,8 +191,11 @@ function formatDisplay(s: string) {
   return `${pad(d.getDate())} ${MONTHS_FR[d.getMonth()].toLowerCase()} ${d.getFullYear()}`;
 }
 
+type ViewMode = "day" | "month" | "year";
+
 export function CustomDate({ id, label, value, onChange, required, min, max }: DateProps) {
   const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState<ViewMode>("day");
   const wrapRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -205,6 +212,7 @@ export function CustomDate({ id, label, value, onChange, required, min, max }: D
 
   useEffect(() => {
     if (open) {
+      setMode("day");
       const base = selected || today;
       setView({ y: base.getFullYear(), m: base.getMonth() });
     }
@@ -221,6 +229,24 @@ export function CustomDate({ id, label, value, onChange, required, min, max }: D
 
   const minDate = min ? fromISO(min) : null;
   const maxDate = max ? fromISO(max) : null;
+
+  const isMonthDisabled = (y: number, m: number) => {
+    const monthStart = new Date(y, m, 1);
+    const monthEnd = new Date(y, m + 1, 0);
+    if (minDate && monthEnd < minDate) return true;
+    if (maxDate && monthStart > maxDate) return true;
+    return false;
+  };
+  const isYearDisabled = (y: number) => {
+    if (minDate && y < minDate.getFullYear()) return true;
+    if (maxDate && y > maxDate.getFullYear()) return true;
+    return false;
+  };
+  const yearBlockStart = Math.floor(view.y / 12) * 12;
+  const yearBlock = useMemo(
+    () => Array.from({ length: 12 }, (_, i) => yearBlockStart + i),
+    [yearBlockStart]
+  );
 
   const days = useMemo(() => {
     const first = new Date(view.y, view.m, 1);
@@ -260,14 +286,26 @@ export function CustomDate({ id, label, value, onChange, required, min, max }: D
 
   const filled = value.trim() !== "";
 
-  const changeMonth = (delta: number) => {
-    setView((v) => {
-      const m = v.m + delta;
-      if (m < 0) return { y: v.y - 1, m: 11 };
-      if (m > 11) return { y: v.y + 1, m: 0 };
-      return { y: v.y, m };
-    });
+  const stepView = (delta: number) => {
+    if (mode === "day") {
+      setView((v) => {
+        const m = v.m + delta;
+        if (m < 0) return { y: v.y - 1, m: 11 };
+        if (m > 11) return { y: v.y + 1, m: 0 };
+        return { y: v.y, m };
+      });
+    } else if (mode === "month") {
+      setView((v) => ({ y: v.y + delta, m: v.m }));
+    } else {
+      setView((v) => ({ y: v.y + delta * 12, m: v.m }));
+    }
   };
+
+  const headerLabel = mode === "year"
+    ? `${yearBlockStart} — ${yearBlockStart + 11}`
+    : mode === "month"
+    ? `${view.y}`
+    : null;
 
   return (
     <div ref={wrapRef} className={`field ${filled ? "filled" : ""} relative`}>
@@ -303,22 +341,51 @@ export function CustomDate({ id, label, value, onChange, required, min, max }: D
           >
             <div className="flex items-center justify-between">
               <div className="font-display text-[15px] text-[var(--color-ink)]">
-                <span>{MONTHS_FR[view.m]}</span>{" "}
-                <span className="italic text-[var(--color-cognac-deep)]">{view.y}</span>
+                {mode === "day" ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setMode("month")}
+                      className="rounded-[2px] px-1 -mx-1 transition-colors hover:bg-[var(--color-stone-warm)] focus:outline-none focus:bg-[var(--color-stone-warm)]"
+                      aria-label="Choisir le mois"
+                    >
+                      {MONTHS_FR[view.m]}
+                    </button>{" "}
+                    <button
+                      type="button"
+                      onClick={() => setMode("year")}
+                      className="italic text-[var(--color-cognac-deep)] rounded-[2px] px-1 -mx-1 transition-colors hover:bg-[var(--color-stone-warm)] focus:outline-none focus:bg-[var(--color-stone-warm)]"
+                      aria-label="Choisir l’année"
+                    >
+                      {view.y}
+                    </button>
+                  </>
+                ) : mode === "month" ? (
+                  <button
+                    type="button"
+                    onClick={() => setMode("year")}
+                    className="italic text-[var(--color-cognac-deep)] rounded-[2px] px-1 -mx-1 transition-colors hover:bg-[var(--color-stone-warm)] focus:outline-none focus:bg-[var(--color-stone-warm)]"
+                    aria-label="Choisir l’année"
+                  >
+                    {headerLabel}
+                  </button>
+                ) : (
+                  <span className="italic text-[var(--color-cognac-deep)]">{headerLabel}</span>
+                )}
               </div>
               <div className="flex items-center gap-1">
                 <button
                   type="button"
-                  onClick={() => changeMonth(-1)}
-                  aria-label="Mois précédent"
+                  onClick={() => stepView(-1)}
+                  aria-label={mode === "day" ? "Mois précédent" : mode === "month" ? "Année précédente" : "Décennie précédente"}
                   className="grid h-8 w-8 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-ink)] transition-colors hover:border-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-ivory)]"
                 >
                   <Arrow size={10} className="rotate-180" />
                 </button>
                 <button
                   type="button"
-                  onClick={() => changeMonth(1)}
-                  aria-label="Mois suivant"
+                  onClick={() => stepView(1)}
+                  aria-label={mode === "day" ? "Mois suivant" : mode === "month" ? "Année suivante" : "Décennie suivante"}
                   className="grid h-8 w-8 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-ink)] transition-colors hover:border-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-ivory)]"
                 >
                   <Arrow size={10} />
@@ -326,48 +393,116 @@ export function CustomDate({ id, label, value, onChange, required, min, max }: D
               </div>
             </div>
 
-            <div className="mt-5 grid grid-cols-7 gap-y-1">
-              {DAYS_FR.map((d, i) => (
-                <div
-                  key={i}
-                  className="text-center text-[10px] uppercase tracking-[0.18em] text-[var(--color-ink-muted)] pb-2"
-                >
-                  {d}
-                </div>
-              ))}
-              {days.map((c, i) => {
-                const iso = toISO(c.y, c.m, c.d);
-                const isSelected = value === iso;
-                const isToday =
-                  c.y === today.getFullYear() && c.m === today.getMonth() && c.d === today.getDate();
-                const disabled = isDisabled(c.y, c.m, c.d);
-                return (
-                  <button
+            {mode === "day" && (
+              <div className="mt-5 grid grid-cols-7 gap-y-1">
+                {DAYS_FR.map((d, i) => (
+                  <div
                     key={i}
-                    type="button"
-                    disabled={disabled}
-                    onClick={() => {
-                      onChange(iso);
-                      setOpen(false);
-                      btnRef.current?.focus();
-                    }}
-                    className={`h-9 w-9 mx-auto rounded-full text-[13px] font-display transition-colors ${
-                      isSelected
-                        ? "bg-[var(--color-ink)] text-[var(--color-ivory)]"
-                        : disabled
-                        ? "text-[var(--color-line)] cursor-not-allowed"
-                        : !c.inMonth
-                        ? "text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] hover:bg-[var(--color-ivory-50)]"
-                        : isToday
-                        ? "text-[var(--color-cognac-deep)] ring-1 ring-[var(--color-cognac)] hover:bg-[var(--color-stone-warm)]"
-                        : "text-[var(--color-ink)] hover:bg-[var(--color-stone-warm)]"
-                    }`}
+                    className="text-center text-[10px] uppercase tracking-[0.18em] text-[var(--color-ink-muted)] pb-2"
                   >
-                    {c.d}
-                  </button>
-                );
-              })}
-            </div>
+                    {d}
+                  </div>
+                ))}
+                {days.map((c, i) => {
+                  const iso = toISO(c.y, c.m, c.d);
+                  const isSelected = value === iso;
+                  const isToday =
+                    c.y === today.getFullYear() && c.m === today.getMonth() && c.d === today.getDate();
+                  const disabled = isDisabled(c.y, c.m, c.d);
+                  return (
+                    <button
+                      key={i}
+                      type="button"
+                      disabled={disabled}
+                      onClick={() => {
+                        onChange(iso);
+                        setOpen(false);
+                        btnRef.current?.focus();
+                      }}
+                      className={`h-9 w-9 mx-auto rounded-full text-[13px] font-display transition-colors ${
+                        isSelected
+                          ? "bg-[var(--color-ink)] text-[var(--color-ivory)]"
+                          : disabled
+                          ? "text-[var(--color-line)] cursor-not-allowed"
+                          : !c.inMonth
+                          ? "text-[var(--color-ink-faint)] hover:text-[var(--color-ink)] hover:bg-[var(--color-ivory-50)]"
+                          : isToday
+                          ? "text-[var(--color-cognac-deep)] ring-1 ring-[var(--color-cognac)] hover:bg-[var(--color-stone-warm)]"
+                          : "text-[var(--color-ink)] hover:bg-[var(--color-stone-warm)]"
+                      }`}
+                    >
+                      {c.d}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {mode === "month" && (
+              <div className="mt-5 grid grid-cols-3 gap-2">
+                {MONTHS_SHORT_FR.map((m, i) => {
+                  const disabled = isMonthDisabled(view.y, i);
+                  const isSelected = selected
+                    ? selected.getFullYear() === view.y && selected.getMonth() === i
+                    : false;
+                  const isCurrent = view.m === i;
+                  return (
+                    <button
+                      key={m}
+                      type="button"
+                      disabled={disabled}
+                      onClick={() => {
+                        setView((v) => ({ ...v, m: i }));
+                        setMode("day");
+                      }}
+                      className={`h-11 rounded-[2px] text-[13px] font-display transition-colors ${
+                        isSelected
+                          ? "bg-[var(--color-ink)] text-[var(--color-ivory)]"
+                          : disabled
+                          ? "text-[var(--color-line)] cursor-not-allowed"
+                          : isCurrent
+                          ? "text-[var(--color-cognac-deep)] ring-1 ring-[var(--color-cognac)] hover:bg-[var(--color-stone-warm)]"
+                          : "text-[var(--color-ink)] hover:bg-[var(--color-stone-warm)]"
+                      }`}
+                    >
+                      {m}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {mode === "year" && (
+              <div className="mt-5 grid grid-cols-3 gap-2">
+                {yearBlock.map((y) => {
+                  const disabled = isYearDisabled(y);
+                  const isSelected = selected ? selected.getFullYear() === y : false;
+                  const isCurrent = view.y === y;
+                  return (
+                    <button
+                      key={y}
+                      type="button"
+                      disabled={disabled}
+                      onClick={() => {
+                        setView((v) => ({ ...v, y }));
+                        setMode("month");
+                      }}
+                      className={`h-11 rounded-[2px] text-[13px] font-display transition-colors ${
+                        isSelected
+                          ? "bg-[var(--color-ink)] text-[var(--color-ivory)]"
+                          : disabled
+                          ? "text-[var(--color-line)] cursor-not-allowed"
+                          : isCurrent
+                          ? "text-[var(--color-cognac-deep)] ring-1 ring-[var(--color-cognac)] hover:bg-[var(--color-stone-warm)]"
+                          : "text-[var(--color-ink)] hover:bg-[var(--color-stone-warm)]"
+                      }`}
+                    >
+                      {y}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
 
             <div className="mt-5 flex items-center justify-between border-t border-[var(--color-line)] pt-4">
               <button
