@@ -15,9 +15,10 @@ type SelectProps = {
   onChange: (v: string) => void;
   options: string[];
   required?: boolean;
+  error?: string | null;
 };
 
-export function CustomSelect({ id, label, value, onChange, options, required }: SelectProps) {
+export function CustomSelect({ id, label, value, onChange, options, required, error }: SelectProps) {
   const [open, setOpen] = useState(false);
   const [focusIdx, setFocusIdx] = useState(-1);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -77,7 +78,7 @@ export function CustomSelect({ id, label, value, onChange, options, required }: 
   );
 
   return (
-    <div ref={wrapRef} className={`field ${filled ? "filled" : ""} relative`}>
+    <div ref={wrapRef} className={`field ${filled ? "filled" : ""} ${error ? "has-error" : ""} relative`}>
       <button
         ref={btnRef}
         id={id}
@@ -86,9 +87,11 @@ export function CustomSelect({ id, label, value, onChange, options, required }: 
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={`${id}-listbox`}
+        aria-invalid={!!error}
+        aria-describedby={error ? `${id}-err` : undefined}
         onClick={() => setOpen((o) => !o)}
         onKeyDown={onKey}
-        className="w-full bg-transparent border-0 border-b border-[var(--color-line)] pt-6 pb-[0.65rem] text-[15px] text-left text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-ink)] appearance-none cursor-pointer pr-8"
+        className={`w-full bg-transparent border-0 border-b pt-6 pb-[0.65rem] text-[15px] text-left text-[var(--color-ink)] outline-none transition-colors appearance-none cursor-pointer pr-8 ${error ? "border-[#b3261e] focus:border-[#b3261e]" : "border-[var(--color-line)] focus:border-[var(--color-ink)]"}`}
       >
         <span className={filled ? "" : "opacity-0"}>{value || "·"}</span>
       </button>
@@ -100,6 +103,9 @@ export function CustomSelect({ id, label, value, onChange, options, required }: 
         className={`select-caret transition-transform duration-500 ${open ? "rotate-180 text-[var(--color-ink)]" : ""}`}
         size={14}
       />
+      {error && (
+        <p id={`${id}-err`} className="field-error">{error}</p>
+      )}
 
       <AnimatePresence>
         {open && (
@@ -161,6 +167,7 @@ type DateProps = {
   required?: boolean;
   min?: string;
   max?: string;
+  error?: string | null;
 };
 
 const MONTHS_FR = [
@@ -193,7 +200,7 @@ function formatDisplay(s: string) {
 
 type ViewMode = "day" | "month" | "year";
 
-export function CustomDate({ id, label, value, onChange, required, min, max }: DateProps) {
+export function CustomDate({ id, label, value, onChange, required, min, max, error }: DateProps) {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<ViewMode>("day");
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -308,15 +315,17 @@ export function CustomDate({ id, label, value, onChange, required, min, max }: D
     : null;
 
   return (
-    <div ref={wrapRef} className={`field ${filled ? "filled" : ""} relative`}>
+    <div ref={wrapRef} className={`field ${filled ? "filled" : ""} ${error ? "has-error" : ""} relative`}>
       <button
         ref={btnRef}
         id={id}
         type="button"
         aria-haspopup="dialog"
         aria-expanded={open}
+        aria-invalid={!!error}
+        aria-describedby={error ? `${id}-err` : undefined}
         onClick={() => setOpen((o) => !o)}
-        className="w-full bg-transparent border-0 border-b border-[var(--color-line)] pt-6 pb-[0.65rem] text-[15px] text-left text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-ink)] appearance-none cursor-pointer pr-8"
+        className={`w-full bg-transparent border-0 border-b pt-6 pb-[0.65rem] text-[15px] text-left text-[var(--color-ink)] outline-none transition-colors appearance-none cursor-pointer pr-8 ${error ? "border-[#b3261e] focus:border-[#b3261e]" : "border-[var(--color-line)] focus:border-[var(--color-ink)]"}`}
       >
         <span className={filled ? "" : "opacity-0"}>{formatDisplay(value) || "·"}</span>
       </button>
@@ -328,6 +337,9 @@ export function CustomDate({ id, label, value, onChange, required, min, max }: D
         className={`select-caret transition-transform duration-500 ${open ? "rotate-180 text-[var(--color-ink)]" : ""}`}
         size={14}
       />
+      {error && !open && (
+        <p id={`${id}-err`} className="field-error">{error}</p>
+      )}
 
       <AnimatePresence>
         {open && (

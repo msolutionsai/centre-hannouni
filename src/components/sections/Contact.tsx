@@ -57,6 +57,7 @@ function Field({
   required,
   autoComplete,
   inputMode,
+  error,
 }: {
   id: string;
   label: string;
@@ -66,11 +67,12 @@ function Field({
   required?: boolean;
   autoComplete?: string;
   inputMode?: "text" | "numeric" | "tel" | "email";
+  error?: string | null;
 }) {
   // Date inputs always render a native placeholder (jj/mm/aaaa), so we force "filled"
   const filled = value.trim() !== "" || type === "date";
   return (
-    <div className={`field ${filled ? "filled" : ""}`}>
+    <div className={`field ${filled ? "filled" : ""} ${error ? "has-error" : ""}`}>
       <input
         id={id}
         name={id}
@@ -81,11 +83,38 @@ function Field({
         placeholder=" "
         onChange={(e) => onChange(e.target.value)}
         required={required}
+        aria-invalid={!!error}
+        aria-describedby={error ? `${id}-err` : undefined}
       />
       <label htmlFor={id}>{label}{required && " *"}</label>
+      {error && (
+        <p id={`${id}-err`} className="field-error">{error}</p>
+      )}
     </div>
   );
 }
+
+// ---- Validation helpers ---------------------------------------------------
+function isEmailValid(s: string) {
+  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(s.trim());
+}
+function isPhoneValid(s: string) {
+  const digits = s.replace(/\D/g, "");
+  return digits.length >= 8 && digits.length <= 15;
+}
+function isBirthDateValid(s: string) {
+  if (!s) return false;
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+  if (!m) return false;
+  const d = new Date(s);
+  if (isNaN(d.getTime())) return false;
+  const year = d.getFullYear();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return year >= 1900 && d <= today;
+}
+
+type Errors = Partial<Record<keyof FormState, string>>;
 
 
 export function Contact() {
@@ -93,19 +122,46 @@ export function Contact() {
   const [data, setData] = useState<FormState>(initial);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [attempted, setAttempted] = useState<Record<number, boolean>>({});
 
   const upd = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setData((d) => ({ ...d, [k]: v }));
 
-  const stepValid = useMemo(() => {
-    if (step === 1) return data.gender !== "" && data.firstName.trim() !== "" && data.lastName.trim() !== "";
-    if (step === 2) return data.intervention.trim() !== "";
-    if (step === 3) return data.email.trim() !== "" && data.phone.trim() !== "" && data.consent;
-    return false;
-  }, [step, data]);
+  const errors: Errors = useMemo(() => {
+    const e: Errors = {};
+    if (data.gender === "") e.gender = "Merci de sélectionner votre civilité.";
+    if (!data.firstName.trim()) e.firstName = "Le prénom est requis.";
+    if (!data.lastName.trim()) e.lastName = "Le nom est requis.";
+    if (!data.birthDate) e.birthDate = "La date de naissance est requise.";
+    else if (!isBirthDateValid(data.birthDate)) e.birthDate = "Date invalide.";
+    if (!data.intervention.trim()) e.intervention = "Sélectionnez l’intervention souhaitée.";
+    if (!data.email.trim()) e.email = "L’adresse e-mail est requise.";
+    else if (!isEmailValid(data.email)) e.email = "Format d’e-mail invalide.";
+    if (!data.phone.trim()) e.phone = "Le numéro de téléphone est requis.";
+    else if (!isPhoneValid(data.phone)) e.phone = "Numéro invalide (8 chiffres minimum).";
+    if (!data.consent) e.consent = "Votre consentement est requis pour traiter la demande.";
+    return e;
+  }, [data]);
+
+  const step1Valid = !errors.gender && !errors.firstName && !errors.lastName && !errors.birthDate;
+  const step2Valid = !errors.intervention;
+  const step3Valid = !errors.email && !errors.phone && !errors.consent;
+  const stepValid = step === 1 ? step1Valid : step === 2 ? step2Valid : step3Valid;
+
+  // Show a field error only after the user attempted to advance/submit on that step
+  const showErr = (key: keyof FormState, onStep: number): string | null => {
+    if (!attempted[onStep]) return null;
+    return errors[key] ?? null;
+  };
+
+  const tryNext = () => {
+    setAttempted((a) => ({ ...a, [step]: true }));
+    if (stepValid) setStep((s) => s + 1);
+  };
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    setAttempted((a) => ({ ...a, [step]: true }));
     if (!stepValid) return;
     setStatus("sending");
     setErrorMsg(null);
@@ -340,15 +396,18 @@ export function Contact() {
                                 );
                               })}
                             </div>
+                            {showErr("gender", 1) && (
+                              <p className="field-error">{showErr("gender", 1)}</p>
+                            )}
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <Field id="firstName" label="Prénom" value={data.firstName} onChange={(v) => upd("firstName", v)} required autoComplete="given-name" />
+                            <Field id="firstName" label="Prénom" value={data.firstName} onChange={(v) => upd("firstName", v)} required autoComplete="given-name" error={showErr("firstName", 1)} />
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <Field id="lastName" label="Nom" value={data.lastName} onChange={(v) => upd("lastName", v)} required autoComplete="family-name" />
+                            <Field id="lastName" label="Nom" value={data.lastName} onChange={(v) => upd("lastName", v)} required autoComplete="family-name" error={showErr("lastName", 1)} />
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <CustomDate id="birthDate" label="Date de naissance" value={data.birthDate} onChange={(v) => upd("birthDate", v)} max={new Date().toISOString().slice(0,10)} />
+                            <CustomDate id="birthDate" label="Date de naissance" value={data.birthDate} onChange={(v) => upd("birthDate", v)} required max={new Date().toISOString().slice(0,10)} error={showErr("birthDate", 1)} />
                           </div>
                         </motion.div>
                       )}
@@ -363,7 +422,7 @@ export function Contact() {
                           className="grid grid-cols-12 gap-x-6 gap-y-5 md:gap-y-7"
                         >
                           <div className="col-span-12">
-                            <CustomSelect id="intervention" label="Intervention souhaitée" value={data.intervention} onChange={(v) => upd("intervention", v)} options={interventionOptions} required />
+                            <CustomSelect id="intervention" label="Intervention souhaitée" value={data.intervention} onChange={(v) => upd("intervention", v)} options={interventionOptions} required error={showErr("intervention", 2)} />
                           </div>
                           <div className="col-span-12 md:col-span-6">
                             <CustomDate id="preferredDate" label="Date souhaitée" value={data.preferredDate} onChange={(v) => upd("preferredDate", v)} min={new Date().toISOString().slice(0,10)} />
@@ -394,10 +453,10 @@ export function Contact() {
                           className="grid grid-cols-12 gap-x-6 gap-y-5 md:gap-y-7"
                         >
                           <div className="col-span-12 md:col-span-6">
-                            <Field id="email" label="Adresse e-mail" type="email" value={data.email} onChange={(v) => upd("email", v)} required autoComplete="email" inputMode="email" />
+                            <Field id="email" label="Adresse e-mail" type="email" value={data.email} onChange={(v) => upd("email", v)} required autoComplete="email" inputMode="email" error={showErr("email", 3)} />
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <Field id="phone" label="Téléphone" type="tel" value={data.phone} onChange={(v) => upd("phone", v)} required autoComplete="tel" inputMode="tel" />
+                            <Field id="phone" label="Téléphone" type="tel" value={data.phone} onChange={(v) => upd("phone", v)} required autoComplete="tel" inputMode="tel" error={showErr("phone", 3)} />
                           </div>
                           <div className="col-span-12">
                             <Field id="address" label="Adresse postale (facultatif)" value={data.address} onChange={(v) => upd("address", v)} autoComplete="street-address" />
@@ -423,6 +482,9 @@ export function Contact() {
                                 secret médical et aux règles de confidentialité.
                               </span>
                             </label>
+                            {showErr("consent", 3) && (
+                              <p className="field-error mt-2">{showErr("consent", 3)}</p>
+                            )}
                           </div>
                           {status === "error" && (
                             <div className="col-span-12 rounded-[2px] border border-red-300 bg-red-50/60 p-4 text-[13px] text-red-800">
@@ -446,9 +508,8 @@ export function Contact() {
                       {step < steps.length ? (
                         <button
                           type="button"
-                          onClick={() => stepValid && setStep((s) => s + 1)}
-                          disabled={!stepValid}
-                          className="btn btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
+                          onClick={tryNext}
+                          className="btn btn-primary"
                         >
                           Suivant
                           <Arrow size={14} />
@@ -456,7 +517,7 @@ export function Contact() {
                       ) : (
                         <button
                           type="submit"
-                          disabled={!stepValid || status === "sending"}
+                          disabled={status === "sending"}
                           className="btn btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
                         >
                           {status === "sending" ? "Envoi en cours…" : "Envoyer ma demande"}

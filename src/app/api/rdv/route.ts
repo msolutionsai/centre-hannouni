@@ -49,7 +49,21 @@ function sanitize(s: string | undefined | null) {
 }
 
 function isEmail(s: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(s);
+}
+function isPhone(s: string) {
+  const digits = s.replace(/\D/g, "");
+  return digits.length >= 8 && digits.length <= 15;
+}
+function isBirthDate(s: string) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+  if (!m) return false;
+  const d = new Date(s);
+  if (isNaN(d.getTime())) return false;
+  const year = d.getFullYear();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return year >= 1900 && d <= today;
 }
 
 export async function POST(req: Request) {
@@ -62,6 +76,7 @@ export async function POST(req: Request) {
 
   const firstName = sanitize(body.firstName);
   const lastName = sanitize(body.lastName);
+  const birthDate = sanitize(body.birthDate);
   const email = sanitize(body.email);
   const phone = sanitize(body.phone);
   const intervention = sanitize(body.intervention);
@@ -73,15 +88,21 @@ export async function POST(req: Request) {
       { status: 400 }
     );
   }
+  if (!isBirthDate(birthDate)) {
+    return NextResponse.json(
+      { error: "Merci d'indiquer une date de naissance valide." },
+      { status: 400 }
+    );
+  }
   if (!isEmail(email)) {
     return NextResponse.json(
       { error: "L'adresse e-mail renseignée ne semble pas valide." },
       { status: 400 }
     );
   }
-  if (!phone) {
+  if (!isPhone(phone)) {
     return NextResponse.json(
-      { error: "Merci d'indiquer un numéro de téléphone joignable." },
+      { error: "Merci d'indiquer un numéro de téléphone valide (8 chiffres minimum)." },
       { status: 400 }
     );
   }
@@ -115,7 +136,7 @@ export async function POST(req: Request) {
     prenom: firstName,
     nom: lastName,
     nomComplet: fullName,
-    dateNaissance: sanitize(body.birthDate),
+    dateNaissance: birthDate,
     email,
     telephone: phone,
     dateSouhaitee: sanitize(body.preferredDate),
