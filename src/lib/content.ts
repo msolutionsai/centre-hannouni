@@ -16,7 +16,7 @@ export const clinic = {
   phoneDisplay: "05 24 45 77 00",
   phoneE164: "+212524457700",
   whatsapp: "+212524457700",
-  email: "contact@centre-hannouni.ma",
+  email: "centre.hannouni@gmail.com",
   hours: [
     { day: "Lundi à Vendredi", hours: "09h00 à 19h00" },
     { day: "Lun. à Ven. · sur rendez-vous", hours: "20h00 à 23h30" },
