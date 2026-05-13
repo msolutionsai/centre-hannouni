@@ -57,13 +57,25 @@ export function Testimonials() {
               />
             </div>
           </div>
-          <Reveal delay={0.2} className="col-span-12 md:col-span-4 flex items-center gap-3 text-[13px] text-[var(--color-ink-soft)]">
-            <span className="flex text-[var(--color-cognac)]">
-              {[0, 1, 2, 3, 4].map((n) => (
-                <Star key={n} size={14} className="mr-0.5" />
-              ))}
-            </span>
-            <span className="tracking-[0.04em]">4,9 / 5 · Google · {clinic.address.city}</span>
+          <Reveal delay={0.2} className="col-span-12 md:col-span-4 flex flex-col items-start gap-1.5 text-[13px] text-[var(--color-ink-soft)] md:items-end">
+            <div className="flex items-center gap-3">
+              <span className="flex text-[var(--color-cognac)]" aria-hidden>
+                {[0, 1, 2, 3, 4].map((n) => (
+                  <Star key={n} size={14} className="mr-0.5" />
+                ))}
+              </span>
+              <span className="tracking-[0.04em]">
+                {clinic.googleRating.value} / {clinic.googleRating.bestRating} · Google · {clinic.address.city.split(",")[0]}
+              </span>
+            </div>
+            <a
+              href={clinic.googleBusinessUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-lux text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+            >
+              Voir les avis Google
+            </a>
           </Reveal>
         </div>
 

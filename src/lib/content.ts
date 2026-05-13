@@ -24,6 +24,19 @@ export const clinic = {
     { day: "Dimanche", hours: "Sur rendez-vous" },
   ],
   mapsQuery: "Dr+Hannouni+Youssef+Marrakech+Gueliz",
+  // Google Business Profile — used for the canonical sameAs link in JSON-LD
+  // and the "Voir les avis Google" link in the testimonials section.
+  googleBusinessUrl:
+    "https://www.google.com/maps?cid=15724608745825718949",
+  // Aggregate rating displayed on-page and emitted as AggregateRating in
+  // schema.org. The reviewCount must reflect reality — Google cross-checks
+  // schema rating data against the Google Business Profile. Update as new
+  // reviews come in (visible on the GBP dashboard).
+  googleRating: {
+    value: 5,
+    bestRating: 5,
+    reviewCount: 14,
+  },
 };
 
 export const nav = [

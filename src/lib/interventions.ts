@@ -126,16 +126,44 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     faq: [
       {
-        q: "L’intervention laisse-t-elle des cicatrices visibles ?",
-        a: "En technique fermée, les incisions sont strictement intra-nasales. En technique ouverte, une fine cicatrice columellaire devient quasi invisible en quelques mois.",
+        q: "Combien coûte une rhinoplastie à Marrakech ?",
+        a: "Le tarif d’une rhinoplastie est établi en consultation, après analyse morphologique et fonctionnelle. Il dépend de la technique (fermée, ouverte, primaire ou de reprise) et inclut le bloc opératoire, l’anesthésie et l’ensemble du suivi post-opératoire jusqu’à un an.",
       },
       {
-        q: "Quand voit-on le résultat définitif ?",
-        a: "Un nez retrouve sa forme à environ 80 % à six mois. Le résultat définitif s’apprécie à un an, voire dix-huit mois pour les peaux épaisses.",
+        q: "L’intervention laisse-t-elle des cicatrices visibles ?",
+        a: "En technique fermée, les incisions sont strictement intra-nasales et donc invisibles. En technique ouverte, une fine cicatrice columellaire de 4 à 5 mm devient quasi imperceptible en quelques mois.",
+      },
+      {
+        q: "Quand voit-on le résultat définitif d’une rhinoplastie ?",
+        a: "Un nez retrouve sa forme à environ 80 % à six mois. Le résultat définitif s’apprécie à un an, voire dix-huit mois pour les peaux épaisses. La patience fait partie intégrante du protocole.",
+      },
+      {
+        q: "La rhinoplastie est-elle douloureuse ?",
+        a: "L’intervention se déroule sous anesthésie générale, donc sans douleur. En post-opératoire, la sensation dominante est une congestion nasale, traitée par antalgiques simples. La douleur reste modérée et de courte durée.",
+      },
+      {
+        q: "Combien de temps dure la convalescence après une rhinoplastie ?",
+        a: "L’attelle nasale est retirée à sept jours. Les ecchymoses péri-orbitaires régressent en dix à quinze jours. La reprise sociale est possible à partir du dixième jour, sport doux à trois semaines, sport de contact à trois mois.",
+      },
+      {
+        q: "Quels sont les risques d’une rhinoplastie ?",
+        a: "Comme toute chirurgie, la rhinoplastie comporte des risques rares mais réels : œdème prolongé, asymétrie résiduelle, troubles de la cicatrisation, ou nécessité d’une retouche (5 à 10 % des cas). Une consultation détaillée vous présente l’ensemble du protocole de sécurité.",
+      },
+      {
+        q: "À partir de quel âge peut-on faire une rhinoplastie ?",
+        a: "La croissance nasale s’achève vers 16 ans chez la femme et 17 ans chez l’homme. Une rhinoplastie esthétique est donc envisageable à partir de cet âge, avec accord parental jusqu’à la majorité.",
       },
       {
         q: "Une rhinoplastie peut-elle être prise en charge ?",
-        a: "Seul le volet fonctionnel (septoplastie pour gêne respiratoire avérée) peut être pris en charge. Le volet esthétique reste hors prise en charge.",
+        a: "Seul le volet fonctionnel (septoplastie pour gêne respiratoire avérée, traumatisme) peut entrer dans une prise en charge médicale. Le volet purement esthétique reste à la charge du patient.",
+      },
+      {
+        q: "Peut-on respirer normalement après une rhinoplastie ?",
+        a: "La respiration est gênée pendant les premiers jours par l’œdème intra-nasal et la mèche éventuelle. Elle redevient normale en deux à trois semaines, et le plus souvent meilleure qu’avant si une septoplastie a été associée.",
+      },
+      {
+        q: "Quand puis-je reprendre le sport après une rhinoplastie ?",
+        a: "Marche dès le lendemain, sport doux (vélo d’appartement, cardio léger) à trois semaines, course et musculation à six semaines, sports de contact et arts martiaux à trois mois minimum.",
       },
     ],
     related: ["lifting-cervico-facial", "genioplastie", "lipofilling-du-visage"],
@@ -216,12 +244,40 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     faq: [
       {
-        q: "Le lifting va-t-il modifier mes traits ?",
-        a: "Non. L’objectif est de repositionner, pas de transformer. Vos proches reconnaîtront un visage reposé, jamais étranger.",
+        q: "Combien coûte un lifting cervico-facial à Marrakech ?",
+        a: "Le tarif d’un lifting cervico-facial est établi en consultation, après analyse anatomique et discussion du plan opératoire. Il intègre le bloc, l’anesthésie générale, la nuit d’hospitalisation et l’ensemble des consultations de suivi sur un an.",
       },
       {
-        q: "Combien de temps tient un lifting ?",
-        a: "Un lifting bien réalisé recule l’horloge de huit à dix ans. Le vieillissement reprend son cours, mais à partir d’un point de départ rajeuni.",
+        q: "Le lifting va-t-il modifier mes traits ?",
+        a: "Non. L’objectif d’un lifting SMAS est de repositionner les structures profondes, pas de transformer le visage. Vos proches reconnaîtront un visage reposé, jamais étranger — c’est précisément la signature d’un lifting réussi.",
+      },
+      {
+        q: "Combien de temps tient un lifting cervico-facial ?",
+        a: "Un lifting bien réalisé recule l’horloge biologique de huit à dix ans. Le vieillissement reprend son cours naturel, mais à partir d’un point de départ rajeuni. Un entretien par lipofilling ou médecine esthétique permet de prolonger ce bénéfice.",
+      },
+      {
+        q: "À quel âge envisager un lifting cervico-facial ?",
+        a: "Il n’y a pas d’âge précis. Le bon moment est celui où le relâchement de l’ovale et du cou commence à signer le visage. Pour la majorité des patients, cela se situe entre 45 et 65 ans, parfois plus tôt en cas de fonte volumique précoce.",
+      },
+      {
+        q: "Les cicatrices d’un lifting sont-elles visibles ?",
+        a: "Non. Les cicatrices sont dissimulées dans les plis naturels : devant et derrière l’oreille, et le long du cuir chevelu. Six mois après, elles sont quasi invisibles, même cheveux relevés.",
+      },
+      {
+        q: "L’intervention est-elle douloureuse ?",
+        a: "Le lifting est réalisé sous anesthésie générale, donc sans douleur. En post-opératoire, on note surtout une sensation de tension et d’engourdissement, traitée par antalgiques simples. La douleur véritable est exceptionnelle.",
+      },
+      {
+        q: "Quels sont les risques d’un lifting cervico-facial ?",
+        a: "Le risque le plus fréquent est l’hématome (1 à 3 % des cas), drainé sans séquelle. D’autres risques rares existent : troubles cicatriciels, paresthésies transitoires, atteinte d’une branche du nerf facial (exceptionnelle). Une consultation détaillée vous présente l’ensemble du protocole.",
+      },
+      {
+        q: "Combien de temps dure la convalescence ?",
+        a: "Une nuit d’hospitalisation, retour à domicile dès J+1. Les fils sont retirés à dix jours. Œdème et ecchymoses régressent en deux à trois semaines. Reprise sociale entre 14 et 21 jours, sport doux à six semaines, sport intensif à trois mois.",
+      },
+      {
+        q: "Peut-on combiner lifting et lipofilling ?",
+        a: "Oui, c’est même l’association de référence. Le lifting traite la laxité, le lipofilling restaure les volumes perdus (tempes, pommettes, ovale). Combinés, ils offrent un résultat global plus naturel et durable.",
       },
     ],
     related: ["blepharoplastie", "lipofilling-du-visage", "rhinoplastie"],
@@ -290,12 +346,44 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     faq: [
       {
+        q: "Combien coûte une blépharoplastie à Marrakech ?",
+        a: "Le tarif d’une blépharoplastie est établi en consultation. Il varie selon le geste (supérieure seule, inférieure seule, ou combinée) et inclut l’anesthésie, le bloc en ambulatoire et les consultations de suivi.",
+      },
+      {
+        q: "Y a-t-il des cicatrices visibles après une blépharoplastie ?",
+        a: "Non. Pour la paupière supérieure, la cicatrice est dissimulée dans le pli palpébral naturel. Pour la paupière inférieure, la voie trans-conjonctivale (à l’intérieur de la paupière) ne laisse aucune cicatrice cutanée.",
+      },
+      {
+        q: "L’opération est-elle douloureuse ?",
+        a: "Très peu. Sous anesthésie locale ou générale légère, l’intervention est indolore. Les suites se résument à une sensation de tension, traitée par antalgiques simples. Les patients reprennent une activité normale très vite.",
+      },
+      {
+        q: "Quelle est la durée de récupération d’une blépharoplastie ?",
+        a: "Œdème et ecchymoses palpébrales pendant 7 à 10 jours. Les fils sont retirés à J+7. Reprise sociale possible entre 7 et 10 jours, parfois moins avec du maquillage correcteur. Résultat définitif à trois mois.",
+      },
+      {
+        q: "À partir de quel âge envisager une blépharoplastie ?",
+        a: "Il n’y a pas d’âge précis. Le bon moment est celui où l’excès cutané ou les poches commencent à alourdir le regard. La majorité des patients se situe entre 40 et 70 ans, mais une indication peut exister plus tôt en cas de prédisposition familiale.",
+      },
+      {
+        q: "Quels sont les risques d’une blépharoplastie ?",
+        a: "Les risques sérieux sont exceptionnels. Plus fréquemment : sécheresse oculaire transitoire, larmoiement, asymétrie minime, cicatrice perceptible chez les peaux à risque. Un bilan ophtalmologique préalable est systématique en cas de doute.",
+      },
+      {
+        q: "Peut-on porter du maquillage après l’intervention ?",
+        a: "Le maquillage est autorisé dès l’ablation des fils (J+7), à condition d’utiliser des produits doux et de démaquiller avec délicatesse. Les lentilles peuvent être reportées à 15 jours environ.",
+      },
+      {
         q: "Peut-on combiner blépharoplastie et lifting ?",
-        a: "Oui, c’est même fréquent. La cohérence du regard avec l’ovale est essentielle pour un résultat harmonieux.",
+        a: "Oui, c’est même fréquent. La cohérence du regard avec l’ovale du visage est essentielle pour un résultat harmonieux. L’association blépharoplastie + lifting est l’une des plus demandées chez les patients de plus de 55 ans.",
       },
       {
         q: "L’intervention modifie-t-elle la forme de l’œil ?",
-        a: "Non, sauf demande explicite. L’objectif est de restaurer la forme naturelle, pas de la modifier.",
+        a: "Non, sauf demande explicite (canthopexie). L’objectif d’une blépharoplastie classique est de restaurer la forme naturelle du regard, pas de la modifier.",
+      },
+      {
+        q: "Quand puis-je reprendre le sport ?",
+        a: "Marche dès le lendemain, sport doux à 10 jours, sport intensif et activités à risque de choc à 4 semaines. La piscine est à reporter à 3 semaines.",
       },
     ],
     related: ["lifting-cervico-facial", "lipofilling-du-visage", "acide-hyaluronique"],
@@ -363,12 +451,44 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     faq: [
       {
-        q: "Y a-t-il une cicatrice visible ?",
-        a: "Non, l’abord est endo-buccal. Aucune cicatrice n’apparaît sur la peau.",
+        q: "Combien coûte une génioplastie à Marrakech ?",
+        a: "Le tarif d’une génioplastie est défini en consultation et dépend de la technique retenue (ostéotomie de glissement ou implant sur mesure). Il inclut l’analyse céphalométrique, l’anesthésie générale, l’intervention en ambulatoire et le suivi.",
+      },
+      {
+        q: "Y a-t-il une cicatrice visible après une génioplastie ?",
+        a: "Non, l’abord est endo-buccal (à l’intérieur de la bouche). Aucune cicatrice cutanée n’apparaît sur le menton ou sous la mâchoire.",
+      },
+      {
+        q: "Quelle différence entre génioplastie osseuse et implant ?",
+        a: "L’ostéotomie de glissement modifie directement l’os mentonnier et permet une correction en trois dimensions (avance, recul, asymétrie). L’implant en silicone, prosthèse sur mesure, est moins invasif mais ne corrige qu’une projection antérieure. Le choix se fait au cas par cas.",
+      },
+      {
+        q: "L’intervention est-elle douloureuse ?",
+        a: "Sous anesthésie générale, l’intervention est indolore. Les suites se résument à une gêne à la mastication et à une légère sensibilité du menton, prises en charge par antalgiques classiques. La douleur réelle est exceptionnelle.",
+      },
+      {
+        q: "Quels sont les risques d’une génioplastie ?",
+        a: "Risques rares mais à connaître : hypoesthésie transitoire de la lèvre inférieure (par contact du nerf mentonnier), asymétrie résiduelle, infection du foyer opératoire. Une planification rigoureuse réduit considérablement ces risques.",
+      },
+      {
+        q: "Combien de temps dure l’œdème post-opératoire ?",
+        a: "L’œdème est marqué les 5 premiers jours, modéré à 10 jours, puis régresse progressivement sur 4 à 6 semaines. Le résultat définitif s’apprécie à 3 mois, parfois 6 mois pour les ostéotomies.",
+      },
+      {
+        q: "Quand puis-je reprendre une alimentation normale ?",
+        a: "Alimentation molle pendant 10 jours pour ménager le foyer opératoire. Alimentation tendre jusqu’à 3 semaines. Retour à une alimentation normale à 4-6 semaines selon la cicatrisation et la technique utilisée.",
+      },
+      {
+        q: "Le résultat d’une génioplastie est-il définitif ?",
+        a: "Oui. Une fois la consolidation osseuse acquise (3 à 6 mois), le résultat est définitif. C’est précisément l’intérêt de la chirurgie par rapport aux comblements temporaires.",
       },
       {
         q: "Peut-on associer la génioplastie à une rhinoplastie ?",
-        a: "Oui, c’est une association fréquente pour rééquilibrer harmonieusement le profil.",
+        a: "Oui, c’est une association très fréquente. Nez et menton sont les deux points d’équilibre du profil ; les traiter conjointement permet d’atteindre une harmonie globale impossible avec une seule intervention.",
+      },
+      {
+        q: "À partir de quel âge faire une génioplastie ?",
+        a: "Après la fin de la croissance osseuse, soit vers 17-18 ans. Avant cet âge, la croissance peut modifier le résultat. Il n’y a en revanche pas de limite supérieure.",
       },
     ],
     related: ["rhinoplastie", "chirurgie-orthognatique", "lipofilling-du-visage"],
@@ -436,12 +556,44 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     faq: [
       {
+        q: "Combien coûte un lipofilling du visage à Marrakech ?",
+        a: "Le tarif d’un lipofilling du visage est défini en consultation, après cartographie volumique. Il inclut le prélèvement, la purification, la réinjection, l’anesthésie et le suivi. Un seul tarif couvre le geste complet, quelle que soit la zone donneuse.",
+      },
+      {
+        q: "D’où vient la graisse prélevée ?",
+        a: "La graisse est prélevée sur une zone donneuse choisie avec vous : abdomen, flancs, faces internes des cuisses ou des genoux. Le volume requis pour un lipofilling du visage est modeste (20 à 80 cc), souvent invisible sur la zone donneuse.",
+      },
+      {
         q: "Combien de graisse est définitivement intégrée ?",
-        a: "En moyenne 60 à 70 % du volume injecté est définitivement vascularisé. Une légère sur-correction initiale en tient compte.",
+        a: "En moyenne 60 à 70 % du volume injecté est définitivement vascularisé et persiste dans le temps. Une légère sur-correction initiale tient compte de cette résorption naturelle. Au-delà de 6 mois, le volume restant est stable.",
+      },
+      {
+        q: "L’intervention est-elle douloureuse ?",
+        a: "Sous anesthésie locale tumescente ou générale légère, l’intervention est indolore. Les suites se limitent à un œdème modéré et à de discrètes ecchymoses sur la zone donneuse. Une simple antalgique de niveau 1 suffit.",
+      },
+      {
+        q: "Combien de temps dure le résultat d’un lipofilling ?",
+        a: "Une fois intégrée (à 3-6 mois), la graisse vit, vieillit et se comporte comme le tissu naturel. Le résultat est donc permanent au sens où la matière reste, mais elle suit le vieillissement physiologique du visage.",
+      },
+      {
+        q: "Quels sont les risques d’un lipofilling du visage ?",
+        a: "Risques rares : kystes huileux (graisse non vascularisée), irrégularité de relief, asymétrie minime, hypocorrection (justifiant une retouche dans 10 à 15 % des cas). Le risque infectieux est exceptionnel grâce aux techniques modernes de purification.",
+      },
+      {
+        q: "Faut-il refaire le lipofilling plusieurs fois ?",
+        a: "Une seule séance suffit dans la majorité des cas. Une seconde séance peut être proposée à 6-12 mois en cas de besoin volumique persistant ou pour amplifier un résultat initialement modéré.",
+      },
+      {
+        q: "Le lipofilling peut-il remplacer l’acide hyaluronique ?",
+        a: "Ils ne se concurrencent pas, ils se complètent. L’acide hyaluronique offre précision et réversibilité sur petites zones (lèvres, sillons). Le lipofilling offre de la matière en quantité, durable, idéal pour les grandes zones (pommettes, tempes, ovale).",
+      },
+      {
+        q: "Combien de temps avant de voir le résultat final ?",
+        a: "L’aspect immédiat est faussement abondant à cause de l’œdème. À J+15, on voit la silhouette du résultat. À 3 mois, la part de graisse intégrée est stabilisée. À 6 mois, le résultat est définitif.",
       },
       {
         q: "Peut-on combiner lipofilling et lifting ?",
-        a: "Oui, c’est l’association de référence pour traiter à la fois la perte de tonicité et de volume.",
+        a: "Oui, c’est l’association de référence pour traiter à la fois la perte de tonicité (lifting) et la perte de volume (lipofilling). Réalisés dans le même temps opératoire, ils offrent un résultat global rajeunissant et naturel.",
       },
     ],
     related: ["lifting-cervico-facial", "blepharoplastie", "acide-hyaluronique"],
@@ -510,12 +662,44 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     faq: [
       {
+        q: "Combien coûte une injection d’acide hyaluronique à Marrakech ?",
+        a: "Le tarif d’une séance d’acide hyaluronique se calcule par seringue (1 ml en général) et selon la zone traitée. Le devis est établi en consultation, après lecture des volumes et choix du produit (densité, réticulation adaptée à la zone).",
+      },
+      {
         q: "Combien de temps tient l’acide hyaluronique ?",
-        a: "Selon la zone et le produit, de 9 à 18 mois en moyenne. Les zones très mobiles (lèvres) tiennent moins longtemps.",
+        a: "Selon la zone et le produit, la tenue est de 9 à 18 mois en moyenne. Les zones très mobiles (lèvres) tiennent moins longtemps (6 à 9 mois). Les zones structurelles (pommettes, ovale) peuvent durer 18 à 24 mois.",
+      },
+      {
+        q: "L’injection est-elle douloureuse ?",
+        a: "L’inconfort est modéré. Une crème anesthésiante est appliquée 30 minutes avant. Les produits modernes contiennent eux-mêmes un anesthésique local (lidocaïne). La sensation décrite est plutôt celle d’une pression, rarement d’une douleur.",
+      },
+      {
+        q: "Quels sont les effets secondaires d’une injection d’acide hyaluronique ?",
+        a: "Effets fréquents et transitoires : rougeur, gonflement, parfois ecchymose au point d’injection, régressant en 2 à 7 jours. Effets rares : nodule, asymétrie, infection. Effet grave très rare : occlusion vasculaire, dont le risque est minimisé par la technique à la canule.",
+      },
+      {
+        q: "Peut-on reprendre une vie normale après l’injection ?",
+        a: "Oui, l’éviction sociale est nulle. Les effets visibles (rougeur, gonflement modeste) régressent dans la journée ou le lendemain. Le maquillage est autorisé après 4 à 6 heures. Le sport intensif est à éviter pendant 24 heures.",
       },
       {
         q: "Le résultat est-il réversible ?",
-        a: "Oui. L’acide hyaluronique peut être dissous par injection d’hyaluronidase si nécessaire.",
+        a: "Oui. L’acide hyaluronique peut être dissous par injection d’hyaluronidase, une enzyme qui dégrade le produit en quelques heures. C’est l’une des grandes sécurités de cette technique, comparée aux produits définitifs.",
+      },
+      {
+        q: "Quelle différence entre acide hyaluronique et botox ?",
+        a: "Ce sont deux outils complémentaires. L’acide hyaluronique apporte du volume et comble (sillons, pommettes, lèvres). Le botox détend les muscles et atténue les rides d’expression (front, lion, pattes d’oie). On peut les associer dans la même séance.",
+      },
+      {
+        q: "À partir de quel âge faire de l’acide hyaluronique ?",
+        a: "Pas d’âge précis, mais une logique d’indication. Avant 30 ans, l’usage se limite à des corrections ciblées (lèvres, harmonisation du nez médical). Entre 30 et 50 ans, il prévient et corrige. Après 50 ans, il complète souvent d’autres approches (lipofilling, lifting).",
+      },
+      {
+        q: "Combien de temps avant de voir le résultat final ?",
+        a: "Le résultat est visible immédiatement, parfois un peu accentué par l’œdème initial. Il se stabilise et s’affine entre J+7 et J+15. C’est à cette date qu’une éventuelle retouche peut être proposée.",
+      },
+      {
+        q: "Peut-on faire de l’acide hyaluronique enceinte ou en allaitant ?",
+        a: "Par principe de précaution, les injections sont déconseillées pendant la grossesse et l’allaitement, bien qu’aucune toxicité fœtale n’ait été démontrée. Nous reportons la séance après la fin de l’allaitement.",
       },
     ],
     related: ["botox", "lipofilling-du-visage", "blepharoplastie"],
@@ -585,12 +769,44 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     faq: [
       {
-        q: "Combien de temps dure l’effet ?",
-        a: "Quatre à six mois en moyenne. L’effet décroît progressivement, sans rebond.",
+        q: "Combien coûte une injection de botox à Marrakech ?",
+        a: "Le tarif d’une séance de botox est défini en consultation et dépend des zones traitées (lion, front, pattes d’oie, et leurs associations). Le tarif inclut le produit, la consultation d’analyse et le contrôle à 15 jours.",
       },
       {
-        q: "Le visage va-t-il paraître figé ?",
-        a: "Non, pas avec un dosage juste. Notre approche privilégie une atténuation, jamais une paralysie.",
+        q: "Combien de temps dure l’effet du botox ?",
+        a: "Quatre à six mois en moyenne. L’effet décroît progressivement, sans effet rebond — c’est-à-dire que les rides ne reviennent pas plus marquées qu’avant. Avec des injections régulières, l’effet tend même à durer plus longtemps.",
+      },
+      {
+        q: "L’injection de botox est-elle douloureuse ?",
+        a: "Très peu. Les aiguilles utilisées sont extrêmement fines (32G). La sensation est celle d’une piqûre brève. Aucune anesthésie n’est nécessaire, mais une poche de glace peut être proposée pour les patients sensibles.",
+      },
+      {
+        q: "Le visage va-t-il paraître figé après une injection de botox ?",
+        a: "Non, pas avec un dosage juste. Notre approche privilégie une atténuation des rides d’expression, jamais une paralysie. L’expressivité reste préservée — c’est précisément la marque d’un botox bien dosé.",
+      },
+      {
+        q: "Quels sont les effets secondaires du botox ?",
+        a: "Effets fréquents et transitoires : rougeur, parfois ecchymose minime au point d’injection. Effets rares : céphalée passagère, sensation de pesanteur des paupières (en cas d’injection trop basse, transitoire), asymétrie corrigeable au contrôle de 15 jours.",
+      },
+      {
+        q: "Combien de temps avant de voir le résultat ?",
+        a: "Le botox commence à agir entre J+3 et J+5. Le résultat complet s’apprécie à J+15. C’est précisément le moment où une éventuelle retouche peut être proposée si un détail doit être affiné.",
+      },
+      {
+        q: "À partir de quel âge faire du botox ?",
+        a: "L’indication esthétique commence généralement vers 28-30 ans, lorsque les premières rides d’expression apparaissent. Avant cet âge, l’indication est plutôt curative (rides précoces marquées) ou fonctionnelle (bruxisme, hyperhidrose).",
+      },
+      {
+        q: "Peut-on faire du botox enceinte ou en allaitant ?",
+        a: "Non. Les injections de toxine botulique sont contre-indiquées pendant la grossesse et l’allaitement. Nous reportons systématiquement la séance après la fin de l’allaitement.",
+      },
+      {
+        q: "À quelle fréquence faire des injections de botox ?",
+        a: "En général, deux à trois séances par an suffisent pour maintenir un résultat constant. Espacer davantage est possible, mais l’effet s’estompe alors entre deux séances. À l’inverse, une injection plus fréquente que tous les 4 mois est rarement nécessaire.",
+      },
+      {
+        q: "Quelle différence entre botox et acide hyaluronique ?",
+        a: "Le botox détend les muscles à l’origine des rides d’expression (front, lion, pattes d’oie). L’acide hyaluronique comble les pertes de volume et les plis profonds (sillons, lèvres, pommettes). Souvent associés dans la même séance pour un résultat global.",
       },
     ],
     related: ["acide-hyaluronique", "blepharoplastie", "lipofilling-du-visage"],
@@ -671,12 +887,44 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     faq: [
       {
-        q: "Y a-t-il des cicatrices visibles ?",
-        a: "Non. Toutes les voies d’abord sont endo-buccales.",
+        q: "Combien coûte une chirurgie orthognatique au Maroc ?",
+        a: "Le tarif d’une chirurgie orthognatique est défini en consultation, après bilan complet et concertation avec l’orthodontiste. Il inclut l’analyse 3D, l’hospitalisation, l’anesthésie générale, l’intervention et l’ensemble du suivi sur 6 à 12 mois.",
+      },
+      {
+        q: "Y a-t-il des cicatrices visibles après une chirurgie orthognatique ?",
+        a: "Non. Toutes les voies d’abord sont endo-buccales (à l’intérieur de la bouche). Aucune cicatrice cutanée n’est visible sur le visage ou le cou.",
       },
       {
         q: "Cette chirurgie est-elle prise en charge ?",
-        a: "Oui, dans la grande majorité des cas, elle entre dans le cadre d’une prise en charge médicale au titre du défaut fonctionnel.",
+        a: "Oui, dans la grande majorité des cas, la chirurgie orthognatique entre dans le cadre d’une prise en charge médicale au titre du défaut fonctionnel (occlusion, mastication, phonation, apnées du sommeil). Le volet purement esthétique reste à part.",
+      },
+      {
+        q: "L’intervention est-elle douloureuse ?",
+        a: "Sous anesthésie générale, l’intervention est indolore. En post-opératoire, la sensation dominante est plutôt un engourdissement et une gêne à la mastication, traités par antalgiques classiques. La douleur véritable est exceptionnelle.",
+      },
+      {
+        q: "Quels sont les risques d’une chirurgie orthognatique ?",
+        a: "Risques rares mais réels : hypoesthésie de la lèvre inférieure ou du menton (régressant en plusieurs mois), récidive partielle, troubles articulaires temporo-mandibulaires, infection osseuse. Une planification 3D minutieuse minimise considérablement ces risques.",
+      },
+      {
+        q: "Combien de temps faut-il pour la récupération complète ?",
+        a: "Hospitalisation 2 à 3 nuits. Reprise sociale entre 21 et 30 jours. Alimentation molle pendant 6 semaines, normale à 2-3 mois. La consolidation osseuse complète demande 4 à 6 mois. Le suivi orthodontique de finition se poursuit jusqu’à 12 mois.",
+      },
+      {
+        q: "Faut-il un suivi orthodontique avant et après ?",
+        a: "Oui, c’est indispensable. Un suivi orthodontique de 12 à 18 mois précède la chirurgie pour aligner les arcades dentaires. Un suivi de finition de 6 à 12 mois lui succède pour parfaire l’occlusion. La chirurgie orthognatique est par essence une discipline d’équipe.",
+      },
+      {
+        q: "Quand peut-on reprendre une alimentation normale ?",
+        a: "Alimentation liquide les 10 premiers jours. Alimentation molle (purée, semoule, omelette) jusqu’à 6 semaines. Réintroduction progressive d’aliments tendres entre 6 et 10 semaines. Alimentation normale (croquant, viande ferme) à partir de 3 mois.",
+      },
+      {
+        q: "Le résultat d’une chirurgie orthognatique est-il définitif ?",
+        a: "Oui. Une fois la consolidation osseuse acquise (3 à 6 mois) et la finition orthodontique terminée, le résultat est définitif. C’est l’une des chirurgies les plus stables dans le temps en chirurgie maxillo-faciale.",
+      },
+      {
+        q: "À partir de quel âge cette chirurgie peut-elle être réalisée ?",
+        a: "Après la fin de la croissance maxillo-mandibulaire, généralement vers 17-18 ans. Avant cet âge, le potentiel de croissance résiduel peut compromettre la stabilité du résultat. Il n’y a en revanche pas de limite supérieure en l’absence de contre-indication médicale.",
       },
     ],
     related: ["genioplastie", "rhinoplastie", "lifting-cervico-facial"],
