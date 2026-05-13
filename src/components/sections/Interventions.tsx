@@ -239,7 +239,7 @@ export function Interventions() {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={int.image}
-                          alt={int.name}
+                          alt={`${int.name} à Marrakech — ${int.category} au Centre du Docteur Hannouni`}
                           loading="lazy"
                           decoding="async"
                           className="absolute inset-0 h-full w-full object-cover object-center"

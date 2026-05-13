@@ -8,9 +8,13 @@ type Props = {
   before: string;
   after: string;
   className?: string;
+  /** Subject of the comparison — used to compose descriptive alt text for SEO. */
+  subject?: string;
 };
 
-export function BeforeAfterSlider({ before, after, className }: Props) {
+export function BeforeAfterSlider({ before, after, className, subject }: Props) {
+  const beforeAlt = subject ? `Avant ${subject}` : "Avant";
+  const afterAlt = subject ? `Après ${subject}` : "Après";
   const [pos, setPos] = useState(50);
   const wrapRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
@@ -58,7 +62,7 @@ export function BeforeAfterSlider({ before, after, className }: Props) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={before}
-        alt="Avant"
+        alt={beforeAlt}
         decoding="async"
         draggable={false}
         className="absolute inset-0 h-full w-full object-cover object-center select-none"
@@ -73,7 +77,7 @@ export function BeforeAfterSlider({ before, after, className }: Props) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={after}
-          alt="Après"
+          alt={afterAlt}
           decoding="async"
           draggable={false}
           className="absolute inset-0 h-full w-full object-cover object-center select-none"

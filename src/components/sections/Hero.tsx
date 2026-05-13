@@ -55,6 +55,13 @@ export function Hero() {
       <div
         className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] flex-col justify-between px-6 md:px-10 pt-[100px] md:pt-[160px] pb-10"
       >
+        {/* SEO — semantic page heading. Visually hidden because the visible
+            artistic title is composed of animated spans below, which carry
+            the brand tagline rather than the keyword-rich page title. */}
+        <h1 className="sr-only">
+          Centre du Docteur Hannouni — Chirurgien esthétique et maxillo-facial à Marrakech
+        </h1>
+
         {/* Spacer — on mobile, reserves the top half for the portrait
             so the headline starts below it rather than overlapping. */}
         <div />
@@ -92,14 +99,14 @@ export function Hero() {
               </motion.div>
             )}
             <KineticText
-              as="h1"
+              as="span"
               text="La chirurgie"
               className="display-xl text-[clamp(2rem,5.5vw,5.4rem)] text-[var(--color-ink)]"
             />
           </div>
           <div className="mt-1">
             <KineticText
-              as="h1"
+              as="span"
               text="esthétique,"
               delay={0.06}
               className="display-xl text-[clamp(2rem,5.5vw,5.4rem)] text-[var(--color-ink)]"
@@ -108,7 +115,7 @@ export function Hero() {
           {/* Mobile: 5-line italic subtitle — each phrase on its own line, reads as a column beside the portrait */}
           <div className="mt-5 md:hidden">
             <KineticText
-              as="h1"
+              as="span"
               italic
               text="Quand"
               delay={0.18}
@@ -116,7 +123,7 @@ export function Hero() {
             />
             <div className="mt-1">
               <KineticText
-                as="h1"
+                as="span"
                 italic
                 text="la précision"
                 delay={0.22}
@@ -125,7 +132,7 @@ export function Hero() {
             </div>
             <div className="mt-1">
               <KineticText
-                as="h1"
+                as="span"
                 italic
                 text="médicale"
                 delay={0.26}
@@ -134,7 +141,7 @@ export function Hero() {
             </div>
             <div className="mt-1">
               <KineticText
-                as="h1"
+                as="span"
                 italic
                 text="rencontre"
                 delay={0.3}
@@ -143,7 +150,7 @@ export function Hero() {
             </div>
             <div className="mt-1">
               <KineticText
-                as="h1"
+                as="span"
                 italic
                 text="l’art."
                 delay={0.34}
@@ -155,7 +162,7 @@ export function Hero() {
           {/* Desktop/tablet: original 2-line italic subtitle */}
           <div className="mt-7 hidden md:block">
             <KineticText
-              as="h1"
+              as="span"
               italic
               text="quand la précision"
               delay={0.18}
@@ -163,7 +170,7 @@ export function Hero() {
             />
             <div className="mt-1">
               <KineticText
-                as="h1"
+                as="span"
                 italic
                 text="médicale rencontre l’art."
                 delay={0.24}

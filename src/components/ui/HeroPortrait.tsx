@@ -201,7 +201,7 @@ export function HeroPortrait({
         >
           <Image
             src={src}
-            alt=""
+            alt="Dr Hannouni Youssef, chirurgien esthétique et maxillo-facial à Marrakech"
             fill
             sizes="(max-width: 768px) 100vw, 56vw"
             priority

@@ -6,7 +6,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 type Props = {
   text: string;
   className?: string;
-  as?: "h1" | "h2" | "h3";
+  as?: "h1" | "h2" | "h3" | "span" | "p" | "div";
   delay?: number;
 };
 

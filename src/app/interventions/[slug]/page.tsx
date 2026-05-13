@@ -91,11 +91,40 @@ export default async function InterventionPage({
       }
     : null;
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Accueil",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Interventions",
+        item: `${SITE_URL}/#interventions`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: intervention.name,
+        item: `${SITE_URL}/interventions/${intervention.slug}`,
+      },
+    ],
+  };
+
   return (
     <main className="relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(procedureLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       {faqLd ? (
         <script
@@ -119,17 +148,24 @@ export default async function InterventionPage({
             <span className="h-px w-12 bg-[var(--color-line)]" />
           </Reveal>
 
+          {/* SEO — semantic page heading. Hidden because the visible artistic title
+              is split across two animated lines; this single H1 carries the keyword
+              signal Google needs for the page subject. */}
+          <h1 className="sr-only">
+            {intervention.name} à Marrakech — Centre du Docteur Hannouni
+          </h1>
+
           <div className="mt-8 md:mt-10 grid grid-cols-12 gap-y-10 gap-x-0 md:gap-10 lg:gap-14 items-end">
             <div className="col-span-12 lg:col-span-7">
               <SplitHeading
-                as="h1"
-                className="display-xl text-[clamp(2rem,5.6vw,4.6rem)] text-[var(--color-ink)] leading-[1.05]"
+                as="span"
+                className="display-xl text-[clamp(2rem,5.6vw,4.6rem)] text-[var(--color-ink)] leading-[1.05] block"
                 text={intervention.hero.headline}
               />
               <div className="mt-2">
                 <SplitHeading
-                  as="h1"
-                  className="display-xl italic text-[clamp(2rem,5.6vw,4.6rem)] text-[var(--color-cognac-deep)] leading-[1.05]"
+                  as="span"
+                  className="display-xl italic text-[clamp(2rem,5.6vw,4.6rem)] text-[var(--color-cognac-deep)] leading-[1.05] block"
                   text={intervention.hero.italicSuffix}
                   delay={0.08}
                 />
@@ -156,7 +192,7 @@ export default async function InterventionPage({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={intervention.image}
-                    alt={intervention.name}
+                    alt={`${intervention.name} à Marrakech — ${intervention.category} au Centre du Docteur Hannouni`}
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover object-center"
                   />
@@ -252,6 +288,7 @@ export default async function InterventionPage({
                   <BeforeAfterSlider
                     before={intervention.results[0].before}
                     after={intervention.results[0].after}
+                    subject={`${intervention.name.toLowerCase()} — Centre du Docteur Hannouni Marrakech`}
                   />
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <span className="font-display italic text-[13px] text-[var(--color-cognac-deep)]">
@@ -359,7 +396,7 @@ export default async function InterventionPage({
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={r.image}
-                      alt={r.name}
+                      alt={`${r.name} — ${r.category} à Marrakech, Centre du Docteur Hannouni`}
                       loading="lazy"
                       decoding="async"
                       className="h-full w-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
