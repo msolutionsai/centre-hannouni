@@ -29,16 +29,27 @@ export async function generateMetadata({
   const { slug } = await params;
   const i = getInterventionBySlug(slug);
   if (!i) return {};
-  const title = `${i.name} · ${clinic.shortName} · ${i.category}`;
+  // Lead the title with "<procédure> à Marrakech" — the city is the #1 local
+  // intent signal and was previously absent. `absolute` bypasses the layout
+  // "· Centre Hannouni" template to keep the title under ~60 characters.
+  const title = `${i.name} à Marrakech · Centre du Dr Hannouni`;
+  const description = i.metaDescription ?? i.intro;
   return {
-    title,
-    description: i.intro,
+    title: { absolute: title },
+    description,
+    keywords: [
+      `${i.name.toLowerCase()} Marrakech`,
+      `${i.name.toLowerCase()} prix Marrakech`,
+      `${i.category.toLowerCase()} Marrakech`,
+      "Dr Hannouni",
+      "chirurgien esthétique Marrakech",
+    ],
     alternates: {
       canonical: `/interventions/${i.slug}`,
     },
     openGraph: {
       title,
-      description: i.intro,
+      description,
       url: `/interventions/${i.slug}`,
       type: "article",
     },
