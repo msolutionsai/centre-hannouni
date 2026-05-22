@@ -28,5 +28,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [home, pillar, ...interventions];
+  // Pages légales — basse priorité mais incluses pour la découverte/indexation.
+  const legal: MetadataRoute.Sitemap = [
+    "/mentions-legales",
+    "/politique-de-confidentialite",
+  ].map((path) => ({
+    url: `${BASE_URL}${path}`,
+    lastModified: now,
+    changeFrequency: "yearly" as const,
+    priority: 0.3,
+  }));
+
+  return [home, pillar, ...interventions, ...legal];
 }
