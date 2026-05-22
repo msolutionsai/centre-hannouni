@@ -43,6 +43,14 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/chirurgie-esthetique-marrakech"
+                  className="text-[14px] text-[var(--color-ivory)]/85 hover:text-[var(--color-cognac-soft)] transition-colors"
+                >
+                  Chirurgie esthétique à Marrakech
+                </a>
+              </li>
             </ul>
           </div>
 

@@ -13,6 +13,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1,
   };
 
+  // Page pilier commerciale — priorité élevée juste après la home.
+  const pillar: MetadataRoute.Sitemap[number] = {
+    url: `${BASE_URL}/chirurgie-esthetique-marrakech`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.9,
+  };
+
   const interventions: MetadataRoute.Sitemap = interventionDetails.map((i) => ({
     url: `${BASE_URL}/interventions/${i.slug}`,
     lastModified: now,
@@ -20,5 +28,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [home, ...interventions];
+  return [home, pillar, ...interventions];
 }

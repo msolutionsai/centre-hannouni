@@ -118,8 +118,8 @@ export default async function InterventionPage({
       {
         "@type": "ListItem",
         position: 2,
-        name: "Interventions",
-        item: `${SITE_URL}/#interventions`,
+        name: "Chirurgie esthétique à Marrakech",
+        item: `${SITE_URL}/chirurgie-esthetique-marrakech`,
       },
       {
         "@type": "ListItem",
