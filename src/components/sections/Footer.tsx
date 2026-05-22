@@ -84,9 +84,19 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-6 text-[11px] uppercase tracking-[0.2em] text-[var(--color-ivory)]/55">
           <span>© {year} Centre du Docteur Hannouni · Marrakech · Tous droits réservés</span>
-          <div className="flex items-center gap-6">
-            <span>Mentions légales</span>
-            <span>Politique de confidentialité</span>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <a
+              href="/mentions-legales"
+              className="hover:text-[var(--color-cognac-soft)] transition-colors"
+            >
+              Mentions légales
+            </a>
+            <a
+              href="/politique-de-confidentialite"
+              className="hover:text-[var(--color-cognac-soft)] transition-colors"
+            >
+              Politique de confidentialité
+            </a>
             <span>Réalisation soignée</span>
           </div>
         </div>

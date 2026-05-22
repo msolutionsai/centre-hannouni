@@ -316,3 +316,30 @@ body {
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .fab:hover { transform: translateY(-3px) scale(1.04); }
+
+/* Legal pages — readable editorial prose */
+.legal-prose { color: var(--color-ink-soft); }
+.legal-prose h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--color-ink);
+  margin-top: 2.75rem;
+  margin-bottom: 0.9rem;
+}
+.legal-prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.legal-prose p { font-size: 15.5px; line-height: 1.75; margin-bottom: 1rem; }
+.legal-prose ul { margin: 0.5rem 0 1.25rem; padding-left: 1.15rem; }
+.legal-prose li { font-size: 15.5px; line-height: 1.7; margin-bottom: 0.4rem; list-style: disc; }
+.legal-prose a { color: var(--color-cognac-deep); text-decoration: underline; text-underline-offset: 3px; }
+.legal-prose strong { color: var(--color-ink); font-weight: 600; }
+.legal-prose address { font-style: normal; line-height: 1.7; }
