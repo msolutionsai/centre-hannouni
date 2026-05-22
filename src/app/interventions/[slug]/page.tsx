@@ -29,20 +29,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const i = getInterventionBySlug(slug);
   if (!i) return {};
-  // Lead the title with "<procédure> à Marrakech" — the city is the #1 local
-  // intent signal and was previously absent. `absolute` bypasses the layout
-  // "· Centre Hannouni" template to keep the title under ~60 characters.
-  const title = `${i.name} à Marrakech · Centre du Dr Hannouni`;
+  // Lead the title with "<procédure> à Marrakech, Maroc" — the city is the
+  // #1 local-intent signal and "Maroc" captures the medical-tourism query
+  // ("rhinoplastie maroc"). `absolute` bypasses the layout template and the
+  // shortened "— Dr Hannouni" suffix keeps every title under ~60 characters.
+  const title = `${i.name} à Marrakech, Maroc — Dr Hannouni`;
   const description = i.metaDescription ?? i.intro;
   return {
     title: { absolute: title },
     description,
     keywords: [
       `${i.name.toLowerCase()} Marrakech`,
-      `${i.name.toLowerCase()} prix Marrakech`,
+      `${i.name.toLowerCase()} Maroc`,
+      `${i.name.toLowerCase()} prix Maroc`,
       `${i.category.toLowerCase()} Marrakech`,
       "Dr Hannouni",
       "chirurgien esthétique Marrakech",
+      "chirurgie esthétique Maroc",
     ],
     alternates: {
       canonical: `/interventions/${i.slug}`,

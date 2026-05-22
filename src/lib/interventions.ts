@@ -54,7 +54,7 @@ export const interventionDetails: InterventionDetail[] = [
   {
     slug: "rhinoplastie",
     metaDescription:
-      "Rhinoplastie à Marrakech par le Dr Hannouni, chirurgien esthétique et maxillo-facial. Technique fermée ou ouverte, résultat naturel. Consultation à Guéliz.",
+      "Rhinoplastie à Marrakech (Maroc) par le Dr Hannouni, chirurgien maxillo-facial. Technique fermée ou ouverte, résultat naturel. Consultation à Guéliz.",
     name: "Rhinoplastie",
     category: "Chirurgie du nez",
     teaser:
@@ -175,7 +175,7 @@ export const interventionDetails: InterventionDetail[] = [
   {
     slug: "lifting-cervico-facial",
     metaDescription:
-      "Lifting cervico-facial à Marrakech : le Dr Hannouni restaure l'ovale du visage et le cou par technique SMAS. Résultat naturel, sans effet tiré. RDV à Guéliz.",
+      "Lifting cervico-facial à Marrakech (Maroc) : le Dr Hannouni restaure l'ovale du visage par technique SMAS. Résultat naturel, sans effet tiré. RDV à Guéliz.",
     name: "Lifting cervico-facial",
     category: "Chirurgie du visage",
     teaser:
@@ -291,7 +291,7 @@ export const interventionDetails: InterventionDetail[] = [
   {
     slug: "blepharoplastie",
     metaDescription:
-      "Blépharoplastie à Marrakech par le Dr Hannouni : chirurgie des paupières pour rouvrir le regard, sans cicatrice visible. Supérieure, inférieure ou combinée.",
+      "Blépharoplastie à Marrakech (Maroc) par le Dr Hannouni : chirurgie des paupières pour rouvrir le regard, sans cicatrice visible. Supérieure ou inférieure.",
     name: "Blépharoplastie",
     category: "Chirurgie des paupières",
     teaser: "Rouvrir le regard, discrètement et durablement.",
@@ -399,7 +399,7 @@ export const interventionDetails: InterventionDetail[] = [
   {
     slug: "genioplastie",
     metaDescription:
-      "Génioplastie à Marrakech : le Dr Hannouni rééquilibre le profil par une correction précise du menton (ostéotomie ou implant). Voie endo-buccale, sans cicatrice.",
+      "Génioplastie à Marrakech (Maroc) : le Dr Hannouni rééquilibre le profil par une correction du menton (ostéotomie ou implant). Voie endo-buccale, sans cicatrice.",
     name: "Génioplastie",
     category: "Chirurgie du menton",
     teaser: "Rééquilibrer le profil par une correction précise du menton.",
@@ -506,7 +506,7 @@ export const interventionDetails: InterventionDetail[] = [
   {
     slug: "lipofilling-du-visage",
     metaDescription:
-      "Lipofilling du visage à Marrakech par le Dr Hannouni : restauration des volumes avec votre propre graisse. Résultat naturel et durable. Consultation à Guéliz.",
+      "Lipofilling du visage à Marrakech (Maroc) par le Dr Hannouni : restauration des volumes avec votre propre graisse. Résultat naturel et durable. RDV à Guéliz.",
     name: "Lipofilling du visage",
     category: "Volumétrie",
     teaser:
@@ -613,7 +613,7 @@ export const interventionDetails: InterventionDetail[] = [
   {
     slug: "acide-hyaluronique",
     metaDescription:
-      "Acide hyaluronique à Marrakech par le Dr Hannouni : comblement des rides, volumétrie, hydratation. Approche mesurée, résultat naturel et réversible.",
+      "Acide hyaluronique à Marrakech (Maroc) par le Dr Hannouni : comblement des rides, volumétrie, hydratation. Résultat naturel et réversible.",
     name: "Acide hyaluronique",
     category: "Médecine esthétique",
     teaser: "Corriger, volumiser, hydrater : sans bistouri, sans éviction.",
@@ -721,7 +721,7 @@ export const interventionDetails: InterventionDetail[] = [
   {
     slug: "botox",
     metaDescription:
-      "Botox à Marrakech par le Dr Hannouni : atténue les rides d'expression (front, lion, pattes d'oie) en préservant la mobilité du visage. RDV à Guéliz.",
+      "Botox à Marrakech (Maroc) par le Dr Hannouni : atténue les rides d'expression (front, lion, pattes d'oie) en préservant la mobilité du visage. RDV à Guéliz.",
     name: "Botox",
     category: "Médecine esthétique",
     teaser:
@@ -830,7 +830,7 @@ export const interventionDetails: InterventionDetail[] = [
   {
     slug: "chirurgie-orthognatique",
     metaDescription:
-      "Chirurgie orthognatique à Marrakech par le Dr Hannouni, chirurgien maxillo-facial : correction des bases osseuses du visage, à la fois fonctionnelle et esthétique.",
+      "Chirurgie orthognatique à Marrakech (Maroc) par le Dr Hannouni, chirurgien maxillo-facial : correction des bases osseuses, fonctionnelle et esthétique.",
     name: "Chirurgie orthognatique",
     category: "Maxillo-facial",
     teaser:

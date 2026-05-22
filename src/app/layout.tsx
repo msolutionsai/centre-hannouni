@@ -21,7 +21,7 @@ const SITE_URL = "https://centrehannouni.com";
 const SITE_TITLE =
   "Dr Hannouni Youssef · Chirurgie esthétique & maxillo-faciale · Marrakech";
 const SITE_DESCRIPTION =
-  "Centre du Docteur Hannouni à Guéliz, Marrakech. Vingt années dédiées à la chirurgie plastique, esthétique et réparatrice de la face. La chirurgie esthétique, un art scientifique.";
+  "Centre du Docteur Hannouni à Guéliz, Marrakech (Maroc) : chirurgie plastique, esthétique et maxillo-faciale de la face. Vingt ans d'expérience. Un art scientifique.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -33,38 +33,44 @@ export const metadata: Metadata = {
   applicationName: "Centre du Docteur Hannouni",
   authors: [{ name: "Dr Hannouni Youssef" }],
   keywords: [
-    "chirurgie esthétique",
-    "chirurgie maxillo-faciale",
+    "chirurgie esthétique Marrakech",
+    "chirurgie esthétique Maroc",
+    "chirurgien esthétique Marrakech",
+    "chirurgien esthétique Maroc",
+    "chirurgie maxillo-faciale Marrakech",
+    "médecine esthétique Marrakech",
+    "médecine esthétique Maroc",
     "rhinoplastie Marrakech",
-    "lifting cervico-facial",
-    "blépharoplastie",
-    "génioplastie",
-    "lipofilling visage",
-    "acide hyaluronique",
+    "rhinoplastie Maroc",
+    "lifting cervico-facial Marrakech",
+    "blépharoplastie Marrakech",
+    "génioplastie Marrakech",
+    "lipofilling visage Marrakech",
+    "acide hyaluronique Marrakech",
     "botox Marrakech",
-    "chirurgie orthognatique",
+    "botox Maroc",
+    "chirurgie orthognatique Maroc",
     "Dr Hannouni",
     "Centre Hannouni",
     "Guéliz Marrakech",
-    "chirurgien esthétique Maroc",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    locale: "fr_FR",
+    locale: "fr_MA",
     url: SITE_URL,
     siteName: "Centre du Docteur Hannouni",
-    title: "Centre du Docteur Hannouni · Marrakech",
+    title: "Centre du Docteur Hannouni · Marrakech, Maroc",
     description:
-      "La chirurgie esthétique, un art scientifique. Dr Hannouni Youssef, chirurgien esthétique et maxillo-facial à Marrakech.",
+      "La chirurgie esthétique, un art scientifique. Dr Hannouni Youssef, chirurgien esthétique et maxillo-facial à Marrakech, Maroc.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Centre du Docteur Hannouni · Marrakech",
+    title: "Centre du Docteur Hannouni · Marrakech, Maroc",
     description:
-      "La chirurgie esthétique, un art scientifique. Dr Hannouni Youssef, chirurgien esthétique et maxillo-facial à Marrakech.",
+      "La chirurgie esthétique, un art scientifique. Dr Hannouni Youssef, chirurgien esthétique et maxillo-facial à Marrakech, Maroc.",
   },
   robots: {
     index: true,
@@ -143,10 +149,10 @@ const structuredData = {
       name: "Société Marocaine de Chirurgie Esthétique et Maxillo-Faciale",
     },
   },
-  areaServed: {
-    "@type": "City",
-    name: "Marrakech",
-  },
+  areaServed: [
+    { "@type": "City", name: "Marrakech" },
+    { "@type": "Country", name: "Maroc" },
+  ],
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: clinic.googleRating.value,
