@@ -3,8 +3,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { Arrow } from "@/components/ui/Icons";
-import { HeroCanvas } from "@/components/ui/HeroCanvas";
-import { HeroPortrait } from "@/components/ui/HeroPortrait";
 import { KineticText } from "@/components/ui/KineticText";
 
 export function Hero() {
@@ -17,29 +15,60 @@ export function Hero() {
       ref={ref}
       className="relative min-h-[100svh] overflow-hidden bg-[var(--color-ivory)]"
     >
-      {/* Ambient generative canvas */}
-      <HeroCanvas className="absolute inset-0 h-full w-full" />
+      {/* Background loop video — fills the whole hero on every breakpoint.
+          object-position is biased right on mobile to bring the face
+          (which sits right-of-center in the source) into the viewport
+          centre, since the portrait crop can't show the full 16:9 width.
+          Respects prefers-reduced-motion: poster instead of the playing video. */}
+      {reduce ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src="/videos/hero-loop-poster.jpg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[70%_center] md:object-center"
+        />
+      ) : (
+        <video
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[70%_center] md:object-center"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/videos/hero-loop-poster.jpg"
+          aria-hidden
+        >
+          <source src="/videos/hero-loop.mp4" type="video/mp4" />
+        </video>
+      )}
 
-      {/* Portrait — right column on desktop, behind title on mobile */}
+      {/* Soft warm-dark overlay — tames bright frames so text stays readable. */}
       <div
-        className="pointer-events-none absolute right-0 flex items-end justify-center md:justify-end top-[72px] md:top-[96px] bottom-[49%] md:bottom-[168px] w-[78%] md:w-[48%] opacity-100"
-        style={{
-          maskImage:
-            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage:
-            "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 52%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0) 100%)",
-        }}
-      >
-        <HeroPortrait className="relative translate-x-[7%] md:translate-x-0 mr-0 md:mr-[-2%] h-full w-full max-w-[820px]" />
-      </div>
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-black/20"
+      />
 
-      {/* Soft vignette — vertical on mobile, horizontal on desktop */}
+      {/* Softened vignettes — keep the editorial cream feel where the text
+          sits, but stay translucent enough to let the video breathe through. */}
+      {/* Vertical cream wash — denser around the kinetic title to keep
+          the italic cognac line readable against the face in the video. */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 md:hidden"
         style={{
           background:
-            "linear-gradient(180deg, rgba(245,241,234,0) 10%, rgba(245,241,234,0.35) 30%, rgba(245,241,234,0.92) 52%, rgba(245,241,234,1) 64%)",
+            "linear-gradient(180deg, rgba(245,241,234,0) 6%, rgba(245,241,234,0.32) 26%, rgba(245,241,234,0.70) 50%, rgba(245,241,234,0.86) 76%)",
+        }}
+      />
+      {/* Subtle left-side wash on mobile — keeps the title side legible
+          while letting the face on the right of the frame breathe. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 md:hidden"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(245,241,234,0.45) 0%, rgba(245,241,234,0.20) 40%, rgba(245,241,234,0) 75%)",
         }}
       />
       <div
@@ -47,7 +76,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 hidden md:block"
         style={{
           background:
-            "linear-gradient(90deg, rgba(245,241,234,0.82) 0%, rgba(245,241,234,0.45) 38%, rgba(245,241,234,0) 58%)",
+            "linear-gradient(90deg, rgba(245,241,234,0.70) 0%, rgba(245,241,234,0.35) 38%, rgba(245,241,234,0) 62%)",
         }}
       />
 
@@ -101,7 +130,7 @@ export function Hero() {
             <KineticText
               as="span"
               text="La chirurgie"
-              className="display-xl text-[clamp(2rem,5.5vw,5.4rem)] text-[var(--color-ink)]"
+              className="display-xl text-[clamp(2.4rem,6.2vw,5.4rem)] text-[var(--color-ink)]"
             />
           </div>
           <div className="mt-1">
@@ -109,64 +138,19 @@ export function Hero() {
               as="span"
               text="esthétique,"
               delay={0.06}
-              className="display-xl text-[clamp(2rem,5.5vw,5.4rem)] text-[var(--color-ink)]"
+              className="display-xl text-[clamp(2.4rem,6.2vw,5.4rem)] text-[var(--color-ink)]"
             />
           </div>
-          {/* Mobile: 5-line italic subtitle — each phrase on its own line, reads as a column beside the portrait */}
-          <div className="mt-5 md:hidden">
-            <KineticText
-              as="span"
-              italic
-              text="Quand"
-              delay={0.18}
-              className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
-            />
-            <div className="mt-1">
-              <KineticText
-                as="span"
-                italic
-                text="la précision"
-                delay={0.22}
-                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
-              />
-            </div>
-            <div className="mt-1">
-              <KineticText
-                as="span"
-                italic
-                text="médicale"
-                delay={0.26}
-                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
-              />
-            </div>
-            <div className="mt-1">
-              <KineticText
-                as="span"
-                italic
-                text="rencontre"
-                delay={0.3}
-                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
-              />
-            </div>
-            <div className="mt-1">
-              <KineticText
-                as="span"
-                italic
-                text="l’art."
-                delay={0.34}
-                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
-              />
-            </div>
-          </div>
-
-          {/* Desktop/tablet: original 2-line italic subtitle */}
-          <div className="mt-7 hidden md:block">
+          {/* Italic subtitle — same 2-line layout on every breakpoint now
+              that the hero no longer reserves vertical space for a portrait,
+              so the title can breathe and read as a flowing sentence. */}
+          <div className="mt-5 md:mt-7">
             <KineticText
               as="span"
               italic
               text="quand la précision"
               delay={0.18}
-              className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+              className="display-xl italic text-[clamp(1.85rem,4.4vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
             />
             <div className="mt-1">
               <KineticText
@@ -174,7 +158,7 @@ export function Hero() {
                 italic
                 text="médicale rencontre l’art."
                 delay={0.24}
-                className="display-xl italic text-[clamp(1.55rem,3.85vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
+                className="display-xl italic text-[clamp(1.85rem,4.4vw,3.7rem)] leading-[1.08] text-[var(--color-cognac-deep)]"
               />
             </div>
           </div>
@@ -215,7 +199,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-[var(--color-line)] pt-8 items-end"
+          className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 pt-8 md:pt-0 items-end"
         >
           <p className="col-span-1 md:col-span-9 max-w-[72ch] font-display text-[clamp(1rem,1.3vw,1.2rem)] font-light leading-[1.55] tracking-[-0.005em] text-[var(--color-ink-soft)]">
             Au cœur de Guéliz, à Marrakech, notre centre associe{" "}
@@ -226,7 +210,7 @@ export function Hero() {
             en chirurgie et médecine esthétique, pour offrir une prise en charge précise, naturelle et personnalisée.
           </p>
           <div className="col-span-1 md:col-span-3 md:justify-self-end">
-            <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)]">
+            <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)] md:text-white">
               <span className="h-px w-8 bg-[var(--color-cognac)]" />
               Scroller pour découvrir
               <motion.span

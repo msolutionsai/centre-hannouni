@@ -47,7 +47,7 @@ export function Nav() {
                   Hannouni
                 </span>
               </span>
-              <span className="text-[7px] sm:text-[9.5px] uppercase tracking-[0.14em] sm:tracking-[0.28em] text-[var(--color-ink-muted)] leading-none whitespace-nowrap">
+              <span className="text-[7px] sm:text-[9.5px] uppercase tracking-[0.14em] sm:tracking-[0.28em] text-[var(--color-ink)] md:text-[var(--color-ink-muted)] leading-none whitespace-nowrap">
                 Chirurgie esthétique · Maxillo-faciale
               </span>
             </div>
