@@ -7,6 +7,7 @@ import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow, Check, Clock, Mail, Phone, Pin, WhatsApp } from "@/components/ui/Icons";
 import { CustomSelect, CustomDate } from "@/components/ui/FormInputs";
 import { clinic, interventionOptions, countryOptions } from "@/lib/content";
+import { getClosureStatus, isDateInClosure } from "@/lib/closure";
 
 type Gender = "Madame" | "Monsieur" | "Non précisé";
 
@@ -123,6 +124,12 @@ export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [attempted, setAttempted] = useState<Record<number, boolean>>({});
+  const [sentDuringClosure, setSentDuringClosure] = useState(false);
+
+  // Planned-closure snapshot — flips itself off automatically the day
+  // after the configured end date, so no manual revert is ever needed.
+  const closureStatus = useMemo(() => getClosureStatus(), []);
+  const preferredDateInClosure = isDateInClosure(data.preferredDate);
 
   const upd = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setData((d) => ({ ...d, [k]: v }));
@@ -175,6 +182,9 @@ export function Contact() {
         const body = await res.json().catch(() => ({}));
         throw new Error(body?.error || "Erreur réseau");
       }
+      // Capture at submit time so the "Nouvelle demande" reset doesn't
+      // wipe the flag before the success view has had a chance to read it.
+      setSentDuringClosure(isDateInClosure(data.preferredDate));
       setStatus("sent");
     } catch (err: unknown) {
       setStatus("error");
@@ -193,6 +203,32 @@ export function Contact() {
             <span className="h-px w-12 bg-[var(--color-line)]" />
           </div>
         </Reveal>
+
+        {closureStatus.active && (
+          <Reveal delay={0.05}>
+            <div
+              role="note"
+              className="mt-6 md:mt-8 flex items-start gap-4 border border-[var(--color-cognac)]/40 bg-[var(--color-cognac-soft)]/15 px-5 md:px-6 py-4 md:py-5"
+            >
+              <span
+                aria-hidden
+                className="mt-[3px] h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--color-cognac-deep)]"
+              />
+              <div className="text-[14.5px] leading-[1.6] text-[var(--color-ink-soft)]">
+                <span className="font-display italic text-[var(--color-cognac-deep)]">
+                  Congés annuels —
+                </span>{" "}
+                le Centre du Docteur Hannouni sera fermé du{" "}
+                <strong className="text-[var(--color-ink)]">{closureStatus.startLabel}</strong>{" "}
+                au{" "}
+                <strong className="text-[var(--color-ink)]">{closureStatus.endLabel}</strong>.
+                Vous pouvez néanmoins envoyer votre demande — le secrétariat vous
+                recontactera dès notre réouverture le{" "}
+                <strong className="text-[var(--color-ink)]">{closureStatus.reopenLabel}</strong>.
+              </div>
+            </div>
+          </Reveal>
+        )}
 
         <div className="mt-10 md:mt-14 grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-16 items-start">
           {/* Headline + intro (order-1 mobile, left col row-1 desktop) */}
@@ -342,11 +378,32 @@ export function Contact() {
                       <Check size={22} />
                     </div>
                     <h3 className="mt-6 font-display text-[28px] md:text-[32px] tracking-[-0.015em] text-[var(--color-ink)]">
-                      Votre demande a bien été transmise.
+                      {sentDuringClosure
+                        ? `Merci ${data.firstName || ""}, votre demande est bien enregistrée.`.trim()
+                        : "Votre demande a bien été transmise."}
                     </h3>
-                    <p className="mt-4 mx-auto max-w-[46ch] font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)]">
-                      Le secrétariat du Centre Hannouni vous recontacte sous 24 à 48 heures
-                      pour confirmer votre rendez-vous. Un courriel de confirmation vous a été envoyé.
+                    <p className="mt-4 mx-auto max-w-[52ch] font-display text-[clamp(0.98rem,1.1vw,1.1rem)] font-light leading-[1.5] tracking-[-0.005em] text-[var(--color-ink-soft)]">
+                      {sentDuringClosure && closureStatus.active ? (
+                        <>
+                          Notre centre est fermé pour les congés annuels du{" "}
+                          <strong className="text-[var(--color-ink)]">{closureStatus.startLabel}</strong>{" "}
+                          au{" "}
+                          <strong className="text-[var(--color-ink)]">{closureStatus.endLabel}</strong>.
+                          Le secrétariat vous recontactera dès notre réouverture le{" "}
+                          <strong className="text-[var(--color-ink)]">{closureStatus.reopenLabel}</strong>{" "}
+                          pour caler votre rendez-vous.
+                        </>
+                      ) : (
+                        <>
+                          Le secrétariat du Centre Hannouni vous recontacte sous 24 à 48 heures
+                          pour confirmer votre rendez-vous. Un courriel de confirmation vous a été envoyé.
+                          {closureStatus.active && (
+                            <span className="mt-3 block italic text-[var(--color-cognac-deep)]">
+                              À noter : le centre sera fermé du {closureStatus.startLabel} au {closureStatus.endLabel} (congés annuels).
+                            </span>
+                          )}
+                        </>
+                      )}
                     </p>
                     <div className="mt-8 flex items-center justify-center gap-3">
                       <a href={`tel:${clinic.phoneE164}`} className="btn btn-ghost">
@@ -359,6 +416,7 @@ export function Contact() {
                           setData(initial);
                           setStep(1);
                           setStatus("idle");
+                          setSentDuringClosure(false);
                         }}
                         className="btn btn-primary"
                       >
@@ -426,6 +484,11 @@ export function Contact() {
                           </div>
                           <div className="col-span-12 md:col-span-6">
                             <CustomDate id="preferredDate" label="Date souhaitée" value={data.preferredDate} onChange={(v) => upd("preferredDate", v)} min={new Date().toISOString().slice(0,10)} />
+                            {preferredDateInClosure && closureStatus.active && (
+                              <p className="mt-2 text-[12px] leading-[1.5] italic text-[var(--color-cognac-deep)]">
+                                Cette date tombe pendant nos congés annuels ({closureStatus.startLabel} au {closureStatus.endLabel}). Vous pouvez envoyer la demande — nous vous recontacterons dès le {closureStatus.reopenLabel} pour caler un créneau.
+                              </p>
+                            )}
                           </div>
                           <div className="col-span-12">
                             <div className={`field ${data.message.trim() !== "" ? "filled" : ""}`}>
