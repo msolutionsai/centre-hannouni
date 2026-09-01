@@ -43,6 +43,14 @@ export function formatDateFR(iso: string): string {
   return `${dayStr} ${month} ${year}`;
 }
 
+/** ISO date (YYYY-MM-DD) of the day AFTER a closure — the reopening day. */
+export function reopenISO(endIso: string): string {
+  const d = new Date(`${endIso}T12:00:00`);
+  d.setDate(d.getDate() + 1);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
 /** Human label for the day AFTER a closure (used for "réouverture le X"). */
 export function reopenLabelFR(endIso: string): string {
   const d = new Date(`${endIso}T12:00:00`);
@@ -79,6 +87,7 @@ export function getClosureStatus() {
     endISO: closure.end,
     startLabel: formatDateFR(closure.start),
     endLabel: formatDateFR(closure.end),
+    reopenISO: reopenISO(closure.end),
     reopenLabel: reopenLabelFR(closure.end),
   };
 }

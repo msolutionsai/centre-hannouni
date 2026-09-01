@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getClosureStatus, isDateInClosure } from "@/lib/closure";
 
 /**
  * RDV form handler.
@@ -23,6 +24,12 @@ import { NextResponse } from "next/server";
  *   message,
  *   adresse, ville, pays,
  *   consentement:   boolean,
+ *   closure:        null | {          // planned-closure context
+ *     active:           true,
+ *     requestInClosure: boolean,      // dateSouhaitee falls inside the closure
+ *     startISO, endISO, reopenISO:    "YYYY-MM-DD",
+ *     startLabel, endLabel, reopenLabel: French display strings
+ *   },
  *   // Compat fields for the existing MSOLUTIONSAI workflow ("activity", etc.)
  *   firstName, lastName, fullName, phone, activity, company: ""
  * }
@@ -58,11 +65,14 @@ function isPhone(s: string) {
 function isBirthDate(s: string) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
   if (!m) return false;
-  const d = new Date(s);
+  // Parse at local noon and compare against end-of-day: `new Date("YYYY-MM-DD")`
+  // is UTC midnight, which sits after local midnight in any UTC+X zone and made
+  // the current date fail validation server-side while the form accepted it.
+  const d = new Date(`${s}T12:00:00`);
   if (isNaN(d.getTime())) return false;
   const year = d.getFullYear();
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  today.setHours(23, 59, 59, 999);
   return year >= 1900 && d <= today;
 }
 
@@ -127,6 +137,26 @@ export async function POST(req: Request) {
     Math.random().toString(36).slice(2, 7).toUpperCase();
 
   const fullName = `${firstName} ${lastName}`.trim();
+  const preferredDate = sanitize(body.preferredDate);
+
+  // Closure context, precomputed server-side so n8n can branch on a single
+  // boolean instead of duplicating date logic that could drift from the site.
+  // `closure` is null whenever no closure period is configured or the current
+  // one has passed, so the workflow's default branch resumes on its own.
+  const closureState = getClosureStatus();
+  const closureBlock = closureState.active
+    ? {
+        active: true,
+        // true when the patient asked for a date that falls inside the closure
+        requestInClosure: isDateInClosure(preferredDate),
+        startISO: closureState.startISO,
+        endISO: closureState.endISO,
+        startLabel: closureState.startLabel,
+        endLabel: closureState.endLabel,
+        reopenISO: closureState.reopenISO,
+        reopenLabel: closureState.reopenLabel,
+      }
+    : null;
 
   const payload = {
     leadId,
@@ -139,13 +169,16 @@ export async function POST(req: Request) {
     dateNaissance: birthDate,
     email,
     telephone: phone,
-    dateSouhaitee: sanitize(body.preferredDate),
+    dateSouhaitee: preferredDate,
     intervention,
     message: sanitize(body.message),
     adresse: sanitize(body.address),
     ville: sanitize(body.city),
     pays: sanitize(body.country) || "Maroc",
     consentement: consent,
+
+    // Planned-closure context — null when the centre is operating normally
+    closure: closureBlock,
 
     // Compat block — aligns with existing n8n workflow keys if reused as-is
     firstName,
