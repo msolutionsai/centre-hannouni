@@ -65,7 +65,7 @@ export function Testimonials() {
                 ))}
               </span>
               <span className="tracking-[0.04em]">
-                {clinic.googleRating.value} / {clinic.googleRating.bestRating} · Google · {clinic.address.city.split(",")[0]}
+                {clinic.googleRating.value.toLocaleString("fr-FR")} / {clinic.googleRating.bestRating} · Google · {clinic.address.city.split(",")[0]}
               </span>
             </div>
             <a
