@@ -33,9 +33,9 @@ export const clinic = {
   // schema rating data against the Google Business Profile. Update as new
   // reviews come in (visible on the GBP dashboard).
   googleRating: {
-    value: 5,
+    value: 4.8,
     bestRating: 5,
-    reviewCount: 14,
+    reviewCount: 17,
   },
 };
 
