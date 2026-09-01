@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
@@ -107,12 +107,22 @@ function isBirthDateValid(s: string) {
   if (!s) return false;
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
   if (!m) return false;
-  const d = new Date(s);
+  // Parse at local noon: `new Date("YYYY-MM-DD")` is parsed as UTC midnight,
+  // which lands *after* local midnight in any UTC+X zone (Morocco included)
+  // and made today's own date fail the `<= today` check.
+  const d = new Date(`${s}T12:00:00`);
   if (isNaN(d.getTime())) return false;
   const year = d.getFullYear();
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  today.setHours(23, 59, 59, 999);
   return year >= 1900 && d <= today;
+}
+
+/** Today as YYYY-MM-DD in the visitor's own timezone (not UTC). */
+function todayISOLocal() {
+  const d = new Date();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
 type Errors = Partial<Record<keyof FormState, string>>;
@@ -126,9 +136,20 @@ export function Contact() {
   const [attempted, setAttempted] = useState<Record<number, boolean>>({});
   const [sentDuringClosure, setSentDuringClosure] = useState(false);
 
-  // Planned-closure snapshot — flips itself off automatically the day
-  // after the configured end date, so no manual revert is ever needed.
-  const closureStatus = useMemo(() => getClosureStatus(), []);
+  // Planned-closure snapshot + today's date are resolved AFTER mount, on the
+  // visitor's clock. This page is statically generated and edge-cached for
+  // weeks, so anything derived from `new Date()` during render would freeze
+  // at build time — which is exactly how an expired closure banner survived
+  // past its end date. Client-only evaluation keeps it self-reverting.
+  const [closureStatus, setClosureStatus] = useState<ReturnType<typeof getClosureStatus>>({
+    active: false,
+  });
+  const [today, setToday] = useState("");
+  useEffect(() => {
+    setClosureStatus(getClosureStatus());
+    setToday(todayISOLocal());
+  }, []);
+
   const preferredDateInClosure = isDateInClosure(data.preferredDate);
 
   const upd = <K extends keyof FormState>(k: K, v: FormState[K]) =>
@@ -465,7 +486,7 @@ export function Contact() {
                             <Field id="lastName" label="Nom" value={data.lastName} onChange={(v) => upd("lastName", v)} required autoComplete="family-name" error={showErr("lastName", 1)} />
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <CustomDate id="birthDate" label="Date de naissance" value={data.birthDate} onChange={(v) => upd("birthDate", v)} required max={new Date().toISOString().slice(0,10)} error={showErr("birthDate", 1)} />
+                            <CustomDate id="birthDate" label="Date de naissance" value={data.birthDate} onChange={(v) => upd("birthDate", v)} required max={today || undefined} error={showErr("birthDate", 1)} />
                           </div>
                         </motion.div>
                       )}
@@ -483,7 +504,7 @@ export function Contact() {
                             <CustomSelect id="intervention" label="Intervention souhaitée" value={data.intervention} onChange={(v) => upd("intervention", v)} options={interventionOptions} required error={showErr("intervention", 2)} />
                           </div>
                           <div className="col-span-12 md:col-span-6">
-                            <CustomDate id="preferredDate" label="Date souhaitée" value={data.preferredDate} onChange={(v) => upd("preferredDate", v)} min={new Date().toISOString().slice(0,10)} />
+                            <CustomDate id="preferredDate" label="Date souhaitée" value={data.preferredDate} onChange={(v) => upd("preferredDate", v)} min={today || undefined} />
                             {preferredDateInClosure && closureStatus.active && (
                               <p className="mt-2 text-[12px] leading-[1.5] italic text-[var(--color-cognac-deep)]">
                                 Cette date tombe pendant nos congés annuels ({closureStatus.startLabel} au {closureStatus.endLabel}). Vous pouvez envoyer la demande — nous vous recontacterons dès le {closureStatus.reopenLabel} pour caler un créneau.
