@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function MentionsLegales() {
   return (
-    <LegalShell eyebrow="Informations légales" title="Mentions légales" lastUpdated="mai 2026">
+    <LegalShell eyebrow="Informations légales" title="Mentions légales" lastUpdated="septembre 2026">
       <h2>Éditeur du site</h2>
       <p>
         Le présent site, accessible à l&apos;adresse{" "}
