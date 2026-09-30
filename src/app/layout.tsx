@@ -149,6 +149,15 @@ const structuredData = {
             propertyID: "Ordre National des Médecins du Maroc",
             value: clinic.doctor.ordreNumber,
           },
+          hasCredential: {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "Spécialité médicale",
+            name: clinic.doctor.ordreSpecialty,
+            recognizedBy: {
+              "@type": "Organization",
+              name: "Ordre National des Médecins du Maroc",
+            },
+          },
         }
       : {}),
     worksFor: { "@id": `${SITE_URL}/#clinic` },

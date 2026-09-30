@@ -43,13 +43,22 @@ export default function MentionsLegales() {
         l&apos;Ordre National des Médecins du Maroc.
       </p>
       {clinic.doctor.ordreNumber ? (
-        <p>
-          <strong>
-            Numéro d&apos;inscription au tableau de l&apos;Ordre National des Médecins :
-          </strong>{" "}
-          {clinic.doctor.ordreNumber}
-          {clinic.doctor.ordreCouncil ? ` — ${clinic.doctor.ordreCouncil}` : ""}.
-        </p>
+        <ul>
+          <li>
+            <strong>Spécialité (titre d&apos;inscription) :</strong>{" "}
+            {clinic.doctor.ordreSpecialty}
+          </li>
+          <li>
+            <strong>
+              Numéro d&apos;inscription au tableau de l&apos;Ordre National des Médecins :
+            </strong>{" "}
+            {clinic.doctor.ordreNumber}
+          </li>
+          <li>
+            <strong>Province d&apos;exercice :</strong> {clinic.doctor.ordreProvince} —
+            secteur {clinic.doctor.ordreSector.toLowerCase()}
+          </li>
+        </ul>
       ) : null}
 
       <h2>Hébergement</h2>

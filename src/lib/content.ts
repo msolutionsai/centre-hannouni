@@ -6,15 +6,20 @@ export const clinic = {
     fullName: "Dr Hannouni Youssef",
     title: "Chirurgien esthétique & maxillo-facial",
     experience: "20 ans d’expérience",
-    // Numéro d'inscription au tableau de l'Ordre National des Médecins du Maroc.
-    // Mention attendue d'une profession réglementée : elle identifie le praticien
-    // et permet de vérifier son droit d'exercer. Tant que la valeur est vide, la
-    // ligne n'est rendue ni dans les mentions légales ni dans le JSON-LD — mieux
-    // vaut l'absence qu'un numéro approximatif sur une page à portée juridique.
-    ordreNumber: "",
-    // Conseil régional auprès duquel le praticien est inscrit (le tableau est tenu
-    // par le conseil régional du domicile professionnel, pas par le national).
-    ordreCouncil: "Conseil régional de l’Ordre des médecins de Marrakech",
+    // Inscription au tableau de l'Ordre National des Médecins du Maroc, relevée
+    // sur la carte professionnelle électronique du médecin (CPEM). Ces champs
+    // reproduisent la carte à l'identique : ils sont vérifiables auprès de
+    // l'Ordre, donc ils ne se paraphrasent pas.
+    //
+    // Ne JAMAIS ajouter ici le CIN ni l'INPE figurant sur la même carte : le CIN
+    // est une donnée d'identité personnelle, l'INPE un identifiant de facturation.
+    // Ni l'un ni l'autre n'a sa place sur une page publique.
+    ordreNumber: "7447",
+    // Titre sous lequel le praticien est inscrit à l'Ordre. Distinct de
+    // `title`, qui décrit l'activité : seul ce libellé-ci est opposable.
+    ordreSpecialty: "Stomatologie et chirurgie maxillo-faciale",
+    ordreProvince: "Marrakech",
+    ordreSector: "Privé",
   },
   address: {
     line1: "1er Étage, Numéro 11",
