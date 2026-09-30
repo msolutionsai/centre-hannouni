@@ -139,6 +139,18 @@ const structuredData = {
     "@id": `${SITE_URL}/#founder`,
     name: clinic.doctor.fullName,
     jobTitle: clinic.doctor.title,
+    // Registration number with the Moroccan medical board. Emitted only once it
+    // is filled in: a verifiable practitioner credential is a strong E-E-A-T
+    // signal on a YMYL medical site, an invented one is a liability.
+    ...(clinic.doctor.ordreNumber
+      ? {
+          identifier: {
+            "@type": "PropertyValue",
+            propertyID: "Ordre National des Médecins du Maroc",
+            value: clinic.doctor.ordreNumber,
+          },
+        }
+      : {}),
     worksFor: { "@id": `${SITE_URL}/#clinic` },
     alumniOf: [
       { "@type": "EducationalOrganization", name: "Faculté de médecine de Casablanca" },

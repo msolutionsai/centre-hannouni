@@ -39,9 +39,18 @@ export default function MentionsLegales() {
       <p>
         Le Dr Hannouni Youssef exerce la médecine en qualité de chirurgien esthétique et
         maxillo-facial. La profession de médecin est une profession réglementée au Maroc :
-        le praticien est soumis au Code de déontologie médicale et inscrit au Conseil
-        national de l&apos;Ordre des médecins du Maroc.
+        le praticien est soumis au Code de déontologie médicale et inscrit au tableau de
+        l&apos;Ordre National des Médecins du Maroc.
       </p>
+      {clinic.doctor.ordreNumber ? (
+        <p>
+          <strong>
+            Numéro d&apos;inscription au tableau de l&apos;Ordre National des Médecins :
+          </strong>{" "}
+          {clinic.doctor.ordreNumber}
+          {clinic.doctor.ordreCouncil ? ` — ${clinic.doctor.ordreCouncil}` : ""}.
+        </p>
+      ) : null}
 
       <h2>Hébergement</h2>
       <p>
