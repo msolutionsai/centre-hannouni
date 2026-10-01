@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "acide hyaluronique Marrakech",
     "toxine botulique Marrakech",
     "toxine botulique Maroc",
-    "chirurgie orthognatique Maroc",
+    "chirurgie orthognathique Maroc",
     "Dr Hannouni",
     "Centre Hannouni",
     "Guéliz Marrakech",

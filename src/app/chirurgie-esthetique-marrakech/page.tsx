@@ -93,7 +93,7 @@ const FAQ = [
   },
   {
     q: "Quelles interventions de chirurgie esthétique propose le Centre Hannouni ?",
-    a: "Le centre couvre la chirurgie esthétique du visage (rhinoplastie, lifting cervico-facial, blépharoplastie, génioplastie), la volumétrie et la médecine esthétique (lipofilling, acide hyaluronique, toxine botulique) ainsi que la chirurgie maxillo-faciale (chirurgie orthognatique). Chaque intervention dispose d'une page dédiée détaillant le protocole et les suites.",
+    a: "Le centre couvre la chirurgie esthétique du visage (rhinoplastie, lifting cervico-facial, blépharoplastie, génioplastie), la volumétrie et la médecine esthétique (lipofilling, acide hyaluronique, toxine botulique) ainsi que la chirurgie maxillo-faciale (chirurgie orthognathique). Chaque intervention dispose d'une page dédiée détaillant le protocole et les suites.",
   },
   {
     q: "Où se situe le Centre du Docteur Hannouni à Marrakech ?",

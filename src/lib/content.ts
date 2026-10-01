@@ -143,7 +143,7 @@ export const expertiseAreas = [
   },
   {
     num: "04",
-    name: "Chirurgie orthognatique",
+    name: "Chirurgie orthognathique",
     lead: "Réaligner la structure.",
     body:
       "Une chirurgie des bases osseuses du visage pour rétablir une occlusion correcte et l’équilibre anatomique de la face.",
@@ -211,7 +211,7 @@ export const interventionsHighlight = [
       "Atténuer les rides d’expression, préserver la mobilité du visage.",
   },
   {
-    name: "Chirurgie orthognatique",
+    name: "Chirurgie orthognathique",
     sub: "Maxillo-facial",
     teaser:
       "Corriger l’anatomie osseuse pour un visage fonctionnel et harmonieux.",
@@ -292,7 +292,7 @@ export const interventionOptions = [
   "Génioplastie",
   "Lipofilling du visage",
   "Oreilles décollées",
-  "Chirurgie orthognatique",
+  "Chirurgie orthognathique",
   "Toxine botulique",
   "Acide hyaluronique",
   "PRP / Mésothérapie",

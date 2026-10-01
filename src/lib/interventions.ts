@@ -858,27 +858,33 @@ export const interventionDetails: InterventionDetail[] = [
     related: ["acide-hyaluronique", "blepharoplastie", "lipofilling-du-visage"],
   },
   {
+    // ATTENTION — faute volontairement conservée dans le slug.
+    // L'orthographe correcte est « orthognathique » (du grec gnathos, la
+    // mâchoire) et le texte de la page a été corrigé. L'adresse, elle, reste
+    // /interventions/chirurgie-orthognatique : elle est indexée par Google et
+    // une annonce Google Ads pointe dessus. La renommer imposerait une
+    // redirection pour aucun bénéfice. Ne pas « corriger » cette ligne.
     slug: "chirurgie-orthognatique",
     metaDescription:
-      "Chirurgie orthognatique à Marrakech (Maroc) par le Dr Hannouni, chirurgien maxillo-facial : correction des bases osseuses, fonctionnelle et esthétique.",
-    name: "Chirurgie orthognatique",
+      "Chirurgie orthognathique à Marrakech (Maroc) par le Dr Hannouni, chirurgien maxillo-facial : correction des bases osseuses, fonctionnelle et esthétique.",
+    name: "Chirurgie orthognathique",
     category: "Maxillo-facial",
     teaser:
       "Corriger l’anatomie osseuse pour un visage fonctionnel et harmonieux.",
     image: "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Chirurgie%20orthognatique.png",
     hero: {
       eyebrow: "VIII · Maxillo-facial",
-      headline: "La chirurgie orthognatique,",
+      headline: "La chirurgie orthognathique,",
       italicSuffix: "rétablir l’équilibre.",
       portrait: "surgery",
     },
     intro:
-      "La chirurgie orthognatique corrige les anomalies de croissance des bases osseuses du visage. C’est une chirurgie morphologique, à la fois fonctionnelle et esthétique.",
+      "La chirurgie orthognathique corrige les anomalies de croissance des bases osseuses du visage. C’est une chirurgie morphologique, à la fois fonctionnelle et esthétique.",
     presentation: [
       {
         title: "Fonction d’abord, esthétique ensuite",
         body:
-          "Une mauvaise occlusion compromet la mastication, la respiration, la phonation. La chirurgie orthognatique restaure d’abord la fonction. La transformation esthétique en découle naturellement.",
+          "Une mauvaise occlusion compromet la mastication, la respiration, la phonation. La chirurgie orthognathique restaure d’abord la fonction. La transformation esthétique en découle naturellement.",
       },
       {
         title: "Une équipe pluridisciplinaire",
@@ -928,30 +934,30 @@ export const interventionDetails: InterventionDetail[] = [
     ],
     results: [
       {
-        label: "Chirurgie orthognatique · avant / après",
+        label: "Chirurgie orthognathique · avant / après",
         before: `${RESULTS_BASE}/Chirurgie%20orthognatique%20AVANT%20.png`,
         after: `${RESULTS_BASE}/Chirurgie%20orthognatique%20APRES.png`,
       },
     ],
     faq: [
       {
-        q: "Combien coûte une chirurgie orthognatique au Maroc ?",
-        a: "Le tarif d’une chirurgie orthognatique est défini en consultation, après bilan complet et concertation avec l’orthodontiste. Il inclut l’analyse 3D, l’hospitalisation, l’anesthésie générale, l’intervention et l’ensemble du suivi sur 6 à 12 mois.",
+        q: "Combien coûte une chirurgie orthognathique au Maroc ?",
+        a: "Le tarif d’une chirurgie orthognathique est défini en consultation, après bilan complet et concertation avec l’orthodontiste. Il inclut l’analyse 3D, l’hospitalisation, l’anesthésie générale, l’intervention et l’ensemble du suivi sur 6 à 12 mois.",
       },
       {
-        q: "Y a-t-il des cicatrices visibles après une chirurgie orthognatique ?",
+        q: "Y a-t-il des cicatrices visibles après une chirurgie orthognathique ?",
         a: "Non. Toutes les voies d’abord sont endo-buccales (à l’intérieur de la bouche). Aucune cicatrice cutanée n’est visible sur le visage ou le cou.",
       },
       {
         q: "Cette chirurgie est-elle prise en charge ?",
-        a: "Oui, dans la grande majorité des cas, la chirurgie orthognatique entre dans le cadre d’une prise en charge médicale au titre du défaut fonctionnel (occlusion, mastication, phonation, apnées du sommeil). Le volet purement esthétique reste à part.",
+        a: "Oui, dans la grande majorité des cas, la chirurgie orthognathique entre dans le cadre d’une prise en charge médicale au titre du défaut fonctionnel (occlusion, mastication, phonation, apnées du sommeil). Le volet purement esthétique reste à part.",
       },
       {
         q: "L’intervention est-elle douloureuse ?",
         a: "Sous anesthésie générale, l’intervention est indolore. En post-opératoire, la sensation dominante est plutôt un engourdissement et une gêne à la mastication, traités par antalgiques classiques. La douleur véritable est exceptionnelle.",
       },
       {
-        q: "Quels sont les risques d’une chirurgie orthognatique ?",
+        q: "Quels sont les risques d’une chirurgie orthognathique ?",
         a: "Risques rares mais réels : hypoesthésie de la lèvre inférieure ou du menton (régressant en plusieurs mois), récidive partielle, troubles articulaires temporo-mandibulaires, infection osseuse. Une planification 3D minutieuse minimise considérablement ces risques.",
       },
       {
@@ -960,14 +966,14 @@ export const interventionDetails: InterventionDetail[] = [
       },
       {
         q: "Faut-il un suivi orthodontique avant et après ?",
-        a: "Oui, c’est indispensable. Un suivi orthodontique de 12 à 18 mois précède la chirurgie pour aligner les arcades dentaires. Un suivi de finition de 6 à 12 mois lui succède pour parfaire l’occlusion. La chirurgie orthognatique est par essence une discipline d’équipe.",
+        a: "Oui, c’est indispensable. Un suivi orthodontique de 12 à 18 mois précède la chirurgie pour aligner les arcades dentaires. Un suivi de finition de 6 à 12 mois lui succède pour parfaire l’occlusion. La chirurgie orthognathique est par essence une discipline d’équipe.",
       },
       {
         q: "Quand peut-on reprendre une alimentation normale ?",
         a: "Alimentation liquide les 10 premiers jours. Alimentation molle (purée, semoule, omelette) jusqu’à 6 semaines. Réintroduction progressive d’aliments tendres entre 6 et 10 semaines. Alimentation normale (croquant, viande ferme) à partir de 3 mois.",
       },
       {
-        q: "Le résultat d’une chirurgie orthognatique est-il définitif ?",
+        q: "Le résultat d’une chirurgie orthognathique est-il définitif ?",
         a: "Oui. Une fois la consolidation osseuse acquise (3 à 6 mois) et la finition orthodontique terminée, le résultat est définitif. C’est l’une des chirurgies les plus stables dans le temps en chirurgie maxillo-faciale.",
       },
       {
