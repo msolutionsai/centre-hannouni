@@ -16,7 +16,7 @@ export default function PolitiqueConfidentialite() {
     <LegalShell
       eyebrow="Protection des données"
       title="Politique de confidentialité"
-      lastUpdated="mai 2026"
+      lastUpdated="octobre 2026"
     >
       <p>
         Le Centre du Docteur Hannouni accorde une importance primordiale à la protection de
@@ -75,10 +75,24 @@ export default function PolitiqueConfidentialite() {
 
       <h2>Cookies et traceurs</h2>
       <p>
-        Ce site <strong>n&apos;utilise aucun cookie publicitaire, ni traceur de suivi, ni
-        outil de mesure d&apos;audience tiers</strong>. Aucun profilage n&apos;est réalisé.
-        Seuls les éléments strictement nécessaires au bon fonctionnement du site peuvent
-        être employés.
+        Ce site utilise la balise de mesure <strong>Google Ads</strong>, dont l&apos;unique
+        objet est de savoir si une demande de rendez-vous ou un appel fait suite au clic
+        sur l&apos;une de nos annonces. Elle dépose à cette fin un cookie de mesure
+        publicitaire.
+      </p>
+      <p>
+        Ce qui est transmis à Google se limite à ce comptage :{" "}
+        <strong>
+          ni votre nom, ni votre adresse e-mail, ni votre numéro de téléphone, ni le motif
+          de votre demande
+        </strong>{" "}
+        ne lui sont communiqués. Aucune autre mesure d&apos;audience, aucun bouton de
+        réseau social et aucun profilage publicitaire ne sont présents sur ce site.
+      </p>
+      <p>
+        Vous pouvez refuser ce cookie depuis les réglages de votre navigateur ou au moyen
+        d&apos;une extension dédiée. Le site, le formulaire de prise de rendez-vous et les
+        liens téléphoniques continuent alors de fonctionner normalement.
       </p>
 
       <h2>Destinataires et sous-traitants</h2>
@@ -86,9 +100,9 @@ export default function PolitiqueConfidentialite() {
         Vos données sont destinées au seul personnel habilité du Centre du Docteur
         Hannouni. Elles peuvent être traitées, pour notre compte et selon nos instructions,
         par des prestataires techniques (hébergement du site, automatisation sécurisée de
-        la prise de rendez-vous). Le site étant hébergé par Vercel Inc. (États-Unis), un
-        transfert de données en dehors du Maroc peut intervenir ; ce transfert est encadré
-        par des garanties appropriées.
+        la prise de rendez-vous, mesure de nos campagnes publicitaires). Le site étant
+        hébergé par Vercel Inc. (États-Unis), un transfert de données en dehors du Maroc
+        peut intervenir ; ce transfert est encadré par des garanties appropriées.
       </p>
 
       <h2>Durée de conservation</h2>

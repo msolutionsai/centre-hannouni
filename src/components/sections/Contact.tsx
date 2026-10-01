@@ -207,6 +207,21 @@ export function Contact() {
       // wipe the flag before the success view has had a chance to read it.
       setSentDuringClosure(isDateInClosure(data.preferredDate));
       setStatus("sent");
+
+      // Google Ads conversion. This sits inside the submit try/catch, so an
+      // uncaught throw here would land in the catch below and show the patient
+      // an error for a request that actually went through. The inner try is
+      // what prevents that — it is load-bearing, not decorative.
+      try {
+        const g = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
+        if (typeof g === "function") {
+          g("event", "conversion", {
+            send_to: "AW-18450792077/HffiCOeu-YwdEI39gt5E",
+          });
+        }
+      } catch {
+        // Ad blocker or script never loaded: the request is already sent.
+      }
     } catch (err: unknown) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Erreur inconnue");

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+import { SuiviAppels } from "@/components/SuiviAppels";
 import { clinic } from "@/lib/content";
 
 const fraunces = Fraunces({
@@ -196,7 +198,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SuiviAppels />
+
+        {/*
+          Google Ads tag. `afterInteractive` keeps it off the critical path:
+          on traffic paid by the click, the tag must never be what delays the
+          first paint. Loading it is best-effort — every conversion call on the
+          site checks for gtag and swallows its own failure, so an ad blocker
+          costs us a measurement, never a patient.
+
+          Declared in the privacy policy ("Cookies et traceurs"). If a tracker
+          is ever added or removed here, that section has to follow.
+        */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18450792077"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18450792077');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
