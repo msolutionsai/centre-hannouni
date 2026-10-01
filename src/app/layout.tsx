@@ -209,6 +209,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           site checks for gtag and swallows its own failure, so an ad blocker
           costs us a measurement, never a patient.
 
+          Ad personalization is switched off, twice over: once globally before
+          any config, once on the config itself. Left on, the tag also builds a
+          remarketing audience from every visitor — which the privacy policy
+          says does not happen, and which Google's health policy would never
+          let us use anyway. Conversion measurement and the hashed email are
+          unaffected.
+
           Declared in the privacy policy ("Cookies et traceurs"). If a tracker
           is ever added or removed here, that section has to follow.
         */}
@@ -221,7 +228,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-18450792077');
+            gtag('set', 'allow_ad_personalization_signals', false);
+            gtag('config', 'AW-18450792077', { allow_ad_personalization_signals: false });
           `}
         </Script>
       </body>

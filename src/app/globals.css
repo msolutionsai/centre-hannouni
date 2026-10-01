@@ -188,6 +188,15 @@ body {
   text-transform: uppercase;
   color: var(--color-ink-muted);
 }
+/* Le libellé non flottant occupe de 1,4rem à ~2,45rem. Sur un champ d'une
+   seule ligne il ne gêne jamais : il a toujours flotté avant que du texte
+   n'apparaisse. Sur une zone de texte, dont le contenu commence en haut, il
+   traverse la première ligne pendant les 0,4 s de la transition — c'est ce
+   qu'on voyait en tapant dans « Message ». On lui réserve sa place : mesuré
+   non flottant, son bas tombe vers 43 px ; 3rem (48 px) laisse de la marge
+   pour les variations de métrique au chargement de la police. */
+.field textarea { padding-top: 3rem; }
+
 .field select { color: var(--color-ink); }
 .field select:required:invalid { color: transparent; }
 .field .select-caret {

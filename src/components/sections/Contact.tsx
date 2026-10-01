@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
@@ -182,13 +182,31 @@ export function Contact() {
     return errors[key] ?? null;
   };
 
+  // « Suivant » (étape 2) et « Envoyer ma demande » (étape 3) sont rendus à la
+  // même hauteur et se chevauchent horizontalement. Sur mobile, le second appui
+  // d'un double tap retombe donc sur le bouton d'envoi : le patient arrivait à
+  // l'étape 3 et y lisait trois erreurs rouges avant d'avoir tapé quoi que ce
+  // soit — sur le formulaire d'une campagne payée au clic.
+  //
+  // On n'horodate que les passages d'étape réussis, jamais le montage : un
+  // garde-fou qui démarrerait à la valeur du moment avalerait les premiers
+  // clics légitimes après chaque remontage du composant.
+  const lastAdvanceAt = useRef(0);
+
   const tryNext = () => {
     setAttempted((a) => ({ ...a, [step]: true }));
-    if (stepValid) setStep((s) => s + 1);
+    if (stepValid) {
+      lastAdvanceAt.current = Date.now();
+      setStep((s) => s + 1);
+    }
   };
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    // Personne ne remplit e-mail, téléphone et consentement en un demi-seconde :
+    // un envoi aussi proche d'un changement d'étape est le second appui d'un
+    // double tap, pas une intention.
+    if (Date.now() - lastAdvanceAt.current < 500) return;
     setAttempted((a) => ({ ...a, [step]: true }));
     if (!stepValid) return;
     setStatus("sending");
