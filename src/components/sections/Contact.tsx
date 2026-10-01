@@ -215,6 +215,14 @@ export function Contact() {
       try {
         const g = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
         if (typeof g === "function") {
+          // Enhanced conversions. The Google tag hashes this with SHA-256 inside
+          // the browser before anything leaves the page, so the address itself is
+          // never transmitted. Normalised first, because the hash of " A@b.com "
+          // and of "a@b.com" are different values and would never match.
+          //
+          // Email only, deliberately: name, phone, procedure and requested date
+          // are medical context and stay between the patient and the centre.
+          g("set", "user_data", { email: data.email.trim().toLowerCase() });
           g("event", "conversion", {
             send_to: "AW-18450792077/HffiCOeu-YwdEI39gt5E",
           });

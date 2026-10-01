@@ -81,18 +81,34 @@ export default function PolitiqueConfidentialite() {
         publicitaire.
       </p>
       <p>
-        Ce qui est transmis à Google se limite à ce comptage :{" "}
-        <strong>
-          ni votre nom, ni votre adresse e-mail, ni votre numéro de téléphone, ni le motif
-          de votre demande
-        </strong>{" "}
-        ne lui sont communiqués. Aucune autre mesure d&apos;audience, aucun bouton de
-        réseau social et aucun profilage publicitaire ne sont présents sur ce site.
+        Lorsque vous envoyez une demande de rendez-vous, l&apos;adresse e-mail que vous
+        avez saisie est transformée <strong>dans votre navigateur</strong> en une empreinte
+        irréversible : un code calculé à partir de l&apos;adresse, dont il est impossible
+        de retrouver l&apos;adresse d&apos;origine. C&apos;est ce code, et non votre
+        adresse, qui est transmis à Google. L&apos;adresse elle-même ne quitte jamais la
+        page.
       </p>
       <p>
-        Vous pouvez refuser ce cookie depuis les réglages de votre navigateur ou au moyen
-        d&apos;une extension dédiée. Le site, le formulaire de prise de rendez-vous et les
-        liens téléphoniques continuent alors de fonctionner normalement.
+        Ce code sert uniquement à rattacher votre demande à l&apos;annonce qui vous a
+        amené sur le site, en le comparant à celui des adresses déjà connues de Google. Il
+        ne sert pas à vous adresser de la publicité, et il n&apos;apprend au centre rien
+        que vous ne lui ayez déjà écrit dans le formulaire.
+      </p>
+      <p>
+        <strong>
+          Votre nom, votre numéro de téléphone, le motif de votre demande et la date
+          souhaitée ne sont transmis à personne d&apos;autre que le centre.
+        </strong>{" "}
+        Aucune autre mesure d&apos;audience, aucun bouton de réseau social et aucun
+        profilage publicitaire ne sont présents sur ce site.
+      </p>
+      <p>
+        Pour vous y opposer, bloquez la balise Google depuis les réglages de votre
+        navigateur ou au moyen d&apos;une extension dédiée : ni le cookie ni l&apos;empreinte
+        ne sont alors transmis. Le site, le formulaire de prise de rendez-vous et les liens
+        téléphoniques continuent de fonctionner normalement. Vous pouvez également nous
+        écrire à <a href={`mailto:${clinic.email}`}>{clinic.email}</a> pour exercer les
+        droits décrits plus bas.
       </p>
 
       <h2>Destinataires et sous-traitants</h2>
