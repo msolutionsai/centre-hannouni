@@ -24,6 +24,28 @@ export type FaqItem = { q: string; a: string };
 export type InterventionDetail = {
   slug: string;
   name: string;
+  /**
+   * Libellé court pour les grilles de la page d'accueil et de la page pivot,
+   * qui sont les deux pages d'arrivée des annonces Google Ads.
+   *
+   * Existe parce que Google refuse toute annonce dont la page d'arrivée affiche
+   * « Botox » : marque déposée d'un médicament sur ordonnance, politique
+   * RESTRICTED_DRUG_TERMS, restriction totale au Maroc.
+   *
+   * La page /interventions/botox, elle, garde `name` : elle n'est pas page
+   * d'arrivée publicitaire et son référencement sur « botox marrakech » est
+   * travaillé. Même chose pour les cartes « interventions liées » des autres
+   * pages de détail, dont le texte de lien alimente ce référencement.
+   *
+   * Par défaut, `name` est utilisé.
+   */
+  cardName?: string;
+  /**
+   * Visuel de remplacement pour ces mêmes grilles, pour les cas où le nom du
+   * fichier contient lui aussi un terme refusé (Google lit l'URL de l'image).
+   * Par défaut, `image` est utilisé.
+   */
+  cardImage?: string;
   category: string;
   teaser: string;
   image: string;
@@ -720,6 +742,14 @@ export const interventionDetails: InterventionDetail[] = [
   },
   {
     slug: "botox",
+    // Voir `cardName` dans le type : seules les grilles des pages d'arrivée
+    // publicitaires l'utilisent. Tout le reste de cette entrée est inchangé.
+    cardName: "Toxine botulique",
+    // Même visuel que `image`, déposé sur R2 sous un nom neutre : Google lit
+    // aussi l'URL des images. Converti en WebP au passage — 59 Ko contre
+    // 1,89 Mo pour le PNG, sur une page payée au clic.
+    cardImage:
+      "https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/Toxine-botulique.webp",
     metaDescription:
       "Botox à Marrakech (Maroc) par le Dr Hannouni : atténue les rides d'expression (front, lion, pattes d'oie) en préservant la mobilité du visage. RDV à Guéliz.",
     name: "Botox",

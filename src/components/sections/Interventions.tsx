@@ -211,7 +211,7 @@ export function Interventions() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 aria-roledescription="slide"
-                aria-label={`${i + 1} / ${interventionDetails.length} · ${int.name}`}
+                aria-label={`${i + 1} / ${interventionDetails.length} · ${int.cardName ?? int.name}`}
                 className="snap-center md:snap-align-none shrink-0 w-[84vw] sm:w-[60vw] md:w-auto"
               >
                 <div
@@ -238,8 +238,8 @@ export function Interventions() {
                       <div className="absolute inset-0 transition-transform duration-[1300ms] ease-out group-hover:scale-[1.07]">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src={int.image}
-                          alt={`${int.name} à Marrakech — ${int.category} au Centre du Docteur Hannouni`}
+                          src={int.cardImage ?? int.image}
+                          alt={`${int.cardName ?? int.name} à Marrakech — ${int.category} au Centre du Docteur Hannouni`}
                           loading="lazy"
                           decoding="async"
                           className="absolute inset-0 h-full w-full object-cover object-center"
@@ -275,7 +275,7 @@ export function Interventions() {
                           md:group-hover:-translate-y-1
                         "
                       >
-                        {int.name}
+                        {int.cardName ?? int.name}
                       </h3>
 
                       {/* Reveal block — visible by default on mobile, hover-reveal on md+ */}

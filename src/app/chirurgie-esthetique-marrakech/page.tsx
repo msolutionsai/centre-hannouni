@@ -14,7 +14,7 @@ const PATH = "/chirurgie-esthetique-marrakech";
 
 const PAGE_TITLE = "Chirurgie esthétique à Marrakech, Maroc — Dr Hannouni";
 const PAGE_DESCRIPTION =
-  "Chirurgien esthétique et maxillo-facial à Marrakech, Maroc. Dr Hannouni Youssef : rhinoplastie, lifting, blépharoplastie, botox. 20 ans d'expérience à Guéliz.";
+  "Chirurgien esthétique et maxillo-facial à Marrakech, Maroc. Dr Hannouni Youssef : rhinoplastie, lifting, blépharoplastie, toxine botulique. 20 ans d'expérience à Guéliz.";
 
 export const metadata: Metadata = {
   title: { absolute: PAGE_TITLE },
@@ -92,7 +92,7 @@ const FAQ = [
   },
   {
     q: "Quelles interventions de chirurgie esthétique propose le Centre Hannouni ?",
-    a: "Le centre couvre la chirurgie esthétique du visage (rhinoplastie, lifting cervico-facial, blépharoplastie, génioplastie), la volumétrie et la médecine esthétique (lipofilling, acide hyaluronique, botox) ainsi que la chirurgie maxillo-faciale (chirurgie orthognatique). Chaque intervention dispose d'une page dédiée détaillant le protocole et les suites.",
+    a: "Le centre couvre la chirurgie esthétique du visage (rhinoplastie, lifting cervico-facial, blépharoplastie, génioplastie), la volumétrie et la médecine esthétique (lipofilling, acide hyaluronique, toxine botulique) ainsi que la chirurgie maxillo-faciale (chirurgie orthognatique). Chaque intervention dispose d'une page dédiée détaillant le protocole et les suites.",
   },
   {
     q: "Où se situe le Centre du Docteur Hannouni à Marrakech ?",
@@ -268,7 +268,10 @@ export default function ChirurgieEsthetiqueMarrakech() {
                   const i = getInterventionBySlug(slug);
                   if (!i) return null;
                   return (
-                    <Reveal key={slug} delay={ci * 0.06}>
+                    // Clé volontairement positionnelle : Next sérialise les clés
+                    // dans les données de rendu, et le slug y réintroduirait le mot
+                    // refusé par Google Ads sur cette page d'arrivée.
+                    <Reveal key={`${gi}-${ci}`} delay={ci * 0.06}>
                       <Link
                         href={`/interventions/${i.slug}`}
                         className="group relative flex flex-col overflow-hidden bg-[var(--color-ivory-50)] border border-[var(--color-line)] hover:border-[var(--color-ink)] transition-colors h-full"
@@ -276,8 +279,8 @@ export default function ChirurgieEsthetiqueMarrakech() {
                         <div className="aspect-[16/10] overflow-hidden bg-[var(--color-stone-warm)]">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
-                            src={i.image}
-                            alt={`${i.name} à Marrakech — ${i.category} au Centre du Docteur Hannouni`}
+                            src={i.cardImage ?? i.image}
+                            alt={`${i.cardName ?? i.name} à Marrakech — ${i.category} au Centre du Docteur Hannouni`}
                             loading={gi === 0 && ci < 2 ? undefined : "lazy"}
                             decoding="async"
                             className="h-full w-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
@@ -287,7 +290,7 @@ export default function ChirurgieEsthetiqueMarrakech() {
                           <div className="eyebrow mb-3">{i.category}</div>
                           <div className="flex items-start justify-between gap-4">
                             <h4 className="font-display text-[21px] leading-[1.15] tracking-[-0.015em] text-[var(--color-ink)]">
-                              {i.name}
+                              {i.cardName ?? i.name}
                             </h4>
                             <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-ink)] group-hover:bg-[var(--color-ink)] group-hover:text-[var(--color-ivory)] group-hover:border-[var(--color-ink)] transition-all">
                               <Arrow size={12} />

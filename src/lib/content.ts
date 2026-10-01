@@ -101,7 +101,7 @@ export const expertiseAreas = [
     body:
       "Un éventail de soins non invasifs pour préserver la fraîcheur du visage et corriger les signes du temps avec subtilité.",
     items: [
-      "Botox",
+      "Toxine botulique",
       "Acide hyaluronique · comblement & volumétrie",
       "Hyaluronidase",
       "Dermabrasion",
@@ -205,7 +205,7 @@ export const interventionsHighlight = [
       "Corriger, volumiser, hydrater : sans bistouri, sans éviction.",
   },
   {
-    name: "Botox",
+    name: "Toxine botulique",
     sub: "Médecine esthétique",
     teaser:
       "Atténuer les rides d’expression, préserver la mobilité du visage.",
@@ -293,7 +293,7 @@ export const interventionOptions = [
   "Lipofilling du visage",
   "Oreilles décollées",
   "Chirurgie orthognatique",
-  "Botox",
+  "Toxine botulique",
   "Acide hyaluronique",
   "PRP / Mésothérapie",
   "Lasers",
