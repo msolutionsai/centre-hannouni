@@ -1,6 +1,7 @@
 "use client";
 
 import { clinic, nav } from "@/lib/content";
+import Image from "next/image";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -10,10 +11,13 @@ export function Footer() {
         <div className="grid grid-cols-12 gap-y-8 gap-x-0 md:gap-8 lg:gap-12 border-b border-white/10 pb-16">
           <div className="col-span-12 md:col-span-5">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/LOGO%20PRINCIPAL%20HANNOUNI%20PNG.png"
                 alt=""
                 aria-hidden
+                width={144}
+                height={144}
+                quality={82}
                 className="h-12 w-12 object-contain shrink-0 invert"
               />
               <div>

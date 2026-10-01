@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav, clinic } from "@/lib/content";
 import { Arrow, Monogram, Phone } from "@/components/ui/Icons";
@@ -34,10 +35,16 @@ export function Nav() {
       >
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-4 md:px-10 md:py-5">
           <a href="#top" className="flex items-center gap-3 group" aria-label={clinic.name}>
-            <img
+            <Image
               src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/LOGO%20PRINCIPAL%20HANNOUNI%20PNG.png"
               alt=""
               aria-hidden
+              // 144 = 3× la taille d'affichage (48 px) : net jusqu'aux
+              // écrans 3x. La taille visuelle reste fixée par le CSS.
+              width={144}
+              height={144}
+              quality={82}
+              loading="eager"
               className="h-11 w-11 md:h-12 md:w-12 object-contain shrink-0"
             />
             <div className="flex flex-col gap-1 sm:gap-1.5">
@@ -102,10 +109,13 @@ export function Nav() {
           >
             <div className="flex items-center justify-between px-6 py-4 md:px-10 md:py-5">
               <div className="flex items-center gap-3">
-                <img
+                <Image
                   src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/LOGO%20PRINCIPAL%20HANNOUNI%20PNG.png"
                   alt=""
                   aria-hidden
+                  width={144}
+                  height={144}
+                  quality={82}
                   className="h-11 w-11 object-contain shrink-0 invert"
                 />
                 <div className="flex flex-col gap-1">

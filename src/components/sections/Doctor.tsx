@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Reveal, RevealStagger, StaggerItem } from "@/components/ui/Reveal";
 import { SplitHeading } from "@/components/ui/SplitHeading";
@@ -216,17 +217,26 @@ export function Doctor() {
                         }
                   }
                 >
-                  {/* Image fade-in on scroll-in */}
-                  <motion.img
-                    src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/DR%20HANNOUNI%20PROFIL.webp"
-                    alt="Dr Hannouni Youssef · chirurgien esthétique & maxillo-facial"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover object-center"
+                  {/* Image fade-in on scroll-in. The animation sits on a
+                      wrapper rather than the image itself: next/image renders
+                      its own <img>, which motion cannot drive directly. */}
+                  <motion.div
+                    className="absolute inset-0"
                     initial={reduce ? { opacity: 1 } : { opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.4, ease: easing, delay: 0.15 }}
-                  />
+                  >
+                    <Image
+                      src="https://pub-d3c23de249e5498eab4f6104d29b82ab.r2.dev/Centre%20Hannouni/DR%20HANNOUNI%20PROFIL.webp"
+                      alt="Dr Hannouni Youssef · chirurgien esthétique & maxillo-facial"
+                      fill
+                      // Relevé : 349 px en 375 de large, 484 px en 1440.
+                      sizes="(max-width: 767px) 94vw, 500px"
+                      quality={82}
+                      className="object-cover object-center"
+                    />
+                  </motion.div>
                 </motion.div>
 
                 {/* Bottom gradient + caption */}

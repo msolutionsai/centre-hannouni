@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 import { Nav } from "@/components/sections/Nav";
@@ -276,14 +277,20 @@ export default function ChirurgieEsthetiqueMarrakech() {
                         href={`/interventions/${i.slug}`}
                         className="group relative flex flex-col overflow-hidden bg-[var(--color-ivory-50)] border border-[var(--color-line)] hover:border-[var(--color-ink)] transition-colors h-full"
                       >
-                        <div className="aspect-[16/10] overflow-hidden bg-[var(--color-stone-warm)]">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
+                        <div className="relative aspect-[16/10] overflow-hidden bg-[var(--color-stone-warm)]">
+                          <Image
                             src={i.cardImage ?? i.image}
                             alt={`${i.cardName ?? i.name} à Marrakech — ${i.category} au Centre du Docteur Hannouni`}
-                            loading={gi === 0 && ci < 2 ? undefined : "lazy"}
-                            decoding="async"
-                            className="h-full w-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
+                            fill
+                            // Relevé : 315 px en 375 de large, 350 px en 1440
+                            // (3 colonnes dans un conteneur borné).
+                            sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 380px"
+                            quality={82}
+                            // Les deux premières cartes sont au-dessus de la
+                            // ligne de flottaison : elles ne doivent pas être
+                            // différées.
+                            loading={gi === 0 && ci < 2 ? "eager" : "lazy"}
+                            className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
                           />
                         </div>
                         <div className="flex flex-1 flex-col p-6">

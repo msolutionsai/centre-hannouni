@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
 import { Arrow } from "@/components/ui/Icons";
 
 type GalleryImage = { src: string; alt: string };
@@ -64,13 +65,14 @@ export function ExpandingGallery({
           className="relative aspect-[4/5] w-full rounded-[2px] overflow-hidden ring-1 ring-[var(--color-line)] bg-[var(--color-ink)]"
           onTouchStart={pauseBriefly}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             key={current.src}
             src={current.src}
             alt={current.alt}
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-center animate-[fadeIn_650ms_cubic-bezier(0.22,1,0.36,1)_both]"
+            fill
+            sizes="(max-width: 767px) 100vw, 700px"
+            quality={82}
+            className="object-cover object-center animate-[fadeIn_650ms_cubic-bezier(0.22,1,0.36,1)_both]"
           />
 
           <div
@@ -157,14 +159,17 @@ export function ExpandingGallery({
               outline-none
             "
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={img.src}
               alt={img.alt}
-              loading="lazy"
-              decoding="async"
+              fill
+              // Un volet replié fait 180 px, mais celui qu'on survole s'ouvre
+              // à environ 700 px : c'est cette largeur-là qu'il faut déclarer,
+              // sinon l'image devient floue au moment précis où on la regarde.
+              sizes="(max-width: 767px) 100vw, 700px"
+              quality={82}
               className="
-                h-full w-full object-cover object-center
+                object-cover object-center
                 transition-transform duration-[1500ms] ease-out
                 group-hover:scale-[1.04]
               "

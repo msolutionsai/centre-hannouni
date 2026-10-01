@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
@@ -236,13 +237,17 @@ export function Interventions() {
                     {/* Image */}
                     <div className="absolute inset-0">
                       <div className="absolute inset-0 transition-transform duration-[1300ms] ease-out group-hover:scale-[1.07]">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                        <Image
                           src={int.cardImage ?? int.image}
                           alt={`${int.cardName ?? int.name} à Marrakech — ${int.category} au Centre du Docteur Hannouni`}
-                          loading="lazy"
-                          decoding="async"
-                          className="absolute inset-0 h-full w-full object-cover object-center"
+                          fill
+                          // Largeurs d'affichage relevées sur le site : 315 px
+                          // en 375 de large, 265 px au-delà (grille bornée à
+                          // 1440). Sous-déclarer ici, c'est servir une image
+                          // trop petite et la voir floue.
+                          sizes="(max-width: 639px) 84vw, (max-width: 767px) 60vw, 300px"
+                          quality={82}
+                          className="object-cover object-center"
                         />
                       </div>
                     </div>
