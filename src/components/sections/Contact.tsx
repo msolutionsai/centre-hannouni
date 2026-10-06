@@ -242,7 +242,7 @@ export function Contact() {
           // are medical context and stay between the patient and the centre.
           g("set", "user_data", { email: data.email.trim().toLowerCase() });
           g("event", "conversion", {
-            send_to: "AW-18450792077/HffiCOeu-YwdEI39gt5E",
+            send_to: "AW-18450715782/xT-eCIX6hJMdEIap_t1E",
           });
         }
       } catch {

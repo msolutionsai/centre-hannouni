@@ -22,7 +22,7 @@ export function SuiviAppels() {
         const g = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
         if (typeof g === "function") {
           g("event", "conversion", {
-            send_to: "AW-18450792077/w8V1COqu-YwdEI39gt5E",
+            send_to: "AW-18450715782/SGDtCIj6hJMdEIap_t1E",
           });
         }
       } catch {

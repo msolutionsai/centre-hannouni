@@ -220,7 +220,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           is ever added or removed here, that section has to follow.
         */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18450792077"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18450715782"
           strategy="afterInteractive"
         />
         <Script id="google-ads-tag" strategy="afterInteractive">
@@ -229,7 +229,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('set', 'allow_ad_personalization_signals', false);
-            gtag('config', 'AW-18450792077', { allow_ad_personalization_signals: false });
+            gtag('config', 'AW-18450715782', { allow_ad_personalization_signals: false });
           `}
         </Script>
       </body>
