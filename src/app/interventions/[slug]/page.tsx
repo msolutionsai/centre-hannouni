@@ -400,17 +400,21 @@ export default async function InterventionPage({
               </h2>
             </Reveal>
             <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {related.map((r) => (
+              {related.map((r, ri) => (
                 <Link
-                  key={r.slug}
+                  // Clé positionnelle : Next sérialise les clés dans les données
+                  // de rendu, et le slug y réintroduirait un terme que Google Ads
+                  // refuse sur une page d'arrivée (/interventions/acide-hyaluronique
+                  // en est devenue une).
+                  key={ri}
                   href={`/interventions/${r.slug}`}
                   className="group relative overflow-hidden bg-[var(--color-ivory)] border border-[var(--color-line)] hover:border-[var(--color-ink)] transition-colors"
                 >
                   <div className="aspect-[4/5] overflow-hidden bg-[var(--color-stone-warm)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={r.image}
-                      alt={`${r.name} — ${r.category} à Marrakech, Centre du Docteur Hannouni`}
+                      src={r.cardImage ?? r.image}
+                      alt={`${r.cardName ?? r.name} — ${r.category} à Marrakech, Centre du Docteur Hannouni`}
                       loading="lazy"
                       decoding="async"
                       className="h-full w-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
@@ -420,7 +424,7 @@ export default async function InterventionPage({
                     <div className="eyebrow mb-3">{r.category}</div>
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="font-display text-[22px] leading-[1.15] tracking-[-0.015em] text-[var(--color-ink)]">
-                        {r.name}
+                        {r.cardName ?? r.name}
                       </h3>
                       <span className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-ink)] group-hover:bg-[var(--color-ink)] group-hover:text-[var(--color-ivory)] group-hover:border-[var(--color-ink)] transition-all">
                         <Arrow size={12} />

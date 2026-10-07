@@ -722,8 +722,8 @@ export const interventionDetails: InterventionDetail[] = [
         a: "Oui. L’acide hyaluronique peut être dissous par injection d’hyaluronidase, une enzyme qui dégrade le produit en quelques heures. C’est l’une des grandes sécurités de cette technique, comparée aux produits définitifs.",
       },
       {
-        q: "Quelle différence entre acide hyaluronique et botox ?",
-        a: "Ce sont deux outils complémentaires. L’acide hyaluronique apporte du volume et comble (sillons, pommettes, lèvres). Le botox détend les muscles et atténue les rides d’expression (front, lion, pattes d’oie). On peut les associer dans la même séance.",
+        q: "Quelle différence entre acide hyaluronique et toxine botulique ?",
+        a: "Ce sont deux outils complémentaires. L’acide hyaluronique apporte du volume et comble (sillons, pommettes, lèvres). La toxine botulique détend les muscles et atténue les rides d’expression (front, lion, pattes d’oie). On peut les associer dans la même séance.",
       },
       {
         q: "À partir de quel âge faire de l’acide hyaluronique ?",
